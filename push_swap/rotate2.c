@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
+/*   Updated: 2022/03/12 12:26:49 by mmatthie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
+{
+	if ((*a)->next)
+	{
+		if (data->pos == 1)
+		{
+			ft_PB(a, b);
+			ft_sort_4(a, b, data);
+			ft_PA(a, b);
+			ft_rotate(a);
+		}
+		if (data->pos == 2)
+		{
+			SA(a);
+			ft_PB(a, b);
+			ft_sort_4(a, b, data);
+			ft_PA(a, b);
+			ft_rotate(a);
+		}
+		if (data->pos == 3)
+		{
+			ft_rotate(a);
+			SA(a);
+			ft_PB(a, b);
+			ft_sort_4(a, b, data);
+			ft_PA(a, b);
+			ft_rotate(a);
+		}
+		if (data->pos == 4)
+		{
+			ft_reverse_rotate(a);
+			ft_reverse_rotate(a);
+			ft_PB(a, b);
+			ft_sort_4(a, b, data);
+			ft_PA(a, b);
+			ft_rotate(a);
+		}
+		if (data->pos == 5)
+		{
+			ft_reverse_rotate(a);
+			ft_PB(a, b);
+			ft_sort_4(a, b, data);
+			ft_PA(a, b);
+			ft_rotate(a);
+		}
+	}
+}
+
+void	ft_sort_it(t_list	**a)
+{
+	t_list	*tmp;
+	t_list	*second;
+	
+	tmp = *a;
+	while (tmp)
+	{
+		if (!ft_is_sort(a))
+		{
+			if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
+			{
+				second = tmp->next->next;
+				(*a) = (*a)->next;
+				(*a)->next = tmp;
+				tmp->next = second;
+			}
+			else
+				tmp = tmp->next;
+		}
+	}
+}
