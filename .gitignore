@@ -1,9 +1,9 @@
 # Prerequisites
 *.d
-.DS_Store
+*.DS_Store
 */.DS_Store
 */*/.DS_Store
-a.out
+*a.out
 */a.out
 */*/a.out
 
