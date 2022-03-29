@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 Check :
-=======
-  Check :
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
 
 - all group : getent group | awk -F: '{ print $1}' || getent group;
 
@@ -20,11 +16,8 @@ Check :
 
 - Sudo rules : sudo visudo;
 
-<<<<<<< HEAD
 - Ssh connexion : ssh your_username@127.0.0.1 -p 4242
 
-=======
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
 Create :
 
 - Group sudo groupadd name_group;
@@ -58,11 +51,6 @@ Cron :
 
 - Service cron stop;
 
-<<<<<<< HEAD
-=======
-ssh connexion : ssh your_username@127.0.0.1 -p 4242
-
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
 Good To Know:
 
 Difference of CentOS and Debian is it, CentOS is a community supported by the called Red Hat community, they has a large market and its more complicated to upgrade an older version of centOS. Debian in opposite is supported by Debian and is more easy to upgrade.
