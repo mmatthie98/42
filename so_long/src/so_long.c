@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:37:22 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/29 19:40:19 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 10:07:43 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,12 @@ int	main(int ac, char	**av)
 	data = malloc(sizeof(t_data));
 	if (ac == 2 && ft_check_ber(av[1]))
 	{
-		data->map = parse(av[1]);
+		data->map = parse(av[1], data);
 		if (!data->map)
 			return (1);
-		if (!ft_check_border_map(data->map) && !ft_check_map_contain(data->map))
+		if (!ft_check_border_map(data) && !ft_check_map_contain(data->map))
 		{
+			printf("data->count0 : %d\ndata->countn : %d.\n", data->count_0, data->count_n);
 			init_struct(data);
 			init_player(data);
 			get_player_pos(data);

@@ -35,6 +35,8 @@ typedef struct s_data
     int     consummable;
     int     endian;
     int     move;
+    int     count_0;
+    int     count_n;
 } t_data;
 
 
@@ -42,8 +44,8 @@ typedef struct s_data
 int	    ft_check_both_border(char *first, char *last);
 int     ft_check_mid_border(char	**map);
 int	    check_len(char	**map);
-int	    ft_check_border_map(char	**map);
-int	ft_check_nl(char	*str);
+int	    ft_check_border_map(t_data  *data);
+void     ft_check_nl(t_data  *data);
 //check_map_contain
 int	    ft_check_consumable(char	**map);
 int		ft_check_exit(char   **map);
@@ -64,7 +66,8 @@ int    	key_hook(int keycode, t_data	*data);
 //parsing
 char	*ft_read_file(int	fd);
 size_t	ft_strlen_tab(char  **map);
-char	**parse(char *filename);
+char	**parse(char *filename, t_data  *data);
+void	ft_quit_with_msg(char *str);
 //player_move
 void    player_move_up(t_data   *data);
 void    player_move_left(t_data   *data);
@@ -87,7 +90,7 @@ int		ft_check_ber(char	*filename);
 char	*ft_strjoin(char	*s1, char	*s2);
 void	*ft_calloc( size_t	count, size_t	size);
 //so_utils2
-char	**ft_split(char const  *str, char c);
+char	**ft_split(char const  *str, char c, t_data *data);
 void    ft_free_map(char    **map);
 void	free_wd(int i, char	**ptr);
 void    ft_free_map(char    **map);
@@ -96,6 +99,6 @@ void	print_split(char	**map);
 int 	ft_strchr(char  *str, int c);
 void	put_player_xpm(t_data	*data, char	*path);
 void	put_double_player_xpm(t_data	*data, char	*path1, char	*path2);
-void	ft_quit_with_msg(char *str);
-
+int	    ft_check_lastandfirst(char	*str);
+int	checktheline(t_data	*data);
 #endif

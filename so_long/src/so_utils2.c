@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:53:47 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/29 18:54:26 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 11:13:32 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ static	int	cnt_wd(const char	*str, char c)
 	return (j);
 }
 
-static char	*ft_word(const char *str, char c)
+static char	*ft_word(const char *str, char c, t_data	*data)
 {
 	int		i;
 	char	*wd;
 
 	i = 0;
 	while (*str && *str == c)
+	{
+		data->count_n++;
 		str++;
+	}
 	while (str[i] && str[i] != c)
 		i++;
 	wd = malloc(sizeof(char) * (i + 1));
@@ -66,7 +69,7 @@ void	free_wd(int i, char	**ptr)
 	free (ptr);
 }
 
-char	**ft_split(char const	*s, char c)
+char	**ft_split(char const	*s, char c, t_data	*data)
 {
 	char	**ptr;
 	int		w;
@@ -83,7 +86,7 @@ char	**ft_split(char const	*s, char c)
 	{
 		while (*s && *s == c)
 			s++;
-		ptr[i] = ft_word(s, c);
+		ptr[i] = ft_word(s, c, data);
 		if (ptr == NULL)
 			free_wd(i, ptr);
 		while (*s && *s != c)

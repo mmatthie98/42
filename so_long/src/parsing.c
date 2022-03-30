@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:20:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/29 21:28:40 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 09:55:27 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,10 @@ char	*ft_read_file(int fd)
 		byte_read = read(fd, buf, 100);
 		if (byte_read == -1)
 			ft_quit_with_msg("Error\nRead error.\n");
-		if (!ft_check_nl(buf))
-		{
-			buf[byte_read] = '\0';
-			str = ft_strjoin(str, buf);
-			if (!str)
-				return (NULL);
-		}
-		else
-			ft_quit_with_msg("Error\nonly use allowed character.\n");
+		buf[byte_read] = '\0';
+		str = ft_strjoin(str, buf);
+		if (!str)
+			return (NULL);
 	}
 	return (str);
 }
@@ -48,7 +43,7 @@ size_t	ft_strlen_tab(char	**map)
 	return (i);
 }
 
-char	**parse(char *filename)
+char	**parse(char *filename, t_data	*data)
 {
 	int		fd;
 	char	*str;
@@ -56,15 +51,12 @@ char	**parse(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		printf("error in fd.\n");
-		exit (2);
-	}
+		ft_quit_with_msg("error in fd.\n");
 	str = ft_read_file(fd);
 	close(fd);
 	if (!str)
 		return (NULL);
-	map = ft_split(str, '\n');
+	map = ft_split(str, '\n', data);
 	if (!map)
 		return (NULL);
 	free (str);
@@ -76,3 +68,4 @@ void	ft_quit_with_msg(char *str)
 	printf("%s", str);
 	exit(EXIT_FAILURE);
 }
+

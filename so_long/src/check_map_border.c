@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:07:20 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/29 19:08:53 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 11:13:06 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,31 +65,35 @@ int	check_len(char	**map)
 	return (0);
 }
 
-int	ft_check_border_map(char	**map)
+int	ft_check_border_map(t_data	*data)
 {
 	size_t	i;
 
-	i = ft_strlen_tab(map);
-	if (check_len(map))
+	i = ft_strlen_tab(data->map);
+	if (check_len(data->map))
 		return (2);
-	if (ft_check_both_border(map[0], map[i - 1]))
+	if (ft_check_both_border(data->map[0], data->map[i - 1]))
 		return (3);
-	if (ft_check_mid_border(map))
+	if (ft_check_mid_border(data->map))
 		return (4);
+	if (checktheline(data))
+		return (5);
 	return (0);
 }
 
-int	ft_check_nl(char	*str)
+void	ft_check_nl(t_data	*data)
 {
-	int	i;
-
-	i = 0;
-	while (str && str[i])
+	init_struct(data);
+	data->count_n = 0;
+	while (data->map[data->i])
 	{
-		if ((str[i] != '1') && (str[i] != 'C') \
-		&& (str[i] != 'E') && (str[i] != 'P'))
-			return (1);
-		return (0);
+		data->j = 0;
+		while (data->map[data->i][data->j])
+		{
+			if (data->map[data->i][data->j] == '\n')
+				data->count_0++;
+			data->j++;
+		}
+		data->i++;
 	}
-	return (0);
 }
