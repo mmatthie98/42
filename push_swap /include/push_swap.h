@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/28 12:29:49 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:45:46 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,8 @@ void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data);
 void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data);
 void	init_struct_2(t_list	**a, t_data	*data);
 void	ft_sort_it(t_list	**a);
+void	ft_sort_2(t_list	**a, t_data	*data);
+void	ft_sort_3(t_list	**a, t_data	*data);
+void	sort_for_4(t_list	**a, t_list	**b, t_data	*data);
+void	sort_for_5(t_list	**a, t_list	**b, t_data	*data);
 #endif

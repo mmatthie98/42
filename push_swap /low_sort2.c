@@ -1,10 +1,12 @@
-void	ft_sort_2(t_list	**a, t_list	**b, t_data	*data)
+#include "../include/push_swap.h"
+
+void	ft_sort_2(t_list	**a, t_data	*data)
 {
 	init_struct_2(a, data);
-	SA()
+	SA(a);
 }
 
-void	ft_sort_3(t_list	**a, t_list	**b, t_data	*data)
+void	ft_sort_3(t_list	**a,t_data	*data)
 {
 	init_struct_2(a, data);
 	init_struct_3(a, data);
