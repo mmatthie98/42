@@ -6,11 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/03/29 15:44:29 by mmatthie         ###   ########.fr       */
-=======
-/*   Updated: 2022/03/12 13:09:05 by mmatthie         ###   ########.fr       */
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
+/*   Updated: 2022/03/30 16:26:23 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,47 +26,28 @@ void	small_sort(t_list	**a, t_data	*data)
 			init_struct_2(a, data);
 			init_struct_3(a, data);
 			if (data->first > data->second \
-<<<<<<< HEAD
 			&& data->first > data->third
 			&& data->second < data->third)
 				ft_rotate(a);
-=======
-			&& data->first > data->third 
-			&& data->second < data->third)
-			{
-				ft_rotate(a);
-				ft_print_list(*a);
-			}
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
-			if (data->third < data->first \
+			else if (data->third < data->first \
 			&& data->third < data->second \
 			&& data->first > data->second)
 			{
 				SA(a);
-<<<<<<< HEAD
 				ft_reverse_rotate(a);
 			}
-			if (data->second > data->first
+			else if (data->second > data->first
 				&& data->second > data->third \
 				&& data->third < data->first)
 				ft_reverse_rotate(a);
-			if (data->second > data->first
-=======
-				ft_reverse_rotate(a);	
-			}
-			if (data->second > data->first 
-				&& data->second > data->third \
-				&& data->third < data->first)
-				ft_reverse_rotate(a);
-			if (data->second > data->first 
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
+			else if (data->second > data->first
 				&& data->second > data->third \
 				&& data->third > data->first)
 			{
 				ft_reverse_rotate(a);
 				SA(a);
 			}
-			if (data->third > data->first \
+			else if (data->third > data->first \
 			&& data->third > data->second \
 			&& data->second < data->first)
 				SA(a);
@@ -142,11 +119,7 @@ void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data)
 	}
 	if (data->size == 3)
 	{
-<<<<<<< HEAD
 		init_struct_2(a, data);
-=======
-		init_struct_2(a, data);	
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
 		init_struct_3(a, data);
 		small_sort(a, data);
 	}

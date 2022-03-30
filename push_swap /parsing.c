@@ -6,11 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/03/29 15:50:35 by mmatthie         ###   ########.fr       */
-=======
-/*   Updated: 2022/03/12 13:09:56 by mmatthie         ###   ########.fr       */
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
+/*   Updated: 2022/03/30 16:26:43 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +126,7 @@ int main(int ac, char   **av)
             {
                 ft_low_sort(&lst, &stack_b, data);
                 ft_print_list(lst);
-<<<<<<< HEAD
 				system("leaks push_swap");
-=======
->>>>>>> e5039f02b7fb641a9c8f999ed8518ce1eef8a494
             }
             if (data->size > 5)
             {
