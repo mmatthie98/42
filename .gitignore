@@ -8,6 +8,9 @@ a.out
 */*/a.out
 
 # Object files
+
+*/.vs
+.vs
 *.o
 *.ko
 *.obj
