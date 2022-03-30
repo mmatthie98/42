@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:37:22 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/30 10:07:43 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 13:28:57 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	main(int ac, char	**av)
 			return (1);
 		if (!ft_check_border_map(data) && !ft_check_map_contain(data->map))
 		{
-			printf("data->count0 : %d\ndata->countn : %d.\n", data->count_0, data->count_n);
 			init_struct(data);
 			init_player(data);
 			get_player_pos(data);

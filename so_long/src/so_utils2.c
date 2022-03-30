@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:53:47 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/30 11:13:32 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 13:22:38 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ static	int	cnt_wd(const char	*str, char c)
 	while (str[i])
 	{
 		if (str[i] == c)
+		{
 			i++;
+			if (str[i] == c)
+				ft_quit_with_msg("error.\nyou have empty line.\n");
+		}
 		else
 		{
 			j++;

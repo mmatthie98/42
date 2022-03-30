@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:20:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/30 09:55:27 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 13:29:05 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,3 @@ void	ft_quit_with_msg(char *str)
 	printf("%s", str);
 	exit(EXIT_FAILURE);
 }
-

@@ -42,10 +42,9 @@ typedef struct s_data
 
 //check_map_border
 int	    ft_check_both_border(char *first, char *last);
-int     ft_check_mid_border(char	**map);
+int     ft_check_mid_border(char	**map, t_data	*data);
 int	    check_len(char	**map);
 int	    ft_check_border_map(t_data  *data);
-void     ft_check_nl(t_data  *data);
 //check_map_contain
 int	    ft_check_consumable(char	**map);
 int		ft_check_exit(char   **map);
@@ -100,5 +99,4 @@ int 	ft_strchr(char  *str, int c);
 void	put_player_xpm(t_data	*data, char	*path);
 void	put_double_player_xpm(t_data	*data, char	*path1, char	*path2);
 int	    ft_check_lastandfirst(char	*str);
-int	checktheline(t_data	*data);
 #endif
