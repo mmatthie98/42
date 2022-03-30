@@ -21,6 +21,9 @@ int	reverse_byte(long long n)
 int main()
 {
 	long long i;
+	int		res;
 
-	i = 
+	i = 1010;
+	res = reverse_byte(i);
+	return (0);
 }
