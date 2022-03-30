@@ -15,6 +15,7 @@ SRC =	parsing.c \
 		rotate.c	\
 		rotate2.c	\
 		low_sort.c	\
+		low_sort2.c	\
 		init.c		\
 
 OBJ = ${SRC:%.c=%.o}
@@ -31,7 +32,7 @@ $(L_DIR)/libft.a:
 
 %.o: %.c
 	$(CC) $(CFLAGS) -g -o $@ -c $< -I$(I_DIR)
-	
+
 clean:
 		make clean -C $(L_DIR)
 		rm -rf $(OBJ)

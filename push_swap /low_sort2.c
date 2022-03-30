@@ -1,0 +1,31 @@
+void	ft_sort_2(t_list	**a, t_list	**b, t_data	*data)
+{
+	init_struct_2(a, data);
+	SA()
+}
+
+void	ft_sort_3(t_list	**a, t_list	**b, t_data	*data)
+{
+	init_struct_2(a, data);
+	init_struct_3(a, data);
+	small_sort(a, data);
+}
+
+void	sort_for_4(t_list	**a, t_list	**b, t_data	*data)
+{
+	init_struct_2(a, data);
+	init_struct_3(a, data);
+	init_struct_4(a, data);
+	ft_get_high(a, data);
+	ft_sort_4(a, b, data);
+}
+
+void	sort_for_5(t_list	**a, t_list	**b, t_data	*data)
+{
+	init_struct_2(a, data);
+	init_struct_3(a, data);
+	init_struct_4(a, data);
+	init_struct_5(a, data);
+	ft_get_high_5(a, data);
+	ft_sort_5(a, b, data);
+}

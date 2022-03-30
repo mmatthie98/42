@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/30 16:26:23 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:26:16 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 {
 	if ((*a)->next)
 	{
-		ft_get_high(a, data);
 		if (data->pos == 1)
 		{
 			ft_PB(a, b);
@@ -113,31 +112,11 @@ int		ft_is_sort(t_list	**a)
 void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data)
 {
 	if (data->size == 2)
-	{
-		init_struct_2(a, data);
-		small_sort(a, data);
-	}
+		ft_sort_2(a, b, data);
 	if (data->size == 3)
-	{
-		init_struct_2(a, data);
-		init_struct_3(a, data);
-		small_sort(a, data);
-	}
+		ft_sort_3(a, b, data);
 	if (data->size == 4)
-	{
-		init_struct_2(a, data);
-		init_struct_3(a, data);
-		init_struct_4(a, data);
-		ft_get_high(a, data);
-		ft_sort_4(a, b, data);
-	}
+		sort_for_4(a, b, data);
 	if (data->size == 5)
-	{
-		init_struct_2(a, data);
-		init_struct_3(a, data);
-		init_struct_4(a, data);
-		init_struct_5(a, data);
-		ft_get_high_5(a, data);
-		ft_sort_5(a, b, data);
-	}
+		sort_for_5(a, b, data);
 }
