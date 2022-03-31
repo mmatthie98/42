@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 20:20:33 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 20:35:42 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,21 @@ void	ft_sort_it(t_list	**a, t_data *data)
 	}
 }
 
-int	ft_is_negative(char	**map)
+/*int	ft_is_negative(char	**map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	
-}
+	while (map[i])
+	{
+		while (map[i][j])
+		{
+			if (map[i][j] == '-')
+			{
+				if (map[i][j + 1] == '')
+			}
+		}
+	}
+}*/
