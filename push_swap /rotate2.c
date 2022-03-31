@@ -6,11 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/12 12:26:49 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 20:20:33 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 {
@@ -60,15 +60,15 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 	}
 }
 
-void	ft_sort_it(t_list	**a)
+void	ft_sort_it(t_list	**a, t_data *data)
 {
 	t_list	*tmp;
 	t_list	*second;
-	
+
 	tmp = *a;
 	while (tmp)
 	{
-		if (!ft_is_sort(a))
+		while (!ft_is_sort(a, data))
 		{
 			if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
 			{
@@ -81,4 +81,14 @@ void	ft_sort_it(t_list	**a)
 				tmp = tmp->next;
 		}
 	}
+}
+
+int	ft_is_negative(char	**map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	
 }

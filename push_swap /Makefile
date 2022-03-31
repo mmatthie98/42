@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-L_DIR =  libft
+L_DIR = ../libft
 
 LIB = -lft
 
@@ -24,10 +24,10 @@ all: include/push_swap.h ${NAME}
 
 RM = rm -rf
 
-${NAME}: $(L_DIR)/libft.a ${OBJ}
+${NAME}: $(L_DIR)libft.a ${OBJ}
 	${CC} ${CFLAGS} -g -o $(NAME) $(OBJ) -I$(I_DIR) -L$(L_DIR) $(LIB)
 
-$(L_DIR)/libft.a:
+$(L_DIR)libft.a:
 	make -C $(L_DIR)
 
 %.o: %.c

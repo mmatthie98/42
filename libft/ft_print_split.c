@@ -6,12 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:33:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/02/16 16:42:37 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:01:15 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	ft_print_split(char	**map)
 {
@@ -23,5 +22,4 @@ void	ft_print_split(char	**map)
 		printf("%s\n", map[i]);
 		i++;
 	}
-	return ;
 }

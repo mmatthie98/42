@@ -6,12 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:29:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/02/16 15:30:07 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:58:56 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 long long	ft_atoll(const char	*str)
 {

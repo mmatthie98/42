@@ -6,17 +6,22 @@
 #    By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/25 17:52:59 by mmatthie          #+#    #+#              #
-#    Updated: 2022/02/16 15:46:34 by mmatthie         ###   ########.fr        #
+#    Updated: 2022/02/25 13:24:24 by mmatthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	gcc
-CFLAGS		=	-Werror -Wall -Wextra
+
+CFLAGS		=	-Werror -Wall -Wextra -g
+
 NAME		=	libft.a
-OBJ_DIR		=	obj
+
+OBJ			=	${SRC:.c=.o}
+
 I_DIR		=	.
 
 SRC			=	ft_memset.c		\
+				ft_lst_second.c	\
 				ft_bzero.c		\
 				ft_memcpy.c		\
 				ft_memmove.c 	\
@@ -55,8 +60,7 @@ SRC			=	ft_memset.c		\
 				ft_print_split.c \
 				ft_strlentab.c	\
 				ft_isspace.c	\
-				
-SRC_BONUS	=	$(SRC)	\
+				ft_strcmp.c		\
 				ft_lstnew.c			\
 				ft_lstadd_front.c	\
 				ft_lstsize.c		\
@@ -66,29 +70,18 @@ SRC_BONUS	=	$(SRC)	\
 				ft_lstdelone.c		\
 				ft_lstiter.c		\
 				ft_lstmap.c			\
-
-ifdef WITH_BONUS
-	OBJ				=	$(SRC_BONUS:%.c=%.o)
-	OBJ_PFX			=	$(addprefix $(OBJ_DIR)/, $(OBJ))
-else
-	OBJ				=	$(SRC:%.c=%.o)
-	OBJ_PFX			=	$(addprefix $(OBJ_DIR)/, $(OBJ))
-endif
+				ft_print_list.c		\
 
 all: $(NAME)
 
-$(NAME): $(OBJ_PFX)
-	ar -rcs $(NAME) $(OBJ_PFX)
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
-bonus:
-	@make WITH_BONUS=1 all
-
-$(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -o $@ -c $< -I$(I_DIR)
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,11 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:08:50 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/10 09:25:30 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:07:58 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_PB(t_list	**stack_a, t_list	**stack_b)
 {

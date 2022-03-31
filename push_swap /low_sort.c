@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/30 17:49:57 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:58:24 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,36 @@
 
 void	small_sort(t_list	**a, t_data	*data)
 {
-	if (ft_is_sort(a))
+	if (data->size > 2)
 	{
-		if (data->size > 2)
+		init_struct_2(a, data);
+		init_struct_3(a, data);
+		if (data->first > data->second \
+		&& data->first > data->third
+		&& data->second < data->third)
+			ft_rotate(a);
+		if (data->third < data->first \
+		&& data->third < data->second \
+		&& data->first > data->second)
 		{
-			init_struct_2(a, data);
-			init_struct_3(a, data);
-			if (data->first > data->second \
-			&& data->first > data->third
-			&& data->second < data->third)
-				ft_rotate(a);
-			else if (data->third < data->first \
-			&& data->third < data->second \
-			&& data->first > data->second)
-			{
-				SA(a);
-				ft_reverse_rotate(a);
-			}
-			else if (data->second > data->first
-				&& data->second > data->third \
-				&& data->third < data->first)
-				ft_reverse_rotate(a);
-			else if (data->second > data->first
-				&& data->second > data->third \
-				&& data->third > data->first)
-			{
-				ft_reverse_rotate(a);
-				SA(a);
-			}
-			else if (data->third > data->first \
-			&& data->third > data->second \
-			&& data->second < data->first)
-				SA(a);
+			SA(a);
+			ft_reverse_rotate(a);
 		}
+		if (data->second > data->first
+			&& data->second > data->third \
+			&& data->third < data->first)
+			ft_reverse_rotate(a);
+		if (data->second > data->first
+			&& data->second > data->third \
+			&& data->third > data->first)
+		{
+			ft_reverse_rotate(a);
+			SA(a);
+		}
+		if (data->third > data->first \
+		&& data->third > data->second \
+		&& data->second < data->first)
+			SA(a);
 	}
 }
 
@@ -89,18 +86,22 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 	}
 }
 
-int		ft_is_sort(t_list	**a)
+int		ft_is_sort(t_list	**a, t_data	*data)
 {
 	t_list	*tmp;
 
 	tmp = *a;
-	while (tmp->next)
+	if (data->size > 1)
 	{
-		if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
-			return (1);
-		else
+		while (tmp->next)
+		{
+			if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
+				return (1);
 			tmp = tmp->next;
+		}
 	}
+	if (data->size < 2)
+		quit_with_message(5);
 	return (0);
 }
 

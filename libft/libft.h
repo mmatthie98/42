@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:27:20 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/02/26 23:11:21 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:28:26 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,29 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <string.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-	int				size;
 }t_list;
 
+typedef struct s_data
+{
+	char			**map;
+	int				first;
+	int				second;
+	int				third;
+	int				fourth;
+	int				five;
+	int				pos;
+	int				size;
+}t_data;
+
+void	ft_get_high_5(t_list	**a, t_data	*data);;
+int		ft_isvalid(char *str);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -69,9 +83,13 @@ void	ft_lstadd_back(t_list **alst, t_list *new);
 char	*ft_strrchr(const char	*str, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const	*s, char c);
-size_t  ft_strlentab(char   **map);
+size_t	ft_strlentab(char	**map);
 int		ft_isspace(int c);
 void	ft_print_split(char	**map);
 long long	ft_atoll(const char	*str);
+int	ft_strcmp(char	*s1, char	*s2);
+void	PA(t_list	**a, t_list	**b);
+void	ft_print_list(t_list	*lst);
+t_list	*ft_lst_second(t_list	**a);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:16:25 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/29 19:20:37 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:00:34 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "/so_long.h"
 
 void	ft_close_win(t_data	*data)
 {

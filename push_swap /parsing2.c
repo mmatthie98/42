@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:12:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/12 13:10:03 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:59:38 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,14 @@ int	is_max_or_min(char	**map)
 
 	j = 0;
 	i = 0;
-	if (!map[i])
-	{
-		printf("map error.\n");
-		exit(2);
-	}
-	while (map[i])
+	while (map && map[i])
 	{
 		j = ft_atoll(map[i]);
 		if (j < -2147483648 || j > 2147483647)
-		{
-			return (0);
-		}
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 void	ft_get_high(t_list	**a, t_data	*data)
@@ -98,4 +91,23 @@ int ft_isvalid(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+void	quit_with_message(int	n)
+{
+	if (n == 1)
+	{
+		write(2, "Error.\nonly used allowed int.\n", 30);
+		exit(2);
+	}
+	if (n == 2)
+	{
+		write(2, "Error.\nonly used valid int.\n", 29);
+		exit(2);
+	}
+	if (n == 3)
+	{
+		write(2, "Error.\ndon't use int in double.\n", 32);
+		exit(2);
+	}
 }

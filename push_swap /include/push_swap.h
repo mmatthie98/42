@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/30 17:45:46 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:15:18 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,47 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
-# include "../include/libft.h"
+# include "../../libft/libft.h"
 
-int     parse(char    **map);
-size_t  ft_strlentab(char   **map);
-char    **split_multiple_param(char  **tab);
-int     ft_puti(int nb);
-void    ft_putc(char c);
-int is_max_or_min(char  **map);
+//rotate.c
 void	ft_PA(t_list	**a, t_list	**b);
 void	ft_reverse_rotate(t_list	**a);
 void	ft_rotate(t_list	**a);
 void	ft_PB(t_list	**a, t_list	**b);
 void	SA(t_list	**a);
-void	SS(t_list	**a, t_list	**b);
-int		ft_is_sort(t_list	**a);
-int		check(char	**map);
-void	small_sort(t_list	**a, t_data	*data);
-void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data);
+
+//rotate2.c
+void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data);
+
+// init.c
 void	init_struct_3(t_list	**a, t_data	*data);
 void	init_struct_4(t_list	**a, t_data	*data);
 void	init_struct_5(t_list	**a, t_data	*data);
-void	ft_get_high(t_list	**a, t_data	*data);
-void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data);
-void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data);
 void	init_struct_2(t_list	**a, t_data	*data);
-void	ft_sort_it(t_list	**a);
+
+// low_sort.c
+int		ft_is_sort(t_list	**a, t_data	*data);
+void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data);
+void	small_sort(t_list	**a, t_data	*data);
+void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data);
+void	ft_sort_it(t_list	**a, t_data	*data);
+
+// low_sort2.c
 void	ft_sort_2(t_list	**a, t_data	*data);
 void	ft_sort_3(t_list	**a, t_data	*data);
 void	sort_for_4(t_list	**a, t_list	**b, t_data	*data);
 void	sort_for_5(t_list	**a, t_list	**b, t_data	*data);
+
+// parsing.c
+int		parse(char	**map);
+char	**split_multiple_param(char  **tab);
+t_list	*make_a(char	**map);
+
+//parsing2.c
+void	quit_with_message(int n);
+int		ft_isvalid(char *str);
+void	ft_get_high_5(t_list	**a, t_data	*data);
+void	ft_get_high(t_list	**a, t_data	*data);
+int		is_max_or_min(char  **map);
+
 #endif
