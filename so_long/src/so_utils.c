@@ -6,11 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:54:50 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 18:00:34 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/03/31 20:25:13 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/so_long.h"
+#include "so_long.h"
 
 int	ft_strncmp(char	*s1, char	*s2, size_t	n)
 {
