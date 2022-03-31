@@ -53,9 +53,18 @@ Cron :
 
 Good To Know:
 
-Difference of CentOS and Debian is it, CentOS is a community supported by the called Red Hat community, they has a large market and its more complicated to upgrade an older version of centOS. Debian in opposite is supported by Debian and is more easy to upgrade.
+Une machine virtuelle permet de creer une simulation dun hardware, cela se fait grace a des software et notamment grace a un hyperviseur qui vas permettre de provisionner en memoire, ressource et stockage la machine virtuelle.
+cela est possible grace a la virtualisation, la virtualisation utilise un logiciel pour simuler le materiel virtuel qui permet a plusieurs machines de sexecuter sur une seule machine.
+le but d'une machine virtuelle est de pouvoir partitionner des taches si on le souhaite, ou bien de pouvoir utiliser un autre systeme d'exploitation.
+Une machine virtuelle permet egalement de realiser des actions qui si elles sont grave, n'auront aucun impact sur l'hôte.
 
-Difference between aptitude and apt, aptitude is a high level package manager, they have graphic interface and is more intuitive for non-initiate people. apt is more simple and purified,
+Debian et CentOS sont differents sur de nombreux points, cependant les points les plus importants sont ceux-la :
+
+CentOS est supporte par la communaute nommee red hat community, il est difficile d'upgrade une version obsolete de Centos, il est preferable d'en reinstaller une nouvelle version et le market de Centos est bien plus grand.
+au contraire Debian est plus facile a upgrade, et est supporte par Debian.
+
+apt et aptitude sont fondamentalement les memes, a quelques differences pres, par exemple aptitude possede une interface graphiphe mais elle s'inspire grandement de apt.
+apt quant a lui ne possede pas d'interface graphique mais est plus epure et simple s'inspire de dpkg.
 
 Difference between SELinux and APPArmor, both are security systems provide tools to isolate application from each other. SELinux is more complicated but you have more control on the process. AppArmor can be handle by human and the system is transparent so it can be indepedently verified.
 
