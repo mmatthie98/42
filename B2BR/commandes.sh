@@ -16,7 +16,9 @@ Check :
 
 - Sudo rules : sudo visudo;
 
-- Ssh connexion : ssh your_username@127.0.0.1 -p 4242
+- Ssh connexion : ssh your_username@127.0.0.1 -p 4242;
+
+- password duration : sudo nano /etc/login.defs;
 
 Create :
 
