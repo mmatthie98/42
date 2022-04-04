@@ -28,4 +28,4 @@ wall "
 #Connexions TCP : $TCPconnexions ESTABLISHED
 #User log: $Userlog
 #Network:IP $Network ($IP)
-#Cmd : $Cmd cmd
+#Cmd : $Cmd cmd"
