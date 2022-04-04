@@ -21,7 +21,7 @@ wall "
 #CPU physical: $cpu
 #vCPU: $vcpu
 #Memory Usage: $memu / $memu2 ($memu1%)
-#Disk Usage: $diskuse1 / $diskuse (taux d'utilisation : $diskuse1)
+#Disk Usage: $diskuse1 / $diskuse (taux d'utilisation : $diskuse2)
 #CPU load: $cpuload
 #Last boot: $lastreboot
 #LVM use: $lvmuse
