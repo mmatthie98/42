@@ -16,21 +16,15 @@ Check :
 
 - Sudo rules : sudo visudo;
 
-- Ssh connexion : ssh your_username@127.0.0.1 -p 4242
+- Ssh connexion : ssh your_username@127.0.0.1 -p 4242;
 
-- Git version : git --version;
-
-- sudo.log : cd var/log/sudo/sudo.log;
-
-- Cron : sudo crontab -e;
+- password duration : sudo nano /etc/login.defs;
 
 Create :
 
 - Group sudo groupadd name_group;
 
 - User : sudo adduser new_username;
-
-- UFW rule : sudo ufw allow "name_port";
 
 Delete :
 
