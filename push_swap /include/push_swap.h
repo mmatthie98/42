@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 19:15:18 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:10:03 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_sort_it(t_list	**a, t_data	*data);
 // low_sort2.c
 void	ft_sort_2(t_list	**a, t_data	*data);
 void	ft_sort_3(t_list	**a, t_data	*data);
-void	sort_for_4(t_list	**a, t_list	**b, t_data	*data);
+void	ft_sort_for_4(t_list	**a, t_list	**b, t_data	*data);
 void	sort_for_5(t_list	**a, t_list	**b, t_data	*data);
 
 // parsing.c
@@ -57,8 +57,8 @@ t_list	*make_a(char	**map);
 //parsing2.c
 void	quit_with_message(int n);
 int		ft_isvalid(char *str);
-void	ft_get_high_5(t_list	**a, t_data	*data);
-void	ft_get_high(t_list	**a, t_data	*data);
+void	ft_get_low_5(t_list	**a, t_data	*data);
+void	ft_get_low(t_list	**a, t_data	*data);
 int		is_max_or_min(char  **map);
 
 #endif

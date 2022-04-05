@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:27:20 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 18:28:26 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:48:21 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ typedef struct s_data
 	int				five;
 	int				pos;
 	int				size;
+	int				index;
+	int				pos_small;
+	int				max_value;
 }t_data;
 
 void	ft_get_high_5(t_list	**a, t_data	*data);;

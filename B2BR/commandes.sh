@@ -1,5 +1,7 @@
 Check :
 
+ufw : sudo allow port_name;
+
 - all group : getent group | awk -F: '{ print $1}' || getent group;
 
 - Sudo group : getent group sudo;
@@ -22,7 +24,7 @@ Check :
 
 Create :
 
-- Group sudo groupadd name_group;
+- Group : sudo groupadd name_group;
 
 - User : sudo adduser new_username;
 
@@ -37,6 +39,8 @@ Delete :
 - Group : sudo groupdel groupname;
 
 Edit :
+
+- ufw : sudo ufw allow ssh_port;
 
 - Hostname : hostnamectl set-hostname "new_hostname";
 (need to edit file : "vim /etc/hosts");

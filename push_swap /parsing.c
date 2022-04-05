@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 19:59:17 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:34:23 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,10 @@ int main(int ac, char   **av)
 			if (!ft_is_sort(&lst, data))
 				quit_with_message(4);
 			if (data->size < 6)
+			{
 				ft_low_sort(&lst, &stack_b, data);
+				ft_print_list(lst);
+			}
 			if (data->size > 5)
 				ft_sort_it(&lst, data);
 		}

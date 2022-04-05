@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:12:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 19:59:38 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:58:05 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_max_or_min(char	**map)
 	return (0);
 }
 
-void	ft_get_high(t_list	**a, t_data	*data)
+void	ft_get_low(t_list	**a, t_data	*data)
 {
 	init_struct_2(a, data);
 	init_struct_3(a, data);
@@ -48,32 +48,56 @@ void	ft_get_high(t_list	**a, t_data	*data)
 		data->pos = 4;
 }
 
-void	ft_get_high_5(t_list	**a, t_data	*data)
+/*void	ft_get_low_5(t_list	**a, t_data	*data)
 {
-	init_struct_2(a, data);
-	init_struct_3(a, data);
-	init_struct_4(a, data);
-	init_struct_5(a, data);
-	if (data->first > data->second && data->first > data->third\
-	&& data->first > data->fourth\
-	&& data->first > data->five)
+	if (data->first < data->second && data->first < data->third\
+	&& data->first < data->fourth\
+	&& data->first < data->five)
 	 	data->pos = 1;
-	if (data->second > data->first && data->second > data->third\
-	&& data->second > data->fourth\
-	&& data->second > data->five)
+	if (data->second < data->first && data->second < data->third\
+	&& data->second < data->fourth\
+	&& data->second < data->five)
 		data->pos = 2;
-	if (data->third > data->first && data->third > data->second\
-	&& data->third > data->fourth\
-	&& data->third > data->five)
+	if (data->third < data->first && data->third < data->second\
+	&& data->third < data->fourth\
+	&& data->third < data->five)
 		data->pos = 3;
-	if (data->fourth > data->first && data->fourth > data->second\
-	&& data->fourth > data->third\
-	&& data->fourth > data->third)
+	if (data->fourth < data->first && data->fourth < data->second\
+	&& data->fourth < data->third\
+	&& data->fourth < data->third)
 		data->pos = 4;
-	if (data->five > data->first && data->five > data->second\
-	&& data->five > data->third\
-	&& data->five > data->fourth)
+	if (data->five < data->first && data->five < data->second\
+	&& data->five < data->third\
+	&& data->five < data->fourth)
 		data->pos = 5;
+}*/
+
+void	ft_get_low_5(t_list	**a, t_data	*data)
+{
+	t_list *pt;
+	int *tmp;
+
+	pt = *a;
+	data->index = 0;
+	if (pt && pt->next != NULL)
+	{
+		tmp = (int *)pt->content;
+		data->max_value = *tmp;
+		data->pos = data->index;
+		while (pt->next)
+		{
+			data->index++;
+			pt = pt->next;
+			if (*tmp > *(int *)pt->content)
+			{
+				tmp = pt->content;
+				data->max_value = *tmp;
+				printf("data max value in get low %d\n", data->max_value);
+				data->pos = data->index;
+			}
+		}
+		data->index = 0;
+	}
 }
 
 int ft_isvalid(char *str)

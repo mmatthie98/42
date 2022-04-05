@@ -6,20 +6,20 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 20:35:42 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:29:42 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
+/*void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 {
-	if ((*a)->next)
+	if (*a)
 	{
 		if (data->pos == 1)
 		{
 			ft_PB(a, b);
-			ft_sort_4(a, b, data);
+			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
 			ft_rotate(a);
 		}
@@ -27,7 +27,7 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 		{
 			SA(a);
 			ft_PB(a, b);
-			ft_sort_4(a, b, data);
+			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
 			ft_rotate(a);
 		}
@@ -36,7 +36,7 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 			ft_rotate(a);
 			SA(a);
 			ft_PB(a, b);
-			ft_sort_4(a, b, data);
+			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
 			ft_rotate(a);
 		}
@@ -45,7 +45,7 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 			ft_reverse_rotate(a);
 			ft_reverse_rotate(a);
 			ft_PB(a, b);
-			ft_sort_4(a, b, data);
+			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
 			ft_rotate(a);
 		}
@@ -53,12 +53,20 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 		{
 			ft_reverse_rotate(a);
 			ft_PB(a, b);
-			ft_sort_4(a, b, data);
+			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
 			ft_rotate(a);
 		}
 	}
-}
+}*/
+
+/*void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
+{
+	if (*a)
+	{
+
+	}
+}*/
 
 void	ft_sort_it(t_list	**a, t_data *data)
 {
