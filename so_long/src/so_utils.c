@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:54:50 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 20:25:13 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:38:48 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_strncmp(char	*s1, char	*s2, size_t	n)
 	return (0);
 }
 
-size_t	ft_strlen(char	*str)
+size_t	ft_strlen_long(char	*str)
 {
 	int	i;
 

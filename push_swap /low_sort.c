@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/05 19:02:20 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/06 14:44:50 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	small_sort(t_list	**a, t_data	*data)
 {
 	if (data->size > 2)
 	{
-		init_struct_2(a, data);
-		init_struct_3(a, data);
 		if (data->first > data->second \
 		&& data->first > data->third
 		&& data->second < data->third)

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:15:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 20:25:13 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:26:29 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_win(t_data	*data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 	{
-		printf("error, win don't init.\n");
+		write(1, "error, win don't init.\n", 23);
 		exit (0);
 	}
 	data->mlx_win = mlx_new_window(data->mlx, data->line_lenght * 40, \

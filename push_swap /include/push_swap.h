@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/05 19:10:03 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/06 12:24:25 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "../../libft/libft.h"
 
 //rotate.c
+
 void	ft_PA(t_list	**a, t_list	**b);
 void	ft_reverse_rotate(t_list	**a);
 void	ft_rotate(t_list	**a);
@@ -28,6 +29,7 @@ void	ft_PB(t_list	**a, t_list	**b);
 void	SA(t_list	**a);
 
 //rotate2.c
+
 void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data);
 
 // init.c

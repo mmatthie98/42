@@ -19,6 +19,12 @@ SRC = 	src/so_long.c \
 		src/player_move2.c	\
 		src/init.c \
 		src/so_utils3.c \
+		src/ft_check_var.c \
+		src/ft_printf.c \
+		src/ft_putc_s.c \
+		src/ft_putd_i.c \
+		src/ft_putx_X.c \
+
 
 OBJ = ${SRC:%.c=%.o}
 

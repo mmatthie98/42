@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:20:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 20:25:13 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:26:50 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ char	**parse(char *filename, t_data	*data)
 
 void	ft_quit_with_msg(char *str)
 {
-	printf("%s", str);
+	ft_printf("%s", str);
 	exit(EXIT_FAILURE);
 }

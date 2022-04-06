@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:37:22 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 20:25:13 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:29:07 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_double_xpm(t_data	*data, char	*path1, char	*path2)
 	&data->img_width, &data->img_height);
 	if (!data->img)
 	{
-		printf("img error\n");
+		ft_printf("img error\n");
 		ft_free_map(data->map);
 		exit(2);
 	}
@@ -28,7 +28,7 @@ void	put_double_xpm(t_data	*data, char	*path1, char	*path2)
 	&data->img_width, &data->img_height);
 	if (!data->map)
 	{
-		printf("img error\n");
+		ft_printf("img error\n");
 		ft_free_map(data->map);
 		exit(2);
 	}
@@ -42,7 +42,7 @@ void	put_xpm(t_data	*data, char	*path)
 	&data->img_width, &data->img_height);
 	if (!data->img)
 	{
-		printf("img error\n");
+		ft_printf("img error\n");
 		ft_free_map(data->map);
 		exit(2);
 	}
@@ -106,9 +106,9 @@ int	main(int ac, char	**av)
 			start_it(data);
 		}
 		else
-			printf("map is not ok.\n");
+			ft_printf("map is not ok.\n");
 	}
 	else
-		printf("Invalid args\n");
+		ft_printf("Invalid args\n");
 	return (0);
 }
