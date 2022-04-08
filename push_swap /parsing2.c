@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:12:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 10:06:31 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 16:36:45 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,49 +69,21 @@ void	ft_get_low_5(t_data	*data)
 		data->pos = 5;
 }
 
-/*void	ft_get_low_5(t_list	**a, t_data	*data)
-{
-	t_list *pt;
-	int *tmp;
-
-	pt = *a;
-	data->index = 0;
-	if (pt && pt->next != NULL)
-	{
-		tmp = (int *)pt->content;
-		data->max_value = *tmp;
-		data->pos = data->index;
-		while (pt->next)
-		{
-			data->index++;
-			pt = pt->next;
-			if (*tmp > *(int *)pt->content)
-			{
-				tmp = pt->content;
-				data->max_value = *tmp;
-				printf("data max value in get low %d\n", data->max_value);
-				data->pos = data->index;
-			}
-		}
-		data->index = 0;
-	}
-}*/
-
 int ft_isvalid(char *str)
 {
 	int i;
 
 	i = 0;
-	if (str[i] == '-')
-		i++;
 	while (str[i])
 	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
 		if (str[i] >= 48 && str[i] <= 57)
 			i++;
 		else
-			return (0);
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 void	quit_with_message(int	n)

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:27:20 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 10:02:35 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:04:08 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ int	ft_strcmp(char	*s1, char	*s2);
 void	PA(t_list	**a, t_list	**b);
 void	ft_print_list(t_list	*lst);
 t_list	*ft_lst_second(t_list	**a);
-
+void	ft_put_bin(unsigned long long	c, char	*base);
 #endif

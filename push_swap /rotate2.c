@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 10:20:20 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 17:18:50 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,38 +61,66 @@ void	ft_sort_it(t_list	**a, t_data *data)
 	t_list	*second;
 
 	tmp = *a;
+	second = NULL;
 	while (tmp)
 	{
-		while (!ft_is_sort(a, data))
+		while (ft_is_sort(a, data))
 		{
-			if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
-			{
-				second = tmp->next->next;
-				(*a) = (*a)->next;
-				(*a)->next = tmp;
-				tmp->next = second;
-			}
-			else
+			if (ft_atoi(tmp->content) < ft_atoi(tmp->next->content))
 				tmp = tmp->next;
+			else if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
+			{
+				second = tmp->next->content;
+				second->next = tmp->content;
+				*a = second;
+			}
 		}
 	}
 }
 
-/*int	ft_is_negative(char	**map)
+int	ft_is_negative(char	**map)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-	while (map[i])
+	i = -1;
+	j = -1;
+	if (map)
 	{
-		while (map[i][j])
+		while (map && map[++i])
 		{
-			if (map[i][j] == '-')
+			while (map && map[i][++j])
 			{
-				if (map[i][j + 1] == '')
+				if (map[i][j] >= 48 && map[i][j] <= 57)
+				{
+					if (map[i][j + 1] == '-' || map[i][j + 1] == '+')
+					{
+						return (1);
+					}
+				}
+				else if (map[i][j] == '-')
+				{
+					while (map[i][j + 1] == ' ')
+					{
+						j++;
+						if (!ft_number(map[i][j]))
+							return (1);
+					}
+				}
 			}
 		}
 	}
-}*/
+	return (0);
+}
+
+int	ft_number(char	str)
+{
+	int		i;
+
+	i = 0;
+	if (str >= 0 && str <= 9)
+		i++;
+	else
+		return (1);
+	return (0);
+}

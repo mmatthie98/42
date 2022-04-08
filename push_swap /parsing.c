@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 13:58:07 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 17:20:57 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,28 @@ int parse(char	**map)
 
 	i = 0;
 	j = 0;
-	while (map[i])
+	if (map && map[i])
 	{
-		j = 0;
-		while (map[i][j])
+		while (map[i])
 		{
-			if (is_max_or_min(map))
-				quit_with_message(1);
-			if (!ft_isvalid(map[i]))
-				quit_with_message(2);
-			if (check_double(map))
-				quit_with_message(3);
-			j++;
+			j = 0;
+			while (map[i][j])
+			{
+				if (is_max_or_min(map))
+					quit_with_message(1);
+				if (ft_isvalid(map[i]))
+					quit_with_message(2);
+				if (check_double(map))
+					quit_with_message(3);
+				j++;
+			}
+			i++;
 		}
-		i++;
 	}
 	return (0);
 }
 
-char	**split_multiple_param(char  **tab)
+char	**split_multiple_param(char **tab)
 {
 	char	str[100000];
 	char	**map;
@@ -70,13 +73,14 @@ char	**split_multiple_param(char  **tab)
 	y = -1;
 	z = -1;
 	map = NULL;
+	if (tab == NULL)
+		return (NULL);
 	while (tab[++i])
 	{
 		while (tab[i][++y])
 			str[++z] = tab[i][y];
 		str[++z] = ' ';
 		y = -1;
-
 	}
 	map = ft_split(str, ' ');
 	if (!map)
@@ -91,8 +95,11 @@ t_list	*make_a(char	**map)
 
 	i = 0;
 	a = ft_lstnew(map[i]);
-	while (map[++i])
-		ft_lstadd_back(&a, ft_lstnew(map[i]));
+	if (map && map[i])
+	{
+		while (map[++i])
+			ft_lstadd_back(&a, ft_lstnew(map[i]));
+	}
 	return (a);
 }
 
@@ -108,21 +115,19 @@ int main(int ac, char   **av)
 	if (ac > 1)
 	{
 		data->map = split_multiple_param(av);
-		if (!data->map)
-			return (1);
+		if (data->map == NULL)
+			return (EXIT_FAILURE);
 		if (!parse(data->map))
 		{
 			lst = make_a(data->map);
 			data->size = ft_lstsize(lst);
-			if (!ft_is_sort(&lst, data))
-				quit_with_message(4);
-			if (data->size < 6)
+			if (data->size < 6 && ft_is_sort(&lst, data))
 			{
 				ft_low_sort(&lst, &stack_b, data);
-				ft_print_list(lst);
 			}
-			if (data->size > 5)
+			if (data->size > 5 && ft_is_sort(&lst, data))
 				ft_sort_it(&lst, data);
+			ft_print_list(lst);
 		}
 	}
 	return (0);

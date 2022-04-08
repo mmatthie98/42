@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 10:06:47 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 16:14:04 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	SA(t_list	**a);
 //rotate2.c
 
 void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data);
+int	ft_is_negative(char	**map);
+int	ft_number(char	str);
 
 // init.c
 void	init_struct_3(t_list	**a, t_data	*data);
