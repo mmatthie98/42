@@ -6,11 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:08:50 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 18:07:58 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 13:55:41 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "include/push_swap.h"
 
 void	ft_PB(t_list	**stack_a, t_list	**stack_b)
 {
@@ -19,10 +19,10 @@ void	ft_PB(t_list	**stack_a, t_list	**stack_b)
 	tmp = *stack_a;
 	if (*stack_a)
 	{
-		tmp = (*stack_a)->next;
-		ft_lstadd_front(stack_b, *stack_a);
+		*stack_a = (*stack_a)->next;
+		tmp->next = *stack_b;
+		*stack_b = tmp;
 	}
-	*stack_a = tmp;
 	write(1, "PB\n", 3);
 }
 
@@ -33,10 +33,10 @@ void	ft_PA(t_list	**stack_a, t_list	**stack_b)
 	tmp = *stack_b;
 	if (*stack_b)
 	{
-		tmp = (*stack_b)->next;
-		ft_lstadd_front(stack_a, *stack_b);
+		*stack_b = (*stack_b)->next;
+		tmp->next = *stack_a;
+		*stack_a = tmp;
 	}
-	*stack_b = tmp;
 	write (1, "PA\n", 3);
 }
 

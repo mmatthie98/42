@@ -6,13 +6,13 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/05 19:29:42 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 10:20:20 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
+void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 {
 	if (*a)
 	{
@@ -21,7 +21,6 @@
 			ft_PB(a, b);
 			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
 		if (data->pos == 2)
 		{
@@ -29,7 +28,6 @@
 			ft_PB(a, b);
 			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
 		if (data->pos == 3)
 		{
@@ -38,7 +36,6 @@
 			ft_PB(a, b);
 			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
 		if (data->pos == 4)
 		{
@@ -47,7 +44,6 @@
 			ft_PB(a, b);
 			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
 		if (data->pos == 5)
 		{
@@ -55,18 +51,9 @@
 			ft_PB(a, b);
 			ft_sort_for_4(a, b, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
 	}
-}*/
-
-/*void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
-{
-	if (*a)
-	{
-
-	}
-}*/
+}
 
 void	ft_sort_it(t_list	**a, t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/06 14:44:50 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:10:22 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	small_sort(t_list	**a, t_data	*data)
 {
-	if (data->size > 2)
+	if (data->size > 2 && ft_is_sort(a, data))
 	{
 		if (data->first > data->second \
 		&& data->first > data->third
@@ -30,7 +30,7 @@ void	small_sort(t_list	**a, t_data	*data)
 		if (data->second > data->first
 			&& data->second > data->third \
 			&& data->third < data->first)
-			ft_reverse_rotate(a);
+				ft_reverse_rotate(a);
 		if (data->second > data->first
 			&& data->second > data->third \
 			&& data->third > data->first)
@@ -47,39 +47,35 @@ void	small_sort(t_list	**a, t_data	*data)
 
 void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 {
-	if ((*a)->next)
+	if (*a)
 	{
-		if (data->pos == 1)
+		if (data->pos_small == 1)
 		{
 			ft_PB(a, b);
-			small_sort(a, data);
+			ft_sort_3(a, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
-		if (data->pos == 2)
+		if (data->pos_small == 2)
 		{
 			SA(a);
 			ft_PB(a, b);
-			small_sort(a, data);
+			ft_sort_3(a, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
-		if (data->pos == 3)
+		if (data->pos_small == 3)
 		{
 			ft_rotate(a);
 			SA(a);
 			ft_PB(a, b);
-			small_sort(a, data);
+			ft_sort_3(a, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
-		if (data->pos == 4)
+		if (data->pos_small == 4)
 		{
 			ft_reverse_rotate(a);
 			ft_PB(a, b);
-			small_sort(a, data);
+			ft_sort_3(a, data);
 			ft_PA(a, b);
-			ft_rotate(a);
 		}
 	}
 }

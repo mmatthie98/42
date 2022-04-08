@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/06 12:24:25 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 10:06:47 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@
 # include <string.h>
 # include <stdio.h>
 # include "../../libft/libft.h"
+
+typedef struct s_data
+{
+	char			**map;
+	int				first;
+	int				second;
+	int				third;
+	int				fourth;
+	int				five;
+	int				pos;
+	int				size;
+	int				index;
+	int				pos_small;
+}	t_data;
 
 //rotate.c
 
@@ -59,8 +73,8 @@ t_list	*make_a(char	**map);
 //parsing2.c
 void	quit_with_message(int n);
 int		ft_isvalid(char *str);
-void	ft_get_low_5(t_list	**a, t_data	*data);
-void	ft_get_low(t_list	**a, t_data	*data);
+void	ft_get_low_5(t_data	*data);
+void	ft_get_low(t_data	*data);
 int		is_max_or_min(char  **map);
 
 #endif

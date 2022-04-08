@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:12:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/05 19:58:05 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/08 10:06:31 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,23 @@ int	is_max_or_min(char	**map)
 	return (0);
 }
 
-void	ft_get_low(t_list	**a, t_data	*data)
+void	ft_get_low(t_data	*data)
 {
-	init_struct_2(a, data);
-	init_struct_3(a, data);
-	init_struct_4(a, data);
-	if (data->first > data->second && data->first > data->third\
-	&& data->first > data->fourth)
-	 	data->pos = 1;
-	if (data->second > data->first && data->second > data->third\
-	&& data->second > data->fourth)
-		data->pos = 2;
-	if (data->third > data->first && data->third > data->second\
-	&& data->third > data->fourth)
-		data->pos = 3;
-	if (data->fourth > data->first && data->fourth > data->second\
-	&& data->fourth > data->third)
-		data->pos = 4;
+	if (data->first < data->second && data->first < data->third\
+	&& data->first < data->fourth)
+	 	data->pos_small = 1;
+	if (data->second < data->first && data->second < data->third\
+	&& data->second < data->fourth)
+		data->pos_small = 2;
+	if (data->third < data->first && data->third < data->second\
+	&& data->third < data->fourth)
+		data->pos_small = 3;
+	if (data->fourth < data->first && data->fourth < data->second\
+	&& data->fourth < data->third)
+		data->pos_small = 4;
 }
 
-/*void	ft_get_low_5(t_list	**a, t_data	*data)
+void	ft_get_low_5(t_data	*data)
 {
 	if (data->first < data->second && data->first < data->third\
 	&& data->first < data->fourth\
@@ -70,9 +67,9 @@ void	ft_get_low(t_list	**a, t_data	*data)
 	&& data->five < data->third\
 	&& data->five < data->fourth)
 		data->pos = 5;
-}*/
+}
 
-void	ft_get_low_5(t_list	**a, t_data	*data)
+/*void	ft_get_low_5(t_list	**a, t_data	*data)
 {
 	t_list *pt;
 	int *tmp;
@@ -98,7 +95,7 @@ void	ft_get_low_5(t_list	**a, t_data	*data)
 		}
 		data->index = 0;
 	}
-}
+}*/
 
 int ft_isvalid(char *str)
 {
