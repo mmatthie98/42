@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 17:18:50 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:20:49 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,31 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 	}
 }
 
-void	ft_sort_it(t_list	**a, t_data *data)
+void	ft_sort_it(t_list	**lstcopy, t_data *data)
 {
 	t_list	*tmp;
-	t_list	*second;
+	t_list	*queue;
+	t_list	*head;
 
-	tmp = *a;
-	second = NULL;
-	while (tmp)
+	tmp = *lstcopy;
+	data->index = 0;
+	queue = NULL;
+	head = NULL;
+	if (*lstcopy)
 	{
-		while (ft_is_sort(a, data))
+		printf("test1\n");
+		while (*(char *)(*tmp).content < *(char *)(*tmp).next->content)
+			tmp = tmp->next;
+		if (*(char *)(*tmp).content > *(char *)(*tmp).next->content)
 		{
-			if (ft_atoi(tmp->content) < ft_atoi(tmp->next->content))
-				tmp = tmp->next;
-			else if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
-			{
-				second = tmp->next->content;
-				second->next = tmp->content;
-				*a = second;
-			}
+			printf("test2\n");
+			queue = tmp;
+			head = tmp->next;
+			head->next = queue;
 		}
+		data->index++;
 	}
+	*lstcopy = queue;
 }
 
 int	ft_is_negative(char	**map)

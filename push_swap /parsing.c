@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 17:20:57 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/12 17:20:32 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ t_list	*make_a(char	**map)
 int main(int ac, char   **av)
 {
 	t_list	*lst;
+	t_list	*lst_copy;
 	t_list	*stack_b;
 	t_data	*data;
 
@@ -119,15 +120,19 @@ int main(int ac, char   **av)
 			return (EXIT_FAILURE);
 		if (!parse(data->map))
 		{
+			//printf("lstcopy\n");
 			lst = make_a(data->map);
+			lst_copy = make_a(data->map);
 			data->size = ft_lstsize(lst);
+			//ft_print_list(lst_copy);
 			if (data->size < 6 && ft_is_sort(&lst, data))
 			{
 				ft_low_sort(&lst, &stack_b, data);
 			}
 			if (data->size > 5 && ft_is_sort(&lst, data))
-				ft_sort_it(&lst, data);
-			ft_print_list(lst);
+				ft_sort_it(&lst_copy, data);
+			//printf("lst\n");
+			//ft_print_list(lst);
 		}
 	}
 	return (0);
