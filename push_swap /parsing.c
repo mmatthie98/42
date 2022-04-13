@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/12 17:20:32 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:27:02 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,96 @@ t_list	*make_a(char	**map)
 }
 
 
+t_list	*make_a_int(t_data *data)
+{
+	t_list *a;
+
+	init_data(data);
+	a = ft_lstnew(data->tab[data->i]);
+	data->i = 1;
+	if (data->tab && data->tab[data->i])
+	{
+		while (data->i < (int)data->maplen)
+		{
+			ft_lstadd_back(&a, ft_lstnew(data->tab[data->i]));
+			data->i++;
+		}
+	}
+	return (a);
+}
+
+void	sort_tab_int(t_data *data)
+{
+	int min;
+	int tmp;
+
+	init_data(data);
+	while (data->i < (int)data->maplen)
+	{
+		min = data->i;
+		data->j = data->i + 1;
+		while(data->j < (int)data->maplen)
+		{
+			if(*data->tab_copy[data->j] < *data->tab_copy[min])
+				min = data->j;
+			data->j++;
+		}
+		if (min != data->i)
+		{
+			tmp = *data->tab_copy[data->i];
+			*data->tab_copy[data->i] = *data->tab_copy[min];
+			*data->tab_copy[min] = tmp;
+		}
+		data->i++;
+	}
+	data->max_value = *data->tab_copy[data->maplen - 1];
+}
+
+void	switch_index(t_data *data)
+{
+	int indicateur;
+
+	indicateur = 0;
+	init_data(data);
+	while(data->i < (int)data->maplen)
+	{
+		data->j = 0;
+		while (data->j < (int)data->maplen)
+		{
+			if (indicateur == 0)
+			{
+				if (*data->tab[data->i] == *data->tab_copy[data->j])
+				{
+					*data->tab[data->i] = data->j;
+					indicateur++;
+				}
+			}
+			data->j++;
+		}
+		indicateur = 0;
+		data->i++;
+	}
+}
+
+
+void	ft_post_radix(t_list *lst, t_data *data)
+{
+	make_int_tab(data);
+	make_copy_int_tab(data);
+	sort_tab_int(data);
+	switch_index(data);
+	lst = make_a_int(data);
+	ft_print_list(lst);
+	printf("data->max_value : %d\n", data->max_value);
+	ft_get_binary_size(data, data->max_value);
+	printf("data->binary_size : %d\n", data->binary_size);
+	// mettre dans la liste le tableau indexe;
+}
+
+
 int main(int ac, char   **av)
 {
 	t_list	*lst;
-	t_list	*lst_copy;
 	t_list	*stack_b;
 	t_data	*data;
 
@@ -120,20 +206,20 @@ int main(int ac, char   **av)
 			return (EXIT_FAILURE);
 		if (!parse(data->map))
 		{
-			//printf("lstcopy\n");
-			lst = make_a(data->map);
-			lst_copy = make_a(data->map);
-			data->size = ft_lstsize(lst);
-			//ft_print_list(lst_copy);
-			if (data->size < 6 && ft_is_sort(&lst, data))
+			if (ac < 6 && ft_map_is_sort(data))
 			{
+				lst = make_a(data->map);
+				data->size = ft_lstsize(lst);
 				ft_low_sort(&lst, &stack_b, data);
 			}
-			if (data->size > 5 && ft_is_sort(&lst, data))
-				ft_sort_it(&lst_copy, data);
-			//printf("lst\n");
-			//ft_print_list(lst);
+			if (ac > 5 && ft_map_is_sort(data))
+			{
+				ft_post_radix(lst, data);
+			}
 		}
 	}
+	printf("ok\n");
 	return (0);
 }
+
+// faire attention aux arg > 5 qui sont dans " "

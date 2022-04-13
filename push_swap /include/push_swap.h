@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 16:14:04 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:37:09 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ typedef struct s_data
 	int				size;
 	int				index;
 	int				pos_small;
+	int				i;
+	int				j;
+	size_t			maplen;
+	int				**tab;
+	int				**tab_copy;
+	int				max_value;
+	int				binary_size;
 }	t_data;
 
 //rotate.c
@@ -45,21 +52,22 @@ void	SA(t_list	**a);
 //rotate2.c
 
 void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data);
-int	ft_is_negative(char	**map);
-int	ft_number(char	str);
+int		ft_is_negative(char	**map);
+int		ft_number(char	str);
 
 // init.c
 void	init_struct_3(t_list	**a, t_data	*data);
 void	init_struct_4(t_list	**a, t_data	*data);
 void	init_struct_5(t_list	**a, t_data	*data);
 void	init_struct_2(t_list	**a, t_data	*data);
+void	init_data(t_data	*data);
 
 // low_sort.c
-int		ft_is_sort(t_list	**a, t_data	*data);
+int		ft_map_is_sort(t_data	*data);
 void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data);
 void	small_sort(t_list	**a, t_data	*data);
 void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data);
-void	ft_sort_it(t_list	**a, t_data	*data);
+void	ft_sort_it(t_data	*data);
 
 // low_sort2.c
 void	ft_sort_2(t_list	**a, t_data	*data);
@@ -78,5 +86,11 @@ int		ft_isvalid(char *str);
 void	ft_get_low_5(t_data	*data);
 void	ft_get_low(t_data	*data);
 int		is_max_or_min(char  **map);
+
+// make_int_tab.c
+
+void	make_int_tab(t_data	*data);
+void	make_copy_int_tab(t_data	*data);
+void	ft_get_binary_size(t_data	*data, int	nb);
 
 #endif

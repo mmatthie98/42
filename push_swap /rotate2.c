@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/12 19:20:49 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/13 13:59:32 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,30 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 	}
 }
 
-void	ft_sort_it(t_list	**lstcopy, t_data *data)
+void	ft_swap_tab(char	*a, char	*b)
 {
-	t_list	*tmp;
-	t_list	*queue;
-	t_list	*head;
+	char	*x;
+	char	*y;
 
-	tmp = *lstcopy;
-	data->index = 0;
-	queue = NULL;
-	head = NULL;
-	if (*lstcopy)
+	y = NULL;
+	x = ft_strcpy(y, a);
+	*a = *b;
+	*b = *x;
+}
+
+void	ft_sort_it(t_data *data)
+{
+	init_data(data);
+	while (data->map[data->i])
 	{
-		printf("test1\n");
-		while (*(char *)(*tmp).content < *(char *)(*tmp).next->content)
-			tmp = tmp->next;
-		if (*(char *)(*tmp).content > *(char *)(*tmp).next->content)
+		while (data->map[data->j])
 		{
-			printf("test2\n");
-			queue = tmp;
-			head = tmp->next;
-			head->next = queue;
+			data->j++;
+			if (ft_atoi(data->map[data->j]) < ft_atoi(data->map[data->i]))
+				ft_swap_tab(data->map[data->i], data->map[data->j]);
+			data->i++;
 		}
-		data->index++;
 	}
-	*lstcopy = queue;
 }
 
 int	ft_is_negative(char	**map)

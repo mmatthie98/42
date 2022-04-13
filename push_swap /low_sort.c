@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 14:10:22 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:58:10 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	small_sort(t_list	**a, t_data	*data)
 {
-	if (data->size > 2 && ft_is_sort(a, data))
+	if (data->size > 2 && ft_map_is_sort(data))
 	{
 		if (data->first > data->second \
 		&& data->first > data->third
@@ -80,22 +80,20 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 	}
 }
 
-int		ft_is_sort(t_list	**a, t_data	*data)
+int		ft_map_is_sort(t_data	*data)
 {
-	t_list	*tmp;
-
-	tmp = *a;
-	if (data->size > 1)
+	init_data(data);
+	while(data->map[data->i])
 	{
-		while (tmp->next)
+		data->j = data->i + 1;
+		while(data->map[data->j])
 		{
-			if (ft_atoi(tmp->content) > ft_atoi(tmp->next->content))
+			if (ft_atoi(data->map[data->i]) > ft_atoi(data->map[data->j]))
 				return (1);
-			tmp = tmp->next;
+			data->j++;
 		}
+		data->i++;
 	}
-	if (data->size < 2)
-		quit_with_message(5);
 	return (0);
 }
 

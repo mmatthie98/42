@@ -2,10 +2,10 @@
 
 void	ft_print_list(t_list	*lst)
 {
-	printf("list: \n");	
+	printf("list: \n");
 	while (lst)
 	{
-		printf("%s\n", lst->content);
+		printf("%d\n", lst->content);
 		lst = lst->next;
 	}
 }

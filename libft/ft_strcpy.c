@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_list.c                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 17:32:20 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/13 16:34:55 by mmatthie         ###   ########.fr       */
+/*   Created: 2022/04/13 13:57:05 by mmatthie          #+#    #+#             */
+/*   Updated: 2022/04/13 13:57:16 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_list(t_list	*lst)
+char	*ft_strcpy(char	*dest,	char	*src)
 {
-	while (lst)
+	int	i;
+
+	i = 0;
+	while (src[i] != '\0')
 	{
-		printf("%d\n", *(int *)(lst->content));
-		lst = lst->next;
+		dest[i] = src[i];
+		i++;
 	}
-	if (!lst)
-		printf("NULL\n");
+	dest[i] = '\0';
+	return (dest);
 }
