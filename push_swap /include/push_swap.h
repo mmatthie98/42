@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/13 18:37:09 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:48:16 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ void	sort_for_5(t_list	**a, t_list	**b, t_data	*data);
 
 // parsing.c
 int		parse(char	**map);
-char	**split_multiple_param(char  **tab);
+char	**split_multiple_param(char **tab, t_data	*data);
 t_list	*make_a(char	**map);
+void	ft_post_radix(t_data *data,t_list **lst, t_list	**stack_b);
 
 //parsing2.c
 void	quit_with_message(int n);
@@ -92,5 +93,6 @@ int		is_max_or_min(char  **map);
 void	make_int_tab(t_data	*data);
 void	make_copy_int_tab(t_data	*data);
 void	ft_get_binary_size(t_data	*data, int	nb);
-
+void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b);
+void	ft_make_it(t_list	*a, t_list	*stack_b);
 #endif

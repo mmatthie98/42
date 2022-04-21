@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/13 19:27:02 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/21 17:43:52 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int parse(char	**map)
 	return (0);
 }
 
-char	**split_multiple_param(char **tab)
+char	**split_multiple_param(char **tab, t_data	*data)
 {
 	char	str[100000];
 	char	**map;
@@ -85,6 +85,7 @@ char	**split_multiple_param(char **tab)
 	map = ft_split(str, ' ');
 	if (!map)
 		return (NULL);
+	data->maplen = ft_strlentab(map);
 	return (map);
 }
 
@@ -176,18 +177,18 @@ void	switch_index(t_data *data)
 }
 
 
-void	ft_post_radix(t_list *lst, t_data *data)
+void	ft_post_radix(t_data *data, t_list	**lst, t_list	**stack_b)
 {
 	make_int_tab(data);
 	make_copy_int_tab(data);
 	sort_tab_int(data);
 	switch_index(data);
-	lst = make_a_int(data);
-	ft_print_list(lst);
-	printf("data->max_value : %d\n", data->max_value);
+	*lst = make_a_int(data);
 	ft_get_binary_size(data, data->max_value);
-	printf("data->binary_size : %d\n", data->binary_size);
-	// mettre dans la liste le tableau indexe;
+	printf("binary_size : %d\n", data->binary_size);
+	ft_print_list(*lst);
+	ft_binary_move(data, lst, stack_b);
+	ft_make_it(*lst, *stack_b);
 }
 
 
@@ -201,25 +202,21 @@ int main(int ac, char   **av)
 	data = malloc(sizeof(t_data));
 	if (ac > 1)
 	{
-		data->map = split_multiple_param(av);
+		data->map = split_multiple_param(av, data);
 		if (data->map == NULL)
 			return (EXIT_FAILURE);
 		if (!parse(data->map))
 		{
-			if (ac < 6 && ft_map_is_sort(data))
+			if (data->maplen < 6 && ft_map_is_sort(data))
 			{
 				lst = make_a(data->map);
 				data->size = ft_lstsize(lst);
 				ft_low_sort(&lst, &stack_b, data);
 			}
-			if (ac > 5 && ft_map_is_sort(data))
-			{
-				ft_post_radix(lst, data);
-			}
+			if (data->maplen > 5 && ft_map_is_sort(data))
+				ft_post_radix(data, &lst, &stack_b);
+			//ft_print_list(lst);
 		}
 	}
-	printf("ok\n");
 	return (0);
 }
-
-// faire attention aux arg > 5 qui sont dans " "

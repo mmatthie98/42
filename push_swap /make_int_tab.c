@@ -6,11 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:01:12 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/13 18:38:40 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/21 18:09:46 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	make_int_tab(t_data	*data)
 {
@@ -66,4 +66,35 @@ void	ft_get_binary_size(t_data	*data, int	nb)
 		nb /= 2;
 		data->binary_size++;
 	}
+}
+
+void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
+{
+	init_data(data);
+
+	data->size = ft_lstsize(*a);
+	printf("binary_test1\n");
+	printf("binary_size : %d\n", data->binary_size);
+	ft_print_list(*a);
+	while (data->i < data->binary_size)
+	{
+		printf("binary_test2\n");
+		while (data->j < data->size)
+		{
+			printf("binary_test3\n");
+			if (*(int*)(*a)->content >> data->i & 1)
+				ft_reverse_rotate(a);
+			else
+				ft_PB(a, stack_b);
+			data->j++;
+		}
+		data->i++;
+	}
+	ft_print_list(*a);
+}
+
+void	ft_make_it(t_list	*a, t_list	*stack_b)
+{
+	while (stack_b)
+		ft_PA(&a, &stack_b);
 }
