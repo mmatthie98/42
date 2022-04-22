@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:01:12 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/21 18:09:46 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/22 19:29:02 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,47 @@ void	ft_get_binary_size(t_data	*data, int	nb)
 
 void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
 {
-	init_data(data);
+	int		i;
+	int		j;
+	t_list	*tmp;
+	t_list	*b;
 
+	j = 0;
+	i = -1;
+	tmp = *a;
+	b = *stack_b;
 	data->size = ft_lstsize(*a);
-	printf("binary_test1\n");
-	printf("binary_size : %d\n", data->binary_size);
+	printf("list before bin_move : \n");
 	ft_print_list(*a);
-	while (data->i < data->binary_size)
+	while (ft_check_sort(*a) == 1)
 	{
-		printf("binary_test2\n");
-		while (data->j < data->size)
+		while (++i <= data->binary_size)
 		{
-			printf("binary_test3\n");
-			if (*(int*)(*a)->content >> data->i & 1)
-				ft_reverse_rotate(a);
-			else
-				ft_PB(a, stack_b);
-			data->j++;
+			printf("int i : %d\n", i);
+			j = -1;
+			while (++j < data->size)
+			{
+				printf("int j : %d\n", j);
+				//printf("*a->content : %d\n", *(int *)(*a)->content);
+				if ((*(int *)(*a)->content >> i & 1))
+					ft_reverse_rotate(a);
+				else
+					ft_PB(a, stack_b);
+			}
 		}
-		data->i++;
 	}
+	printf("\nlst after bin_move: \n__\n");
 	ft_print_list(*a);
+	printf("\n__\n");
+	printf("\nstack_b after bin_move : \n__\n");
+	ft_print_list(*stack_b);
+	while (*stack_b)
+		ft_PA(a, stack_b);
+	printf("\nlst after bin_move: \n__\n");
+	ft_print_list(*a);
+	printf("\n__\n");
+	printf("\nstack_b after bin_move : \n__\n");
+	ft_print_list(*stack_b);
 }
 
 void	ft_make_it(t_list	*a, t_list	*stack_b)

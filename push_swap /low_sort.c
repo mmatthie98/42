@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/13 16:58:10 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/22 19:11:46 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,18 @@ int		ft_map_is_sort(t_data	*data)
 			data->j++;
 		}
 		data->i++;
+	}
+	return (0);
+}
+
+int	ft_check_sort(t_list	*lst)
+{
+	while (lst && lst->next)
+	{
+		if (*(int *)lst->content > *(int *)lst->next->content)
+			return (1);
+		else
+			lst = lst->next;
 	}
 	return (0);
 }

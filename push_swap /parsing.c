@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/21 17:43:52 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/22 19:23:32 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,10 +185,7 @@ void	ft_post_radix(t_data *data, t_list	**lst, t_list	**stack_b)
 	switch_index(data);
 	*lst = make_a_int(data);
 	ft_get_binary_size(data, data->max_value);
-	printf("binary_size : %d\n", data->binary_size);
-	ft_print_list(*lst);
 	ft_binary_move(data, lst, stack_b);
-	ft_make_it(*lst, *stack_b);
 }
 
 
@@ -215,7 +212,6 @@ int main(int ac, char   **av)
 			}
 			if (data->maplen > 5 && ft_map_is_sort(data))
 				ft_post_radix(data, &lst, &stack_b);
-			//ft_print_list(lst);
 		}
 	}
 	return (0);
