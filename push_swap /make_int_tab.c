@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:01:12 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/22 19:29:02 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:44:56 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,36 +81,26 @@ void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
 	b = *stack_b;
 	data->size = ft_lstsize(*a);
 	printf("list before bin_move : \n");
+	printf("binary_size : %d\n", data->binary_size);
 	ft_print_list(*a);
-	while (ft_check_sort(*a) == 1)
+	while (++i < data->binary_size)
 	{
-		while (++i <= data->binary_size)
+		printf("int i : %d\n", i);
+		j = -1;
+		while (++j < data->size)
 		{
-			printf("int i : %d\n", i);
-			j = -1;
-			while (++j < data->size)
-			{
-				printf("int j : %d\n", j);
-				//printf("*a->content : %d\n", *(int *)(*a)->content);
-				if ((*(int *)(*a)->content >> i & 1))
-					ft_reverse_rotate(a);
-				else
-					ft_PB(a, stack_b);
-			}
+			printf("int j : %d\n", j);
+			printf("content -> %d\n", *(int *)(*a)->content);
+			if ((*(int *)(*a)->content >> i & 1))
+				ft_reverse_rotate(a);
+			else
+				ft_PB(a, stack_b);
 		}
+		while (*stack_b)
+			ft_PA(a, stack_b);
+		ft_print_list(*a);
 	}
-	printf("\nlst after bin_move: \n__\n");
 	ft_print_list(*a);
-	printf("\n__\n");
-	printf("\nstack_b after bin_move : \n__\n");
-	ft_print_list(*stack_b);
-	while (*stack_b)
-		ft_PA(a, stack_b);
-	printf("\nlst after bin_move: \n__\n");
-	ft_print_list(*a);
-	printf("\n__\n");
-	printf("\nstack_b after bin_move : \n__\n");
-	ft_print_list(*stack_b);
 }
 
 void	ft_make_it(t_list	*a, t_list	*stack_b)
