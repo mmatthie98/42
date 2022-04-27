@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/22 19:05:39 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/26 21:05:43 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ int		is_max_or_min(char  **map);
 
 void	make_int_tab(t_data	*data);
 void	make_copy_int_tab(t_data	*data);
-void	ft_get_binary_size(t_data	*data, int	nb);
+int		ft_get_binary_size(int	nb);
 void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b);
-void	ft_make_it(t_list	*a, t_list	*stack_b);
+void	ft_make_it(t_list	**a, t_list	**stack_b);
 int		ft_check_sort(t_list	*lst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/22 19:23:32 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/27 12:11:57 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int parse(char	**map)
 			j = 0;
 			while (map[i][j])
 			{
-				if (is_max_or_min(map))
+				if (is_max_or_min(map) == 1)
 					quit_with_message(1);
 				if (ft_isvalid(map[i]))
 					quit_with_message(2);
@@ -184,7 +184,6 @@ void	ft_post_radix(t_data *data, t_list	**lst, t_list	**stack_b)
 	sort_tab_int(data);
 	switch_index(data);
 	*lst = make_a_int(data);
-	ft_get_binary_size(data, data->max_value);
 	ft_binary_move(data, lst, stack_b);
 }
 
@@ -212,7 +211,10 @@ int main(int ac, char   **av)
 			}
 			if (data->maplen > 5 && ft_map_is_sort(data))
 				ft_post_radix(data, &lst, &stack_b);
+			//ft_print_list(lst);
 		}
+		//system("leaks push_swap");
 	}
+	//system("leaks push_swap");
 	return (0);
 }

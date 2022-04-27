@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:01:12 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/26 12:44:56 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/26 23:23:23 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ void	make_copy_int_tab(t_data	*data)
 	}
 }
 
-void	ft_get_binary_size(t_data	*data, int	nb)
+int ft_get_binary_size(int	nb)
 {
-	data->binary_size = 0;
-	while (nb / 2)
-	{
-		nb /= 2;
-		data->binary_size++;
-	}
+	int		i;
+
+	i = 0;
+	while ((nb >> i) != 0)
+		i++;
+	return (i);
 }
 
 void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
@@ -75,36 +75,29 @@ void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
 	t_list	*tmp;
 	t_list	*b;
 
-	j = 0;
-	i = -1;
 	tmp = *a;
 	b = *stack_b;
-	data->size = ft_lstsize(*a);
-	printf("list before bin_move : \n");
-	printf("binary_size : %d\n", data->binary_size);
-	ft_print_list(*a);
+	init_data(data);
+	i = -1;
 	while (++i < data->binary_size)
 	{
-		printf("int i : %d\n", i);
 		j = -1;
-		while (++j < data->size)
+		if (ft_check_sort(*a))
 		{
-			printf("int j : %d\n", j);
-			printf("content -> %d\n", *(int *)(*a)->content);
-			if ((*(int *)(*a)->content >> i & 1))
-				ft_reverse_rotate(a);
-			else
-				ft_PB(a, stack_b);
+			while (++j < (int)data->maplen)
+			{
+				if ((*(int *)(*a)->content >> i & 1) == 1)
+					ft_rotate(a);
+				else
+					ft_PB(a, stack_b);
+			}
+			ft_make_it(a, stack_b);
 		}
-		while (*stack_b)
-			ft_PA(a, stack_b);
-		ft_print_list(*a);
 	}
-	ft_print_list(*a);
 }
 
-void	ft_make_it(t_list	*a, t_list	*stack_b)
+void	ft_make_it(t_list	**a, t_list	**stack_b)
 {
-	while (stack_b)
-		ft_PA(&a, &stack_b);
+	while (*stack_b)
+		ft_PA(a, stack_b);
 }

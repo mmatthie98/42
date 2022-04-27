@@ -25,4 +25,5 @@ void	init_data(t_data	*data)
 	data->i = 0;
 	data->j = 0;
 	data->maplen = ft_strlentab(data->map);
+	data->binary_size = ft_get_binary_size(data->max_value);
 }
