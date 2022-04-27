@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:01:12 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/26 23:23:23 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/27 18:03:01 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,14 @@ void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
 	while (++i < data->binary_size)
 	{
 		j = -1;
-		if (ft_check_sort(*a))
+		while (++j < (int)data->maplen)
 		{
-			while (++j < (int)data->maplen)
-			{
-				if ((*(int *)(*a)->content >> i & 1) == 1)
-					ft_rotate(a);
-				else
-					ft_PB(a, stack_b);
-			}
-			ft_make_it(a, stack_b);
+			if ((*(*a)->content >> i & 1) == 1)
+				ft_rotate(a);
+			else
+				ft_PB(a, stack_b);
 		}
+		ft_make_it(a, stack_b);
 	}
 }
 

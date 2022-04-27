@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/27 00:17:26 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/27 18:26:31 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	small_sort(t_list	**a, t_data	*data)
 {
-	if (data->size > 2 && ft_map_is_sort(data))
+	if (data->size > 2 && (ft_map_is_sort(data)) == 1)
 	{
 		if (data->first > data->second \
 		&& data->first > data->third
@@ -52,14 +52,14 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 		if (data->pos_small == 1)
 		{
 			ft_PB(a, b);
-			ft_sort_3(a, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 		if (data->pos_small == 2)
 		{
 			SA(a);
 			ft_PB(a, b);
-			ft_sort_3(a, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 		if (data->pos_small == 3)
@@ -67,14 +67,14 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 			ft_rotate(a);
 			SA(a);
 			ft_PB(a, b);
-			ft_sort_3(a, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 		if (data->pos_small == 4)
 		{
 			ft_reverse_rotate(a);
 			ft_PB(a, b);
-			ft_sort_3(a, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 	}
@@ -83,6 +83,7 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 int		ft_map_is_sort(t_data	*data)
 {
 	init_data(data);
+	ft_print_split(data->map);
 	while(data->map[data->i])
 	{
 		data->j = data->i + 1;
@@ -97,20 +98,26 @@ int		ft_map_is_sort(t_data	*data)
 	return (0);
 }
 
-int	ft_check_sort(t_list	*lst)
+/*int	ft_check_sort(t_list	*lst, t_data	*data)
 {
+	init_data(data);
 	while (lst && lst->next)
 	{
-		if (*(int *)lst->content > *(int *)lst->next->content)
-			return (1);
-		else
-			lst = lst->next;
+		if (data->i < (int)data->maplen)
+		{
+			if (lst->content > lst->next->content)
+				return (1);
+			else
+				lst = lst->next;
+			data->i++;
+		}
 	}
 	return (0);
-}
+}*/
 
 void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data)
 {
+	data->size = ft_lstsize(*a);
 	if (data->size == 2)
 		ft_sort_2(a, data);
 	if (data->size == 3)

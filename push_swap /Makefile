@@ -18,6 +18,7 @@ SRC =	parsing.c \
 		low_sort2.c	\
 		init.c		\
 		make_int_tab.c	\
+		ft_post_low_sort.c \
 
 OBJ = ${SRC:%.c=%.o}
 

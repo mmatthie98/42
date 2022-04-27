@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/26 21:05:43 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:50:25 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,10 @@ void	make_copy_int_tab(t_data	*data);
 int		ft_get_binary_size(int	nb);
 void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b);
 void	ft_make_it(t_list	**a, t_list	**stack_b);
-int		ft_check_sort(t_list	*lst);
+int		ft_check_sort(t_list	*lst, t_data	*data);
+
+void	ft_post_low_sort(t_data	*data, t_list	**lst, t_list	**stack_b);
+t_list	*make_a_int(t_data *data);
+void	init_struct(t_data	*data,t_list	**a);
 
 #endif

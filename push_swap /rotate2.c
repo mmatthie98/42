@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/13 13:59:32 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/27 17:56:24 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 		if (data->pos == 1)
 		{
 			ft_PB(a, b);
-			ft_sort_for_4(a, b, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 		if (data->pos == 2)
 		{
 			SA(a);
 			ft_PB(a, b);
-			ft_sort_for_4(a, b, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 		if (data->pos == 3)
@@ -34,7 +34,7 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 			ft_rotate(a);
 			SA(a);
 			ft_PB(a, b);
-			ft_sort_for_4(a, b, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 		if (data->pos == 4)
@@ -42,14 +42,14 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 			ft_reverse_rotate(a);
 			ft_reverse_rotate(a);
 			ft_PB(a, b);
-			ft_sort_for_4(a, b, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 		if (data->pos == 5)
 		{
 			ft_reverse_rotate(a);
 			ft_PB(a, b);
-			ft_sort_for_4(a, b, data);
+			ft_low_sort(a, b, data);
 			ft_PA(a, b);
 		}
 	}

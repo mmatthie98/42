@@ -1,23 +1,19 @@
 #include "../include/push_swap.h"
 
-void	init_struct_3(t_list	**a, t_data	*data)
+void	init_struct(t_data	*data,t_list	**a)
 {
-	data->third = ft_atoi((*a)->next->next->content);
-}
+	if (data->size > 1)
+	{
+		data->first = (*(*a)->content);
+		data->second = (*(*a)->next->content);
+	}
+	if (data->size > 2)
+		data->third = (*(*a)->next->next->content);
+	if (data->size > 3)
+		data->fourth = (*(*a)->next->next->next->content);
+	if (data->size > 4)
+		data->five = (*(*a)->next->next->next->next->content);
 
-void	init_struct_2(t_list	**a, t_data *data)
-{
-	data->first = ft_atoi((*a)->content);
-	data->second = ft_atoi((*a)->next->content);
-}
-void	init_struct_4(t_list	**a, t_data	*data)
-{
-	data->fourth = ft_atoi((*a)->next->next->next->content);
-}
-
-void	init_struct_5(t_list	**a, t_data	*data)
-{
-	data->five = ft_atoi((*a)->next->next->next->next->content);
 }
 
 void	init_data(t_data	*data)

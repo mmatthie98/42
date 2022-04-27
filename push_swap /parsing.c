@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/27 12:11:57 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/27 18:25:13 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,11 +179,13 @@ void	switch_index(t_data *data)
 
 void	ft_post_radix(t_data *data, t_list	**lst, t_list	**stack_b)
 {
+	printf("big_sort\n");
 	make_int_tab(data);
 	make_copy_int_tab(data);
 	sort_tab_int(data);
 	switch_index(data);
 	*lst = make_a_int(data);
+	ft_get_binary_size(data->max_value);
 	ft_binary_move(data, lst, stack_b);
 }
 
@@ -201,20 +203,16 @@ int main(int ac, char   **av)
 		data->map = split_multiple_param(av, data);
 		if (data->map == NULL)
 			return (EXIT_FAILURE);
+		init_data(data);
 		if (!parse(data->map))
 		{
-			if (data->maplen < 6 && ft_map_is_sort(data))
-			{
-				lst = make_a(data->map);
-				data->size = ft_lstsize(lst);
-				ft_low_sort(&lst, &stack_b, data);
-			}
-			if (data->maplen > 5 && ft_map_is_sort(data))
+			if (data->maplen < 6 && ft_map_is_sort(data) == 1)
+				ft_post_low_sort(data, &lst, &stack_b);
+			if (data->maplen > 5 && ft_map_is_sort(data) == 1)
 				ft_post_radix(data, &lst, &stack_b);
 			//ft_print_list(lst);
+			//system("leaks push_swap");
 		}
-		//system("leaks push_swap");
 	}
-	//system("leaks push_swap");
 	return (0);
 }
