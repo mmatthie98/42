@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/09 14:52:37 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:59:29 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,8 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 			ft_low_sort(a, b, data);
 			ft_pa(a, b);
 		}
-		if (data->pos_small == 3)
-		{
-			ft_rotate(a);
-			sa(a);
-			ft_pb(a, b);
-			ft_low_sort(a, b, data);
-			ft_pa(a, b);
-		}
-		if (data->pos_small == 4)
-		{
-			ft_reverse_rotate(a);
-			ft_pb(a, b);
-			ft_low_sort(a, b, data);
-			ft_pa(a, b);
-		}
+		else
+			do_small_4(a, b, data);
 	}
 }
 
