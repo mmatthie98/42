@@ -10,15 +10,16 @@ LIB = -lft
 
 I_DIR = include
 
-SRC =	parsing.c \
-		parsing2.c \
-		rotate.c	\
-		rotate2.c	\
-		low_sort.c	\
-		low_sort2.c	\
-		init.c		\
-		make_int_tab.c	\
-		ft_post_low_sort.c \
+SRC =	src/parsing.c \
+		src/parsing2.c \
+		src/rotate.c	\
+		src/rotate2.c	\
+		src/low_sort.c	\
+		src/low_sort2.c	\
+		src/init.c		\
+		src/make_int_tab.c	\
+		src/ft_post_low_sort.c \
+		src/post_low_sort2.c \
 
 OBJ = ${SRC:%.c=%.o}
 
@@ -46,5 +47,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all run clean fclean re
-
-

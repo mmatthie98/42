@@ -6,13 +6,13 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:08:50 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/08 13:55:41 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:41:20 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
-void	ft_PB(t_list	**stack_a, t_list	**stack_b)
+void	ft_pb(t_list	**stack_a, t_list	**stack_b)
 {
 	t_list	*tmp;
 
@@ -23,10 +23,10 @@ void	ft_PB(t_list	**stack_a, t_list	**stack_b)
 		tmp->next = *stack_b;
 		*stack_b = tmp;
 	}
-	write(1, "PB\n", 3);
+	write(1, "pb\n", 3);
 }
 
-void	ft_PA(t_list	**stack_a, t_list	**stack_b)
+void	ft_pa(t_list	**stack_a, t_list	**stack_b)
 {
 	t_list	*tmp;
 
@@ -37,7 +37,7 @@ void	ft_PA(t_list	**stack_a, t_list	**stack_b)
 		tmp->next = *stack_a;
 		*stack_a = tmp;
 	}
-	write (1, "PA\n", 3);
+	write (1, "pa\n", 3);
 }
 
 void	ft_rotate(t_list	**stack_a)
@@ -55,10 +55,10 @@ void	ft_rotate(t_list	**stack_a)
 		*stack_a = tmp;
 	}
 	*stack_a = tmp;
-	write (1, "RA\n", 3);
+	write (1, "ra\n", 3);
 }
 
-void	SA(t_list	**stack_a)
+void	sa(t_list	**stack_a)
 {
 	t_list	*tmp;
 	t_list	*second;
@@ -71,7 +71,7 @@ void	SA(t_list	**stack_a)
 		(*stack_a)->next = tmp;
 		tmp->next = second;
 	}
-	write(1, "SA\n", 3);
+	write(1, "sa\n", 3);
 }
 
 void	ft_reverse_rotate(t_list	**stack_a)
@@ -90,5 +90,5 @@ void	ft_reverse_rotate(t_list	**stack_a)
 	last->next = tmp;
 	pre_last->next = NULL;
 	*stack_a = last;
-	write(1, "RRA\n", 4);
+	write(1, "rra\n", 4);
 }

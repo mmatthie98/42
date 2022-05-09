@@ -6,13 +6,13 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:12:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/27 12:17:53 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:30:25 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	is_max_or_min(char	**map)
+int	is_max_or_min(char **map)
 {
 	int			i;
 	long long	j;
@@ -31,47 +31,47 @@ int	is_max_or_min(char	**map)
 
 void	ft_get_low(t_data	*data)
 {
-	if (data->first < data->second && data->first < data->third\
+	if (data->first < data->second && data->first < data->third \
 	&& data->first < data->fourth)
-	 	data->pos_small = 1;
-	if (data->second < data->first && data->second < data->third\
+		data->pos_small = 1;
+	if (data->second < data->first && data->second < data->third \
 	&& data->second < data->fourth)
 		data->pos_small = 2;
-	if (data->third < data->first && data->third < data->second\
+	if (data->third < data->first && data->third < data->second \
 	&& data->third < data->fourth)
 		data->pos_small = 3;
-	if (data->fourth < data->first && data->fourth < data->second\
+	if (data->fourth < data->first && data->fourth < data->second \
 	&& data->fourth < data->third)
 		data->pos_small = 4;
 }
 
 void	ft_get_low_5(t_data	*data)
 {
-	if (data->first < data->second && data->first < data->third\
-	&& data->first < data->fourth\
+	if (data->first < data->second && data->first < data->third \
+	&& data->first < data->fourth \
 	&& data->first < data->five)
-	 	data->pos = 1;
-	if (data->second < data->first && data->second < data->third\
-	&& data->second < data->fourth\
+		data->pos = 1;
+	if (data->second < data->first && data->second < data->third \
+	&& data->second < data->fourth \
 	&& data->second < data->five)
 		data->pos = 2;
-	if (data->third < data->first && data->third < data->second\
-	&& data->third < data->fourth\
+	if (data->third < data->first && data->third < data->second \
+	&& data->third < data->fourth \
 	&& data->third < data->five)
 		data->pos = 3;
-	if (data->fourth < data->first && data->fourth < data->second\
-	&& data->fourth < data->third\
+	if (data->fourth < data->first && data->fourth < data->second \
+	&& data->fourth < data->third \
 	&& data->fourth < data->third)
 		data->pos = 4;
-	if (data->five < data->first && data->five < data->second\
-	&& data->five < data->third\
+	if (data->five < data->first && data->five < data->second \
+	&& data->five < data->third \
 	&& data->five < data->fourth)
 		data->pos = 5;
 }
 
-int ft_isvalid(char *str)
+int	ft_isvalid(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -86,7 +86,7 @@ int ft_isvalid(char *str)
 	return (0);
 }
 
-void	quit_with_message(int	n)
+void	quit_with_message(int n)
 {
 	if (n == 1)
 	{

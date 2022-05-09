@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:01:12 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/27 18:03:01 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:47:02 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	make_int_tab(t_data	*data)
 {
 	size_t		len;
+
 	init_data(data);
 	data->tab = malloc(sizeof(int *) * data->maplen + 1);
 	if (!data->tab)
@@ -38,6 +39,7 @@ void	make_int_tab(t_data	*data)
 void	make_copy_int_tab(t_data	*data)
 {
 	size_t		len;
+
 	init_data(data);
 	data->tab_copy = malloc(sizeof(int *) * data->maplen + 1);
 	if (!data->tab_copy)
@@ -58,7 +60,7 @@ void	make_copy_int_tab(t_data	*data)
 	}
 }
 
-int ft_get_binary_size(int	nb)
+int	ft_get_binary_size(int nb)
 {
 	int		i;
 
@@ -82,12 +84,15 @@ void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
 	while (++i < data->binary_size)
 	{
 		j = -1;
-		while (++j < (int)data->maplen)
+		if (ft_check_sort(*a, data))
 		{
-			if ((*(*a)->content >> i & 1) == 1)
-				ft_rotate(a);
-			else
-				ft_PB(a, stack_b);
+			while (++j < (int)data->maplen)
+			{
+				if ((*(*a)->content >> i & 1) == 1)
+					ft_rotate(a);
+				else
+					ft_pb(a, stack_b);
+			}
 		}
 		ft_make_it(a, stack_b);
 	}
@@ -96,5 +101,5 @@ void	ft_binary_move(t_data	*data, t_list	**a, t_list	**stack_b)
 void	ft_make_it(t_list	**a, t_list	**stack_b)
 {
 	while (*stack_b)
-		ft_PA(a, stack_b);
+		ft_pa(a, stack_b);
 }

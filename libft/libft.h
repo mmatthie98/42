@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:27:20 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/13 14:43:42 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/04/27 20:11:10 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int			*content;
 	struct s_list	*next;
 }t_list;
 

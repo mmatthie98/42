@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:13:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/27 17:56:24 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:40:34 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,21 @@ void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data)
 	{
 		if (data->pos == 1)
 		{
-			ft_PB(a, b);
+			ft_pb(a, b);
 			ft_low_sort(a, b, data);
-			ft_PA(a, b);
+			ft_pa(a, b);
 		}
 		if (data->pos == 2)
 		{
-			SA(a);
-			ft_PB(a, b);
+			sa(a);
+			ft_pb(a, b);
 			ft_low_sort(a, b, data);
-			ft_PA(a, b);
+			ft_pa(a, b);
 		}
 		if (data->pos == 3)
-		{
-			ft_rotate(a);
-			SA(a);
-			ft_PB(a, b);
-			ft_low_sort(a, b, data);
-			ft_PA(a, b);
-		}
-		if (data->pos == 4)
-		{
-			ft_reverse_rotate(a);
-			ft_reverse_rotate(a);
-			ft_PB(a, b);
-			ft_low_sort(a, b, data);
-			ft_PA(a, b);
-		}
-		if (data->pos == 5)
-		{
-			ft_reverse_rotate(a);
-			ft_PB(a, b);
-			ft_low_sort(a, b, data);
-			ft_PA(a, b);
-		}
+			do_the_3(a, b, data);
+		else
+			found_the_place(a, b, data);
 	}
 }
 
@@ -81,42 +62,31 @@ void	ft_sort_it(t_data *data)
 	}
 }
 
-int	ft_is_negative(char	**map)
+int	ft_is_neg(char	**map, t_data	*data)
 {
-	int	i;
-	int	j;
-
-	i = -1;
-	j = -1;
+	init_data(data);
 	if (map)
 	{
-		while (map && map[++i])
+		while (map && map[data->i])
 		{
-			while (map && map[i][++j])
+			while (map && map[data->i][data->j])
 			{
-				if (map[i][j] >= 48 && map[i][j] <= 57)
+				if (map[data->i][data->j] >= '0'\
+				&& map[data->i][data->j] <= '9')
 				{
-					if (map[i][j + 1] == '-' || map[i][j + 1] == '+')
-					{
+					if (map[data->i][data->j + 1] == '-'\
+					|| map[data->i][data->j + 1] == '+')
 						return (1);
-					}
 				}
-				else if (map[i][j] == '-')
-				{
-					while (map[i][j + 1] == ' ')
-					{
-						j++;
-						if (!ft_number(map[i][j]))
-							return (1);
-					}
-				}
+				data->j++;
 			}
+			data->i++;
 		}
 	}
 	return (0);
 }
 
-int	ft_number(char	str)
+int	ft_number(char str)
 {
 	int		i;
 

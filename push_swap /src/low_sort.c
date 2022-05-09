@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:06 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/27 18:26:31 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:52:37 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,22 @@ void	small_sort(t_list	**a, t_data	*data)
 	if (data->size > 2 && (ft_map_is_sort(data)) == 1)
 	{
 		if (data->first > data->second \
-		&& data->first > data->third
+		&& data->first > data->third \
 		&& data->second < data->third)
 			ft_rotate(a);
 		if (data->third < data->first \
 		&& data->third < data->second \
 		&& data->first > data->second)
 		{
-			SA(a);
+			sa(a);
 			ft_reverse_rotate(a);
 		}
-		if (data->second > data->first
+		if (data->second > data->first \
 			&& data->second > data->third \
 			&& data->third < data->first)
-				ft_reverse_rotate(a);
-		if (data->second > data->first
-			&& data->second > data->third \
-			&& data->third > data->first)
-		{
 			ft_reverse_rotate(a);
-			SA(a);
-		}
-		if (data->third > data->first \
-		&& data->third > data->second \
-		&& data->second < data->first)
-			SA(a);
+		else
+			do_small_sort(a, data);
 	}
 }
 
@@ -51,43 +42,42 @@ void	ft_sort_4(t_list	**a, t_list	**b, t_data	*data)
 	{
 		if (data->pos_small == 1)
 		{
-			ft_PB(a, b);
+			ft_pb(a, b);
 			ft_low_sort(a, b, data);
-			ft_PA(a, b);
+			ft_pa(a, b);
 		}
 		if (data->pos_small == 2)
 		{
-			SA(a);
-			ft_PB(a, b);
+			sa(a);
+			ft_pb(a, b);
 			ft_low_sort(a, b, data);
-			ft_PA(a, b);
+			ft_pa(a, b);
 		}
 		if (data->pos_small == 3)
 		{
 			ft_rotate(a);
-			SA(a);
-			ft_PB(a, b);
+			sa(a);
+			ft_pb(a, b);
 			ft_low_sort(a, b, data);
-			ft_PA(a, b);
+			ft_pa(a, b);
 		}
 		if (data->pos_small == 4)
 		{
 			ft_reverse_rotate(a);
-			ft_PB(a, b);
+			ft_pb(a, b);
 			ft_low_sort(a, b, data);
-			ft_PA(a, b);
+			ft_pa(a, b);
 		}
 	}
 }
 
-int		ft_map_is_sort(t_data	*data)
+int	ft_map_is_sort(t_data	*data)
 {
 	init_data(data);
-	ft_print_split(data->map);
-	while(data->map[data->i])
+	while (data->map[data->i])
 	{
 		data->j = data->i + 1;
-		while(data->map[data->j])
+		while (data->map[data->j])
 		{
 			if (ft_atoi(data->map[data->i]) > ft_atoi(data->map[data->j]))
 				return (1);
@@ -98,24 +88,20 @@ int		ft_map_is_sort(t_data	*data)
 	return (0);
 }
 
-/*int	ft_check_sort(t_list	*lst, t_data	*data)
+int	ft_check_sort(t_list	*lst, t_data	*data)
 {
 	init_data(data);
 	while (lst && lst->next)
 	{
-		if (data->i < (int)data->maplen)
-		{
-			if (lst->content > lst->next->content)
-				return (1);
-			else
-				lst = lst->next;
-			data->i++;
-		}
+		if (*lst->content > *lst->next->content)
+			return (1);
+		else
+			lst = lst->next;
 	}
 	return (0);
-}*/
+}
 
-void	ft_low_sort(t_list	**a,t_list	**b, t_data	*data)
+void	ft_low_sort(t_list	**a, t_list	**b, t_data	*data)
 {
 	data->size = ft_lstsize(*a);
 	if (data->size == 2)

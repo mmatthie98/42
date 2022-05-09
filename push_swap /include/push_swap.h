@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:09:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/04/27 17:50:25 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:53:51 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ typedef struct s_data
 
 //rotate.c
 
-void	ft_PA(t_list	**a, t_list	**b);
+void	ft_pa(t_list	**a, t_list	**b);
 void	ft_reverse_rotate(t_list	**a);
 void	ft_rotate(t_list	**a);
-void	ft_PB(t_list	**a, t_list	**b);
-void	SA(t_list	**a);
+void	ft_pb(t_list	**a, t_list	**b);
+void	sa(t_list	**a);
 
 //rotate2.c
 
 void	ft_sort_5(t_list	**a, t_list	**b, t_data	*data);
-int		ft_is_negative(char	**map);
+int		ft_is_neg(char	**map, t_data	*data);
 int		ft_number(char	str);
 
 // init.c
@@ -73,9 +73,10 @@ void	ft_sort_2(t_list	**a, t_data	*data);
 void	ft_sort_3(t_list	**a, t_data	*data);
 void	ft_sort_for_4(t_list	**a, t_list	**b, t_data	*data);
 void	sort_for_5(t_list	**a, t_list	**b, t_data	*data);
+void	found_the_place(t_list	**a, t_list	**b, t_data	*data);
 
 // parsing.c
-int		parse(char	**map);
+int		parse(char	**map, t_data	*data);
 char	**split_multiple_param(char **tab, t_data	*data);
 t_list	*make_a(char	**map);
 void	ft_post_radix(t_data *data,t_list **lst, t_list	**stack_b);
@@ -99,5 +100,8 @@ int		ft_check_sort(t_list	*lst, t_data	*data);
 void	ft_post_low_sort(t_data	*data, t_list	**lst, t_list	**stack_b);
 t_list	*make_a_int(t_data *data);
 void	init_struct(t_data	*data,t_list	**a);
+int	check_double(char	**map);
 
+void	do_the_3(t_list	**a, t_list	**b, t_data	*data);
+void	do_small_sort(t_list	**a, t_data	*data);
 #endif
