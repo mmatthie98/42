@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 15:04:09 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/09 14:33:18 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/27 14:24:54 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,20 @@ int	parse(char	**map, t_data	*data)
 
 	i = 0;
 	j = 0;
+
 	if (map && map[i])
 	{
+		if (is_max_or_min(map) == 1)
+			quit_with_message(1);
+		if (check_double(map))
+			quit_with_message(3);
 		while (map[i])
 		{
 			j = 0;
 			while (map[i][j])
 			{
-				if (is_max_or_min(map) == 1)
-					quit_with_message(1);
 				if (ft_isvalid(map[i]) || ft_is_neg(&map[i], data))
 					quit_with_message(2);
-				if (check_double(map))
-					quit_with_message(3);
 				j++;
 			}
 			i++;

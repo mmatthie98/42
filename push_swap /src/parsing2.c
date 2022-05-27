@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 01:12:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/24 12:18:06 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/27 12:37:26 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,17 @@ void	quit_with_message(int n)
 {
 	if (n == 1)
 	{
-		write(1, "Error\n", 7);
+		write(2, "Error\n", 6);
 		exit(2);
 	}
 	if (n == 2)
 	{
-		write(1, "Error\n", 7);
+		write(2, "Error\n", 6);
 		exit(2);
 	}
 	if (n == 3)
 	{
-		write(1, "Error\n", 7);
+		write(2, "Error\n", 6);
 		exit(2);
 	}
 }

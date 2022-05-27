@@ -32,6 +32,12 @@ ${NAME}: $(L_DIR)/libft.a ${OBJ}
 $(L_DIR)/libft.a:
 	make -C $(L_DIR)
 
+average: all
+	./get_average.sh
+	$(CC) -o print_average print_average.c -I$(I_DIR)
+	./print_average
+	@rm -f print_average results_3.txt results_5.txt results_100.txt results_500.txt
+
 %.o: %.c
 	$(CC) $(CFLAGS) -g -o $@ -c $< -I$(I_DIR)
 
@@ -45,4 +51,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re average
