@@ -22,7 +22,7 @@ ${NAME}: ${L_DIR}/libft.a ${OBJ}
 	${CC} ${CFLAGS} -o $(NAME) ${OBJ} -I$(I_DIR) -L$(L_DIR) $(LIB) -lft
 
 $(L_DIR)/libft.a:
-	make -C $(L_DIR)
+	make -j -C $(L_DIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $< -I$(I_DIR)
@@ -34,7 +34,7 @@ clean:
 fclean: clean
 		make fclean -C $(L_DIR)
 		rm -rf $(NAME)
-	
+
 re: fclean all
 
 .PHONY: all re clean fclean

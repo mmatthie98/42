@@ -6,11 +6,21 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/26 22:15:21 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/28 16:43:27 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
+
+void	ft_free_split(char	**to_free)
+{
+	size_t	i;
+
+	i = 0;
+	while(to_free[i])
+		free(to_free[i++]);
+	free(to_free);
+}
 
 int	check_envp(char	**envp, t_data	*data)
 {
@@ -55,6 +65,41 @@ char	*make_cmd(t_data	*data)
 	return (str);
 }
 
+int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
+{
+	int		fd[2];
+	int		pid;
+	char	**cmd_splited;
+
+	cmd_splited = ft_split(cmd[0], ' ');
+	if (!cmd)
+		return (0);
+	data->cmd_path = make_cmd_path(data);
+	if (pipe(fd) == -1)
+	{
+		perror("error : ");
+		return (1);
+	}
+	pid = fork();
+	if (!pid)
+	{
+		dup2(in, 0);
+		dup2(fd[1], 1);
+		close(in);
+		close(fd[1]);
+		if (!data->cmd_path)
+		{
+			ft_putstr_fd("command not found\n", 2);
+			exit(1);
+		}
+		execve(data->cmd_path, data->env, envp);
+	}
+	waitpid(-1, NULL, 0);
+	free(data->cmd_path);
+	ft_free_split(cmd_splited);
+	return (ft_pipex(data, fd[0], &cmd[1], envp));
+}
+/*
 void	ft_pipex(t_data	*data, char	**envp)
 {
 	int status1;
@@ -80,7 +125,7 @@ void	ft_pipex(t_data	*data, char	**envp)
 	if (child2 < 0)
 		return (perror("error"));
 	if (child2 == 0)
-		child2_prog(data, envp);
+		child2_prog(data, envp); //execute second cmd
 	if (child2 > 0)
 	{
 		status2 = waitpid(child2, NULL, 0);
@@ -88,7 +133,7 @@ void	ft_pipex(t_data	*data, char	**envp)
 	}
 	close(data->pipe_fd[0]);
 	close(data->pipe_fd[1]);
-}
+}*/
 
 void	child1_prog(t_data	*data, char	**envp)
 {

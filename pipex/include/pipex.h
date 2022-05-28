@@ -16,6 +16,8 @@ typedef struct s_data
 	char	**arg;
 	int		i;
 	int		j;
+	int		in;
+	int		pipex;
 	int		lentab;
 	char	buf;
 	int		indicate;
@@ -32,6 +34,7 @@ typedef struct s_data
 	char	**split_arg1;
 	char	**split_arg2;
 	int		env_len;
+	char	*cmd_path;
 } 	t_data;
 
 
@@ -42,11 +45,14 @@ void	init_data(t_data	*data);
 char	*make_cmd(t_data	*data);
 
 int		check_envp(char	**envp, t_data	*data);
-void	ft_pipex(t_data	*data, char	**envp);
+//void	ft_pipex(t_data	*data, char	**envp);
+int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp);
 char	*set_env(char *s, t_data	*data);
 void	child1_prog(t_data	*data, char	**envp);
 void	child2_prog(t_data	*data, char	**envp);
 
 void	make_path(t_data	*data);
 char	*add_char(char	*s, t_data	*data);
+void	ft_free_split(char	**to_free);
+
 #endif

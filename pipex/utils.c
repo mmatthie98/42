@@ -5,7 +5,7 @@ void	make_path(t_data	*data)
 	init_data(data);
 	int		i;
 	char	*str;
-	
+
 	i = 0;
 	while (data->env[i])
 	{
@@ -15,7 +15,6 @@ void	make_path(t_data	*data)
 		free (data->env[i]);
 		data->env[i] = str;
 		i++;
-		data->env_len--;
 	}
 }
 
@@ -50,4 +49,15 @@ char	*add_char(char	*s, t_data	*data)
 		}
 	}
 	return(str);
+}
+
+void	init_len(t_data	*data)
+{
+	data->lentab = ft_strlentab(data->arg);
+	data->env_len = ft_strlentab(data->env);
+}
+
+char	**make_cmd_path(t_data	*data)
+{
+
 }
