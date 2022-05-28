@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/28 16:43:27 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/28 17:30:24 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 			ft_putstr_fd("command not found\n", 2);
 			exit(1);
 		}
-		execve(data->cmd_path, data->env, envp);
+		execve(data->cmd_path, cmd_splitted, envp);
 	}
 	waitpid(-1, NULL, 0);
 	free(data->cmd_path);
