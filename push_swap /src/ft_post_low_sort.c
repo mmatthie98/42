@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 15:04:09 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/27 21:29:55 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/28 11:21:52 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	parse(char	**map, t_data	*data)
 
 	i = 0;
 	j = 0;
-
 	if (map && map[i])
 	{
 		if (is_max_or_min(map) == 1)

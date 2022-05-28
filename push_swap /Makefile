@@ -30,7 +30,7 @@ ${NAME}: $(L_DIR)/libft.a ${OBJ}
 	${CC} ${CFLAGS} -g -o $(NAME) $(OBJ) -I$(I_DIR) -L$(L_DIR) $(LIB) -lft
 
 $(L_DIR)/libft.a:
-	make -C $(L_DIR)
+	make -j -C $(L_DIR)
 
 average: all
 	./get_average.sh

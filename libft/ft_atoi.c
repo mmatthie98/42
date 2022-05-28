@@ -21,8 +21,6 @@ int	ft_atoi(const char *str)
 	i = 0;
 	neg = 1;
 	res = 0;
-	/*if (!str)
-		exit(2);*/
 	while (str[i] >= 7 && str[i] <= 13)
 		i++;
 	if ((str && (str[i] == '+')) || (str && (str[i] == '-')))

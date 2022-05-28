@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:38:27 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/27 18:17:33 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/28 11:20:27 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_sort_3(t_list	**a, t_data	*data)
 	data->size = ft_lstsize(*a);
 	init_struct(data, a);
 	small_sort(a, data);
-	//system("leaks push_swap");
 }
 
 void	ft_sort_for_4(t_list	**a, t_list	**b, t_data	*data)
