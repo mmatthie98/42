@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/30 19:25:06 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:48:37 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	exec_last_cmd(char *last_cmd, char **envp, int in, t_data	*data)
 		close(in);
 		execve(data->cmd_path, cmd, envp);
 	}
-	printf(" parent 2 heree\n");
+	//printf("parent 2 heree\n");
 	close(in);
 	close(data->file2);
 	waitpid(-1, NULL, 0);
@@ -96,9 +96,10 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 		dup2(fd[1], 1);
 		close(in);
 		close(fd[1]);
-		close(fd[0]);
+		//close(fd[0]);
 		execve(data->cmd_path, data->cmd_splited , envp);
 	}
+	//printf("parent 1 hereee\n");
 	waitpid(-1, NULL, 0);
 	close(fd[1]);
 	close(in);

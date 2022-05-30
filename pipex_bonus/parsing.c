@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/30 18:45:41 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:37:35 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ int	main(int ac, char	**av, char	**envp)
 	}
 	else
 		printf("use 4 parameter pls\n");
-	// system("lsof -c pipex");
+	//system("lsof -c pipex");
 	return (0);
 }
