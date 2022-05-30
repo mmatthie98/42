@@ -23,18 +23,12 @@ typedef struct s_data
 	int		indicate;
 	char	**env;
 	char	**path;
-	char	*str_env;
-	char	*clean_env;
 	char	*str;
 	int		file1;
 	int		file2;
-	char	*cmd1;
-	char	*cmd2;
-	char	*cmd_to_rotate;
-	char	**split_arg1;
-	char	**split_arg2;
 	int		env_len;
 	char	*cmd_path;
+	char	**cmd_splited;
 } 	t_data;
 
 
@@ -54,5 +48,10 @@ void	child2_prog(t_data	*data, char	**envp);
 void	make_path(t_data	*data);
 char	*add_char(char	*s, t_data	*data);
 void	ft_free_split(char	**to_free);
-char	*make_cmd_path(char	*str, char	*cmd);
+char	*make_cmd_path(char	*cmd_split, t_data	*data);
+void	child_process(t_data	*data, int	in, int	fd, char	**cmd_splited, char	**envp);
+
+int		check_access(char	*str);
+char	**get_cmd_split(char	*str, int c, int i,t_data	*data);
+
 #endif
