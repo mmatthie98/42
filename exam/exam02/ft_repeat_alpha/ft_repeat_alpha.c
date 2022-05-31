@@ -1,4 +1,5 @@
 #include <unistd.h>
+
 void	ft_repeat_alpha(char	c)
 {
 	int		k;

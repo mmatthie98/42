@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/30 19:37:35 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:28:18 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,22 @@ int	main(int ac, char	**av, char	**envp)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
-	if (ac == 5)
+	if (ac > 4)
 	{
 		data->arg = &av[2];
-		if (check_envp(envp, data) == 0)
+		// echanger l'initialisation de l'env avec le check des fichiers
+		// si le check_file == -1, pas besoin de free l'env
 		{
 			if (check_file(av[1], data, 1))
 			{
 				if (check_file(av[4], data, 0))
 				{
-					init_data(data);
-					ft_pipex(data, data->file1, data->arg, envp);
+					if (check_envp(envp, data) == 0)
+					{
+						init_data(data);
+						//ft_print_split(data->env);
+						ft_pipex(data, data->file1, data->arg, envp);
+					}
 				}
 			}
 		}

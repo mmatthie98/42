@@ -8,14 +8,14 @@ void	print_byt(unsigned char c)
 	while (i >= 0)
 	{
 		if (c >> i & 1)
-			write(1, "1", 1);
-		else
 			write(1, "0", 1);
+		else
+			write(1, "1", 1);
 		i--;
 	}
 }
 
-unsigned char	reverse_bits(unsigned char octet)
+/*unsigned char	reverse_bits(unsigned char octet)
 {
 	int i;
 	unsigned char result;
@@ -30,20 +30,20 @@ unsigned char	reverse_bits(unsigned char octet)
 		i--;
 	}
 	return (result);
-}
+}*/
 
 int main()
 {
 	unsigned char	i;
-	unsigned char	res;
+//	unsigned char	res;
 
-	i = '1';
-	res = 0;
+	i = 99;
+//	res = 0;
 	print_byt(i);
 	write(1, "\n", 1);
-	res = reverse_bits(i);
-	print_byt(res);
-	write(1, "\n", 1);
+//	res = reverse_bits(i);
+//	print_byt(res);
+//	write(1, "\n", 1);
 	return (0);
-	
+
 }

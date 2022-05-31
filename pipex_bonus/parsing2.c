@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/30 19:48:37 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:39:48 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,26 @@ int	exec_last_cmd(char *last_cmd, char **envp, int in, t_data	*data)
 {
 	char	**cmd;
 	char	*path_cmd;
-	int		pid;
-	char	*buf = NULL;
 
 	cmd = ft_split(last_cmd, ' ');
 	path_cmd = make_cmd_path(cmd[0], data);
-	pid = fork();
-	if (pid == -1)
-		ft_putstr_fd("Errooooor\n", 2);
-	if (!pid)
-	{
-		dup2(in, 0);
-		if (read(in, buf, 2) == 0)
-			printf("error\n");
-		buf[2] = 0;
-		printf(" buf = %s\n", buf);
-		ft_putstr_fd(" aloura frerp\n", 1);
-		dup2(data->file2, 1);
-		close(data->file2);
-		close(in);
-		execve(data->cmd_path, cmd, envp);
-	}
-	//printf("parent 2 heree\n");
-	close(in);
+	dup2(in, 0);
+	dup2(data->file2, 1);
 	close(data->file2);
-	waitpid(-1, NULL, 0);
+	close(in);
+	execve(path_cmd, cmd, envp);
 	free(path_cmd);
 	ft_free_split(cmd);
 	return (0);
+}
+void	child_process(t_data	*data, int in, int	*fd, char	**cmd, char	**envp)
+{
+	dup2(in, 0);
+	dup2(fd[1], 1);
+	close(in);
+	close(fd[1]);
+	close(fd[0]);
+	execve(data->cmd_path, cmd, envp);
 }
 
 int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
@@ -91,18 +83,10 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	}
 	pid = fork();
 	if (pid == 0)
-	{
-		dup2(in, 0);
-		dup2(fd[1], 1);
-		close(in);
-		close(fd[1]);
-		//close(fd[0]);
-		execve(data->cmd_path, data->cmd_splited , envp);
-	}
-	//printf("parent 1 hereee\n");
-	waitpid(-1, NULL, 0);
+		child_process(data , in, fd, data->cmd_splited, envp);
 	close(fd[1]);
 	close(in);
+	waitpid(-1, NULL, 0);
 	free(data->cmd_path);
 	ft_free_split(data->cmd_splited);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));

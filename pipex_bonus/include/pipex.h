@@ -49,7 +49,7 @@ void	make_path(t_data	*data);
 char	*add_char(char	*s, t_data	*data);
 void	ft_free_split(char	**to_free);
 char	*make_cmd_path(char	*cmd_split, t_data	*data);
-void	child_process(t_data	*data, int	in, int	fd, char	**cmd_splited, char	**envp);
+void	child_process(t_data	*data, int in, int	*fd, char	**cmd_splited, char	**envp);
 
 int		check_access(char	*str);
 char	**get_cmd_split(char	*str, int c, int i,t_data	*data);

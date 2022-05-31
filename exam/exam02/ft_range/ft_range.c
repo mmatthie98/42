@@ -42,46 +42,70 @@ static int check_sense(int	start, int end)
 	return (i);
 }*/
 
-int	*ft_range(int	start, int end)
+int	*ft_range(int	start, int end, int k)
 {
 	int	*str;
 	int		i;
 
 	i = 0;
+	if (start >= end)
+	{
+		while (start >= end)
+		{
+			i++;
+			start--;
+		}
+	}
+	else if (end >= start)
+	{
+		while (end >= start)
+		{
+			i++;
+			start--;
+		}
+	}
 	str = malloc(sizeof(int) * i + 1);
-	while (start < end)
+	i = 0;
+	if (k <= end)
 	{
-		str[i] = start;
-		start++;
-		i++;
+		while (k <= end)
+		{
+			str[i] = k;
+			k++;
+			i++;
+		}
 	}
-	str[i] = start;
-	while (start > end)
+	if (k >= end)
 	{
-		str[i] = start;
-		start--;
-		i++;
+		while (k >= end)
+		{
+			str[i] = k;
+			k--;
+			i++;
+		}
 	}
-	str[i] = start;
 	return (str);
 }
 
 // bug with negative numbers
-int main()
+/*int main()
 {
 	int	*tab;
-	int	i;
-	int	j;
+	int	start;
+	int	end;
 	int k;
+	int l;
 
-	i = 1;
-	j = -4;
-	k = 0;
-	tab = ft_range(i, j);
-	while (tab[k])
+	start = 1;
+	end = -4;
+	k = start;
+	l = 0;
+	tab = ft_range(start, end, k);
+	while (tab[l])
 	{
-		printf("tab[k] : %d\n", tab[k]);
-		k++;
+		printf("tab[l] : %d\n", tab[l]);
+		l++;
 	}
 	return (0);
 }
+*/
