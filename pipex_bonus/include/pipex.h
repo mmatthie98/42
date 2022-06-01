@@ -29,20 +29,7 @@ typedef struct s_data
 	int		env_len;
 	char	*cmd_path;
 	char	**cmd_splited;
-} 	t_data;
-
-
-int		check_cmd(char	*str, t_data	*data);
-char	*make_cmd(t_data	*data);
-
-char	*set_env(char *s, t_data	*data);
-void	child1_prog(t_data	*data, char	**envp);
-void	child2_prog(t_data	*data, char	**envp);
-
-char	*make_cmd_path(char	*cmd_split, t_data	*data);
-
-int		check_access(char	*str);
-char	**get_cmd_split(char	*str, int c, int i,t_data	*data);
+}	t_data;
 
 //parsing2.c
 void	ft_free_split(char	**to_free);
@@ -62,5 +49,5 @@ void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd,char	**envp)
 
 char	*add_char(char	*s, t_data	*data);
 void	make_path(t_data	*data);
-
+char	*make_cmd_path(char	*cmd_split, t_data	*data);
 #endif

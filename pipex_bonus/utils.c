@@ -54,3 +54,68 @@ char	*add_char(char	*s, t_data	*data)
 	}
 	return(str);
 }
+
+char	*make_cmd_path(char	*cmd, t_data	*data)
+{
+	char	*s;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 1;
+	s = NULL;
+	if (cmd && *cmd)
+	{
+		while (j != 0)
+		{
+			s = ft_strjoin(data->env[i], cmd);
+			if (!s)
+				return (NULL);
+			j = access(s, F_OK | X_OK);
+			if (j == -1)
+			{
+				free(s);
+				i++;
+			}
+		}
+	}
+	return (s);
+}
+
+/*char	*make_cmd_path(char	*cmd, t_data	*data)
+{
+	char	*s;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 1;
+	s = NULL;
+	if (cmd)
+	{
+		while (data->env[i])
+		{
+			s = ft_strjoin(data->env[i], cmd);
+			if (!s)
+				return (NULL);
+			j = access(s, F_OK | X_OK);
+			if (j == -1)
+			{
+				free(s);
+				i++;
+			}
+			else
+				return (s);
+		}
+	}
+	if (!data->env && access(s, X_OK | F_OK) == 1)
+	{
+		if (access(cmd, X_OK | F_OK) == 0)
+		{
+			free (s);
+			return (cmd);
+		}
+	}
+	return (s);
+}
+*/

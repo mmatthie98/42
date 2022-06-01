@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/01 15:44:51 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:22:31 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	check_envp(char	**envp, t_data	*data)
 	int	i;
 
 	i = 0;
-	/*while (envp[i] && ft_strncmp(envp[i], "PATH", 4) != 0)
-		i++;*/
 	while (envp && envp[i])
 	{
 		if ((ft_strncmp(envp[i], "PATH", 4) != 0))
@@ -104,50 +102,4 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	free(data->cmd_path);
 	ft_free_split(data->cmd_splited);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));
-}
-
-
-char	*make_cmd_path(char	*cmd, t_data	*data)
-{
-	char	*s;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 1;
-	s = NULL;
-	if (cmd && *cmd)
-	{
-		while (j != 0)
-		{
-			s = ft_strjoin(data->env[i], cmd);
-			if (!s)
-				return (NULL);
-			j = access(s, F_OK | X_OK);
-			if (j == -1)
-			{
-				free(s);
-				i++;
-			}
-		}
-	}
-	if (s == NULL)
-	{
-		printf("s\n");
-		if (access(cmd, F_OK | X_OK) == 0)
-			return (cmd);
-		else
-			printf("zsh : command not found\n");
-	}
-	return (s);
-}
-
-int	check_access(char	*str)
-{
-	int	i;
-
-	i = access(str, X_OK);
-	if (i == 0)
-		return (0);
-	return (1);
 }

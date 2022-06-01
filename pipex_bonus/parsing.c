@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/01 15:34:50 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:14:52 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	init_data(t_data	*data)
 	data->j = 0;
 	data->indicate = 0;
 	data->lentab = ft_strlentab(data->arg);
-	data->env_len = ft_strlentab(data->env);
 }
 
 int		check_file(char	*str, t_data	*data, int n)
@@ -78,7 +77,9 @@ int	main(int ac, char	**av, char	**envp)
 				if (check_file(av[data->lentab - 1], data, 0))
 				{
 					if (check_envp(envp, data) == 0)
+					{
 						ft_pipex(data, data->file1, data->arg, envp);
+					}
 				}
 			}
 		}
