@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/05/31 22:02:45 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:34:50 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_data(t_data	*data)
 	data->j = 0;
 	data->indicate = 0;
 	data->lentab = ft_strlentab(data->arg);
+	data->env_len = ft_strlentab(data->env);
 }
 
 int		check_file(char	*str, t_data	*data, int n)
@@ -70,8 +71,6 @@ int	main(int ac, char	**av, char	**envp)
 	if (ac > 4)
 	{
 		data->arg = &av[2];
-		// echanger l'initialisation de l'env avec le check des fichiers
-		// si le check_file == -1, pas besoin de free l'env
 		{
 			if (check_file(av[1], data, 1))
 			{
@@ -79,10 +78,7 @@ int	main(int ac, char	**av, char	**envp)
 				if (check_file(av[data->lentab - 1], data, 0))
 				{
 					if (check_envp(envp, data) == 0)
-					{
-						//ft_print_split(data->env);
 						ft_pipex(data, data->file1, data->arg, envp);
-					}
 				}
 			}
 		}
@@ -91,4 +87,13 @@ int	main(int ac, char	**av, char	**envp)
 		printf("use 4 parameter pls\n");
 	//system("lsof -c pipex");
 	return (0);
+}
+
+void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd,char	**envp)
+{
+	dup2(in, 0);
+	dup2(data->file2, 1);
+	close(data->file2);
+	close(in);
+	execve(path_cmd, cmd, envp);
 }

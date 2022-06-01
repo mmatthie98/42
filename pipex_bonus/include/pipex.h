@@ -32,27 +32,35 @@ typedef struct s_data
 } 	t_data;
 
 
-void	quit_with_message(char	*str);
-int		check_file(char	*str, t_data	*data, int n);
 int		check_cmd(char	*str, t_data	*data);
-void	init_data(t_data	*data);
 char	*make_cmd(t_data	*data);
 
-int		check_envp(char	**envp, t_data	*data);
-//void	ft_pipex(t_data	*data, char	**envp);
-int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp);
 char	*set_env(char *s, t_data	*data);
 void	child1_prog(t_data	*data, char	**envp);
 void	child2_prog(t_data	*data, char	**envp);
 
-void	make_path(t_data	*data);
-char	*add_char(char	*s, t_data	*data);
-void	ft_free_split(char	**to_free);
 char	*make_cmd_path(char	*cmd_split, t_data	*data);
-void	child_process(t_data	*data, int in, int	*fd, char	**cmd_splited, char	**envp);
 
 int		check_access(char	*str);
 char	**get_cmd_split(char	*str, int c, int i,t_data	*data);
+
+//parsing2.c
+void	ft_free_split(char	**to_free);
+int		check_envp(char	**envp, t_data	*data);
+int		exec_last_cmd(char *last_cmd, char **envp, int in, t_data	*data);
+void	child_process(t_data	*data, int in, int	*fd, char	**cmd_splited, char	**envp);
+int		ft_pipex(t_data	*data, int	in, char **cmd, char	**envp);
+
+
+//parsing.c
+void	init_data(t_data	*data);
+int		check_file(char	*str, t_data	*data, int n);
+char	**get_cmd_split(char	*str, int c, int i,t_data	*data);
 void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd,char	**envp);
+
+// utils.c
+
+char	*add_char(char	*s, t_data	*data);
+void	make_path(t_data	*data);
 
 #endif
