@@ -6,7 +6,8 @@ void	make_path(t_data	*data)
 	char	*str;
 
 	i = 0;
-	while (data->env[i])
+	printf("make_path\n");
+	while (data->env && data->env[i])
 	{
 		str = add_char(data->env[i], data);
 		if (!str)
@@ -15,6 +16,16 @@ void	make_path(t_data	*data)
 		data->env[i] = str;
 		i++;
 	}
+	printf("make_path1\n");
+	if (ft_strncmp(data->env[0], "/usr", 4) != 0)
+	{
+		printf("make_path3\n");
+		data->env[0] = ft_strjoin(data->env[0], "/");
+		if (!data->env)
+			printf("error in join\n");
+	}
+	printf("make_path2\n");
+	//ft_print_split(data->env);
 }
 
 char	*add_char(char	*s, t_data	*data)

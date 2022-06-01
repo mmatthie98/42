@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/01 08:36:25 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:57:31 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,23 @@ int	check_envp(char	**envp, t_data	*data)
 	int	i;
 
 	i = 0;
-	if (!envp)
-		perror("error");
-	while (envp[i] && ft_strncmp(envp[i], "PATH", 4) != 0)
-		i++;
-	data->env = ft_split(envp[i] + 5, ':');
+	/*while (envp[i] && ft_strncmp(envp[i], "PATH", 4) != 0)
+		i++;*/
+	while (envp && envp[i])
+	{
+		if ((ft_strncmp(envp[i], "PATH", 4) != 0))
+			i++;
+		else
+		{
+			data->env = ft_split(envp[i] + 5, ':');
+			i++;
+		}
+	}
 	if (!data->env)
-		perror("error");
+	{
+		printf("stop trying bullshit test bro!\n");
+		data->env = calloc(1, 1);
+	}
 	make_path(data);
 	return (0);
 }
@@ -41,20 +51,22 @@ int	check_envp(char	**envp, t_data	*data)
 int	exec_last_cmd(char *last_cmd, char **envp, int in, t_data	*data)
 {
 	char	**cmd;
+	int		pid;
 	char	*path_cmd;
 
 	cmd = ft_split(last_cmd, ' ');
 	path_cmd = make_cmd_path(cmd[0], data);
-	
-	dup2(in, 0);
-	dup2(data->file2, 1);
-	close(data->file2);
+	pid = fork();
+	if (pid == 0)
+		last_cmd_child(data, path_cmd, in, cmd, envp);
+	waitpid(-1 , NULL, 0);
 	close(in);
-	execve(path_cmd, cmd, envp);
+	close(data->file2);
 	free(path_cmd);
 	ft_free_split(cmd);
 	return (0);
 }
+
 void	child_process(t_data	*data, int in, int	*fd, char	**cmd, char	**envp)
 {
 	dup2(in, 0);
@@ -91,6 +103,15 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	free(data->cmd_path);
 	ft_free_split(data->cmd_splited);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));
+}
+
+void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd,char	**envp)
+{
+	dup2(in, 0);
+	dup2(data->file2, 1);
+	close(data->file2);
+	close(in);
+	execve(path_cmd, cmd, envp);
 }
 
 char	*make_cmd_path(char	*cmd, t_data	*data)

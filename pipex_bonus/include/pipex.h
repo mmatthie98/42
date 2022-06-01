@@ -53,5 +53,6 @@ void	child_process(t_data	*data, int in, int	*fd, char	**cmd_splited, char	**env
 
 int		check_access(char	*str);
 char	**get_cmd_split(char	*str, int c, int i,t_data	*data);
+void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd,char	**envp);
 
 #endif

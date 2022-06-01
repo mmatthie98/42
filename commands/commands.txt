@@ -1,0 +1,10 @@
+y	Copy the selected text
+p	Paste the selected text
+dd	Cut the current line
+yy	Copy the current line
+y$	Copy to EOL
+D	Cut to EOL
+
+u - to undo the last the command and U to undo the whole line
+CTRL-R to redo
+0 (zero) to move to the start of the line
