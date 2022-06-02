@@ -19,7 +19,7 @@ typedef struct s_data
 	int		in;
 	int		pipex;
 	int		lentab;
-	char	buf;
+	int		nel;
 	int		indicate;
 	char	**env;
 	char	**path;

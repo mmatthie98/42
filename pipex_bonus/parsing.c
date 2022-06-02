@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/01 16:14:52 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/02 15:09:48 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ int	main(int ac, char	**av, char	**envp)
 				if (check_file(av[data->lentab - 1], data, 0))
 				{
 					if (check_envp(envp, data) == 0)
-					{
 						ft_pipex(data, data->file1, data->arg, envp);
-					}
 				}
 			}
 		}

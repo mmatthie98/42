@@ -6,11 +6,19 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/01 16:22:31 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/02 17:28:52 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
+
+void	*ft_manag(void	*ptr)
+{
+	static t_list	*lst;
+
+	ft_lstadd_back(&lst, ft_lstnew(ptr));
+	return (ptr);
+}
 
 void	ft_free_split(char	**to_free)
 {
@@ -18,7 +26,10 @@ void	ft_free_split(char	**to_free)
 
 	i = 0;
 	while(to_free[i])
-		free(to_free[i++]);
+	{
+		free(to_free[i]);
+		i++;
+	}
 	free(to_free);
 }
 
@@ -61,8 +72,8 @@ int	exec_last_cmd(char *last_cmd, char **envp, int in, t_data	*data)
 	waitpid(-1 , NULL, 0);
 	close(in);
 	close(data->file2);
-	free(path_cmd);
-	ft_free_split(cmd);
+	//	free(path_cmd);
+	//	ft_free_split(cmd);
 	return (0);
 }
 
@@ -80,8 +91,18 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 {
 	int		fd[2];
 	int		pid;
+	int		i;
 
-	if (cmd[2])
+	i = 1;
+	if (cmd && *cmd)
+		i = ft_strncmp(cmd[0], "/", 1);
+	if (i == 0)
+	{
+		data->cmd_splited = ft_split(cmd[0], '/');
+		data->nel = ft_strlentab(data->cmd_splited);
+		data->cmd_path = make_cmd_path(data->cmd_splited[data->nel - 1], data);
+	}
+	else if (cmd[2] && i != 0)
 	{
 		data->cmd_splited =	ft_split(cmd[0], ' ');
 		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
@@ -99,7 +120,7 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	close(fd[1]);
 	close(in);
 	waitpid(-1, NULL, 0);
-	free(data->cmd_path);
-	ft_free_split(data->cmd_splited);
+	//free(data->cmd_path);
+	//ft_free_split(data->cmd_splited);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));
 }

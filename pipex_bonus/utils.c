@@ -66,7 +66,7 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 	s = NULL;
 	if (cmd && *cmd)
 	{
-		while (j != 0)
+		while (data->env[i])
 		{
 			s = ft_strjoin(data->env[i], cmd);
 			if (!s)
@@ -77,9 +77,13 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 				free(s);
 				i++;
 			}
+			else
+				return (s);
 		}
+		if (access(cmd, F_OK | X_OK) == 0)
+			return (cmd);
 	}
-	return (s);
+	return (NULL);
 }
 
 /*char	*make_cmd_path(char	*cmd, t_data	*data)
