@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/02 17:28:52 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/02 17:44:11 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,14 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 {
 	int		fd[2];
 	int		pid;
-	int		i;
 
-	i = 1;
-	if (cmd && *cmd)
-		i = ft_strncmp(cmd[0], "/", 1);
-	if (i == 0)
+	/*if (cmd[0][0] == '/')
 	{
 		data->cmd_splited = ft_split(cmd[0], '/');
 		data->nel = ft_strlentab(data->cmd_splited);
 		data->cmd_path = make_cmd_path(data->cmd_splited[data->nel - 1], data);
-	}
-	else if (cmd[2] && i != 0)
+	}*/
+	if (cmd[2])
 	{
 		data->cmd_splited =	ft_split(cmd[0], ' ');
 		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
@@ -119,6 +115,8 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 		child_process(data , in, fd, data->cmd_splited, envp);
 	close(fd[1]);
 	close(in);
+	// ft_print_split(data->cmd_splited);
+	// ft_putstr_fd(data->cmd_path, 2);
 	waitpid(-1, NULL, 0);
 	//free(data->cmd_path);
 	//ft_free_split(data->cmd_splited);

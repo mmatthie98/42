@@ -64,6 +64,12 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 	i = 0;
 	j = 1;
 	s = NULL;
+	if (cmd[0] == '/')
+	{
+		if (!access(cmd, F_OK | X_OK))
+			return (ft_strdup(cmd));
+		return (NULL);
+	}
 	if (cmd && *cmd)
 	{
 		while (data->env[i])
