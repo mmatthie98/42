@@ -2,9 +2,7 @@
 
 int main(int ac, char	**av)
 {
-	char	*s1;
-	char	*s2;
-	int		tab[300];
+	int		tab[125];
 	int		i;
 	int		j;
 
@@ -12,25 +10,23 @@ int main(int ac, char	**av)
 	j = 0;
 	if (ac == 3)
 	{
-		s1 = av[1];
-		s2 = av[2];
-		while (i < 300)
+		while (i < 125)
 		{
 			tab[i] = 0;
 			i++;
 		}
 		i = 0;
-		while (s1[i])
+		while (av[1][i])
 		{
 			j = 0;
-			while (s2[j])
+			while (av[2][j])
 			{
-				if (s2[j] == s1[i])
+				if (av[2][j] == av[1][i])
 				{
-					if (tab[(int)s1[i]] == 0)
+					if (tab[(int)av[1][i]] == 0)
 					{
-						write(1, &s2[j], 1);
-						tab[(int)s1[i]] = 1;
+						write(1, &av[2][j], 1);
+						tab[(int)av[1][i]] = 1;
 					}
 				}
 				j++;
