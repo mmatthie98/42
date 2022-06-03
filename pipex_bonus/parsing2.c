@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/03 12:35:07 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/03 13:27:06 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	exec_last_cmd(char *last_cmd, char **envp, int in, t_data	*data)
 	pid = fork();
 	if (pid == 0)
 		last_cmd_child(data, path_cmd, in, cmd, envp);
-	waitpid(-1 , NULL, 0);
 	close(in);
 	close(data->file2);
 	//	free(path_cmd);
@@ -92,12 +91,6 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	int		fd[2];
 	int		pid;
 
-	/*if (cmd[0][0] == '/')
-	{
-		data->cmd_splited = ft_split(cmd[0], '/');
-		data->nel = ft_strlentab(data->cmd_splited);
-		data->cmd_path = make_cmd_path(data->cmd_splited[data->nel - 1], data);
-	}*/
 	if (cmd[2])
 	{
 		data->cmd_splited =	ft_split(cmd[0], ' ');
@@ -116,5 +109,6 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	close(fd[1]);
 	close(in);
 	waitpid(-1, NULL, 0);
+	waitpid(-1 , NULL, 0);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));
 }

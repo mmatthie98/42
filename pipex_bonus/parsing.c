@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/02 15:09:48 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/03 13:31:35 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int		check_file(char	*str, t_data	*data, int n)
 		{
 			data->file1 = open(str, O_RDONLY);
 			if (data->file1 < 0)
+			{
 				perror("error");
+				return(0);
+			}
 			return(data->file1);
 		}
 		if (n == 0)
@@ -43,7 +46,7 @@ int		check_file(char	*str, t_data	*data, int n)
 			return (data->file2);
 		}
 	}
-	return (1);
+	return (0);
 }
 
 char	**get_cmd_split(char	*str, int c, int i,t_data *data)
