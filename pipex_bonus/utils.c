@@ -6,7 +6,7 @@ void	make_path(t_data	*data)
 	char	*str;
 
 	i = 0;
-	if (ft_strncmp(data->env[0], "/usr", 4) == 0)
+	if (data->env && data->env[i])
 	{
 		while (data->env && data->env[i])
 		{
@@ -18,8 +18,6 @@ void	make_path(t_data	*data)
 			i++;
 		}
 	}
-	else
-		data->env[0] = ft_strjoin(data->env[0], " /");
 }
 
 char	*add_char(char	*s, t_data	*data)

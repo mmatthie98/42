@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/03 13:27:06 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:45:28 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	check_envp(char	**envp, t_data	*data)
 	if (!data->env)
 	{
 		printf("stop trying bullshit test bro!\n");
-		data->env = calloc(1, 1);
-		data->env[0] = "\0";
+		data->env = NULL;
 	}
 	make_path(data);
 	return (0);
@@ -109,6 +108,5 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	close(fd[1]);
 	close(in);
 	waitpid(-1, NULL, 0);
-	waitpid(-1 , NULL, 0);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));
 }

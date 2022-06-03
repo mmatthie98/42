@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/03 13:31:35 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:33:51by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_data(t_data	*data)
 	data->lentab = ft_strlentab(data->arg);
 }
 
-int		check_file(char	*str, t_data	*data, int n)
+int		check_file(char	*str, t_data	*data)
 {
 	int	i;
 	int	j;
@@ -29,24 +29,32 @@ int		check_file(char	*str, t_data	*data, int n)
 	j = 0;
 	if (str && str[i])
 	{
-		if (n > 0)
+		data->file1 = open(str, O_RDONLY);
+		if (data->file1 < 0)
 		{
-			data->file1 = open(str, O_RDONLY);
-			if (data->file1 < 0)
-			{
-				perror("error");
-				return(0);
-			}
-			return(data->file1);
-		}
-		if (n == 0)
-		{
-			data->file2 = open(str, O_CLOEXEC, O_CREAT, O_DIRECTORY,\
-			O_EXCL, O_NOCTTY, O_NOFOLLOW, O_TRUNC);
-			return (data->file2);
+			perror("error");
+			return(0);
 		}
 	}
-	return (0);
+	return(data->file1);
+}
+
+int		check_file2(char	*str, t_data	*data)
+{
+	int	i;
+
+	i = 0;
+	if (str && str[i])
+	{
+		data->file2 = open(str, O_RDWR | O_CREAT | O_NOCTTY | \
+		O_TRUNC, 0677);
+		if (data->file2 < 0)
+		{
+			perror("error");
+			return(0);
+		}
+	}
+	return (data->file2);
 }
 
 char	**get_cmd_split(char	*str, int c, int i,t_data *data)
@@ -74,10 +82,10 @@ int	main(int ac, char	**av, char	**envp)
 	{
 		data->arg = &av[2];
 		{
-			if (check_file(av[1], data, 1))
+			if (check_file(av[1], data))
 			{
 				init_data(data);
-				if (check_file(av[data->lentab - 1], data, 0))
+				if (check_file2(av[data->lentab + 1], data))
 				{
 					if (check_envp(envp, data) == 0)
 						ft_pipex(data, data->file1, data->arg, envp);

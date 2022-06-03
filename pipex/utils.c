@@ -57,7 +57,3 @@ void	init_len(t_data	*data)
 	data->env_len = ft_strlentab(data->env);
 }
 
-char	**make_cmd_path(t_data	*data)
-{
-
-}

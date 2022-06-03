@@ -14,11 +14,13 @@ typedef struct s_data
 {
 	int		pipe_fd[2];
 	char	**arg;
+	char	**all_av;
 	int		i;
 	int		j;
 	int		in;
 	int		pipex;
 	int		lentab;
+	int		lentab2;
 	int		nel;
 	int		indicate;
 	char	**env;
@@ -41,7 +43,7 @@ int		ft_pipex(t_data	*data, int	in, char **cmd, char	**envp);
 
 //parsing.c
 void	init_data(t_data	*data);
-int		check_file(char	*str, t_data	*data, int n);
+int		check_file(char	*str, t_data	*data);
 char	**get_cmd_split(char	*str, int c, int i,t_data	*data);
 void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd,char	**envp);
 
@@ -50,4 +52,5 @@ void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd,char	**envp)
 char	*add_char(char	*s, t_data	*data);
 void	make_path(t_data	*data);
 char	*make_cmd_path(char	*cmd_split, t_data	*data);
+int		check_file2(char	*str, t_data	*data);
 #endif
