@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/02 17:44:11 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:35:07 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,6 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 		child_process(data , in, fd, data->cmd_splited, envp);
 	close(fd[1]);
 	close(in);
-	// ft_print_split(data->cmd_splited);
-	// ft_putstr_fd(data->cmd_path, 2);
 	waitpid(-1, NULL, 0);
-	//free(data->cmd_path);
-	//ft_free_split(data->cmd_splited);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));
 }
