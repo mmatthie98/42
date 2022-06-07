@@ -56,7 +56,5 @@ char	*make_cmd_path(char	*cmd_split, t_data	*data);
 int		check_file2(char	*str, t_data	*data);
 char	*get_it(char	**env, char	*cmd, t_data	*data);
 int		check_access(char	*path);
-void	here_doc_mod(char	*str, char	**av,char **envp,t_data	*data);
-int		heredoc(char	*str);
 
 #endif

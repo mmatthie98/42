@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/05 15:44:52 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:44:59 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,10 @@ void	child_process(t_data	*data, int in, int	*fd, char	**cmd)
 	close(in);
 	close(fd[1]);
 	close(fd[0]);
-	// voir le cas d'erreur dans le cas d'une commande invalide
 	if (execve(data->cmd_path, cmd, data->envp) == -1)
 	{
 		ft_putstr_fd("zsh : command not found\n", 2);
-		ft_putstr_fd("cmd_child\n", 2);
+		exit(EXIT_FAILURE);
 	}
 }
 

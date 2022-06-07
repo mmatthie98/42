@@ -69,7 +69,7 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 		return (NULL);
 	}
 	else if (data->env && data->env[i])
-	{	
+	{
 		s = get_it(data->env, cmd, data);
 		return (s);
 	}
@@ -94,7 +94,7 @@ char	*get_it(char	**env, char	*cmd, t_data	*data)
 			free(s);
 			i++;
 		}
-		else 
+		else
 			return (s);
 	}
 	return (s);

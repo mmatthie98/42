@@ -92,9 +92,7 @@ int	main(int ac, char	**av, char	**envp)
 	{
 		data->arg = &av[2];
 		init_data(data, envp);
-		if (heredoc(av[1]))
-			here_doc_mod(av[2], av, envp,data);
-		else if (check_file(av[1], data))
+		if (check_file(av[1], data))
 			post_pipex(av, data);
 	}
 	else
@@ -102,27 +100,6 @@ int	main(int ac, char	**av, char	**envp)
 	//system("lsof -c pipex");
 	return (0);
 }
-
-int	heredoc(char	*str)
-{
-	if (ft_strncmp(str, "here_doc", 8))
-		return (0);
-	else
-		return (1);
-}
-
-void	here_doc_mod(char	*str,char	**av, char	**envp,t_data	*data)
-{
-	int	len;
-
-	len = ft_strlen(str);
-	if (check_file2(av[5], data))
-		if(check_envp(envp, data) == 0)
-			make_tmp_doc()
-
-}
-
-
 
 void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd)
 {
@@ -134,6 +111,6 @@ void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd)
 	if (execve(path_cmd, cmd, data->envp) == -1)
 	{
 		ft_putstr_fd("zsh : command not found\n", 2);
-		ft_putstr_fd("lastcmd\n", 2);
+		exit(EXIT_FAILURE);
 	}
 }
