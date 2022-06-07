@@ -79,7 +79,10 @@ void	post_pipex(char	**av, t_data	*data)
 {
 	if (check_file2(av[data->lentab + 1], data))
 		if (check_envp(data->envp, data) == 0)
+		{
+			ft_print_split(data->env);
 			ft_pipex(data, data->file1, data->arg, data->envp);
+		}
 }
 
 
@@ -97,7 +100,9 @@ int	main(int ac, char	**av, char	**envp)
 	}
 	else
 		printf("use more than 4 parameter pls\n");
+	system("leaks pipex");
 	//system("lsof -c pipex");
+	free(data);
 	return (0);
 }
 
@@ -107,7 +112,6 @@ void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd)
 	dup2(data->file2, 1);
 	close(data->file2);
 	close(in);
-	// voir le cas d'erreur dans le cas d'une commande invalide
 	if (execve(path_cmd, cmd, data->envp) == -1)
 	{
 		ft_putstr_fd("zsh : command not found\n", 2);
