@@ -53,4 +53,6 @@ void	ft_free_split(char	**to_free);
 void	run(t_data	*data, char	**envp);
 void	dupnclose(int	*fd, int in, t_data	*data);
 void	dupnclose2(int	*fd, t_data	*data);
+
+char	*get_good_path(char	*cmd, t_data	*data);
 #endif

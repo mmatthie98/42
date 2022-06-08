@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/08 19:07:27 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:11:14 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ int	check_envp(char	**envp, t_data	*data)
 	int	i;
 
 	i = 0;
-	while (envp[i] && ft_strncmp(envp[i], "PATH", 4) != 0)
-		i++;
-	data->env = ft_split(envp[i] + 5, ':');
-	if (!data->env)
-		data->env = NULL;
+	if (envp && envp[i])
+	{
+		while (envp[i] && ft_strncmp(envp[i], "PATH", 4) != 0)
+			i++;
+		data->env = ft_split(envp[i] + 5, ':');
+		if (!data->env)
+			data->env = NULL;
+	}
 	return (0);
 }
 
@@ -57,7 +60,7 @@ void	run2(t_data	*data, char	**envp)
 {
 	if (execve(data->cmd_path1, data->split_arg2, envp) == -1)
 	{
-		printf("zsh : command not found\n");
+		ft_putstr_fd("zsh : command not found\n", 2);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -66,7 +69,7 @@ void	run(t_data	*data, char	**envp)
 {
 	if (execve(data->cmd_path2, data->split_arg1, envp) == -1)
 	{
-		printf("zsh : command not found\n");
+		ft_putstr_fd("zsh : command not found\n", 2);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -80,17 +83,25 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 	i = 0;
 	j = 1;
 	s = NULL;
-	if (cmd[0] == '/')
+	if (cmd && cmd[0] == '/')
 	{
-		printf("cmd : %s\n", cmd);
 		if (access(cmd, F_OK | X_OK) == 0)
-		{
-			printf("cmd is ok\n");
 			return (cmd);
-		}
 		else
 			return (NULL);
 	}
+	else if (data->env && data->env[i])
+		s = get_good_path(cmd, data);
+	return (s);
+}
+
+char	*get_good_path(char	*cmd, t_data	*data)
+{
+	char	*s;
+	int		i;
+
+	s = NULL;
+	i = 0;
 	while (data->env && data->env[i])
 	{
 		s = ft_strjoin_pipex(data->env[i], cmd);
@@ -101,7 +112,20 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 		free(s);
 		i++;
 	}
-	return (s);
+	return(s);
+}
+
+void	get_cmd_path(t_data	*data)
+{
+	if (!data->split_arg1)
+		data->cmd_path1 = NULL;
+	if (!data->split_arg2)
+		data->cmd_path2 = NULL;
+	else
+	{
+		data->cmd_path1 = make_cmd_path(data->split_arg1[0], data);
+		data->cmd_path2 = make_cmd_path(data->split_arg2[0], data);
+	}
 }
 
 int	ft_pipex(t_data	*data, int	in, char	**envp)
@@ -110,14 +134,7 @@ int	ft_pipex(t_data	*data, int	in, char	**envp)
 	int		pid;
 	int		pid1;
 
-	data->cmd_path1 = make_cmd_path(data->split_arg1[0], data);
-	printf("data->splitarg1\n");
-	ft_print_split(data->split_arg1);
-	printf("data->cmd_path1 : %s\n", data->cmd_path1);
-	data->cmd_path2 = make_cmd_path(data->split_arg2[0], data);
-	printf("data->splitarg2\n");
-	ft_print_split(data->split_arg2);
-	printf("data->cmd_path2 : %s\n", data->cmd_path2);
+	get_cmd_path(data);
 	if (pipe(fd) == -1)
 	{
 		perror("error : ");
