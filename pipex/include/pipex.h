@@ -17,14 +17,9 @@ typedef struct s_data
 	int		i;
 	int		j;
 	int		in;
-	int		pipex;
 	int		lentab;
-	char	buf;
-	int		indicate;
 	char	**env;
 	char	**path;
-	char	*str_env;
-	char	*clean_env;
 	char	*str;
 	int		file1;
 	int		file2;
@@ -34,7 +29,8 @@ typedef struct s_data
 	char	**split_arg1;
 	char	**split_arg2;
 	int		env_len;
-	char	*cmd_path;
+	char	*cmd_path1;
+	char	*cmd_path2;
 	char	**envp;
 } 	t_data;
 
