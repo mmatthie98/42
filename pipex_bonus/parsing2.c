@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/07 19:02:42 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:25:48 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	ft_free_split(char	**to_free)
 	size_t	i;
 
 	i = 0;
+	if (!to_free)
+		return ;
 	while(to_free[i])
 	{
 		free(to_free[i]);
@@ -70,6 +72,12 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 
 	cmd = ft_split(last_cmd, ' ');
 	path_cmd = make_cmd_path(cmd[0], data);
+	if (access(path_cmd, X_OK | F_OK) == -1)
+	{
+		printf("path_cmd == -1");
+		printf("zsh : command not found.\n");
+		exit(EXIT_FAILURE);
+	}
 	pid = fork();
 	if (pid == 0)
 		last_cmd_child(data, path_cmd, in, cmd);
@@ -103,6 +111,12 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	{
 		data->cmd_splited =	ft_split(cmd[0], ' ');
 		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
+		if (access(data->cmd_path, X_OK | F_OK) == -1)
+		{
+			printf("path_cmd == -1\n");
+			printf("zsh : command not found.\n");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 		return (exec_last_cmd(cmd[0], in, data));

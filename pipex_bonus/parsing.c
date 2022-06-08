@@ -79,10 +79,7 @@ void	post_pipex(char	**av, t_data	*data)
 {
 	if (check_file2(av[data->lentab + 1], data))
 		if (check_envp(data->envp, data) == 0)
-		{
-			ft_print_split(data->env);
 			ft_pipex(data, data->file1, data->arg, data->envp);
-		}
 }
 
 

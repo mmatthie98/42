@@ -66,7 +66,8 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 	{
 		if (!access(cmd, F_OK | X_OK))
 			return (cmd);
-		return (NULL);
+		else
+			return (NULL);
 	}
 	else if (data->env && data->env[i])
 	{
@@ -89,15 +90,12 @@ char	*get_it(char	**env, char	*cmd, t_data	*data)
 		s = ft_strjoin(data->env[i], cmd);
 		if (!s)
 			return (NULL);
-		if (access(s, F_OK | X_OK) == -1)
-		{
-			free(s);
-			i++;
-		}
-		else
+		if (!access(s, F_OK | X_OK))
 			return (s);
+		free(s);
+		i++;
 	}
-	return (s);
+	return (NULL);
 }
 
 //void	bad_command(s)
