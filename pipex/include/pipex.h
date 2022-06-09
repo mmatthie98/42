@@ -25,7 +25,6 @@ typedef struct s_data
 	int		file2;
 	char	*cmd1;
 	char	*cmd2;
-	char	*cmd_to_rotate;
 	char	**split_arg1;
 	char	**split_arg2;
 	int		env_len;
@@ -34,25 +33,30 @@ typedef struct s_data
 	char	**envp;
 } 	t_data;
 
-
-void	quit_with_message(char	*str);
-int		check_file(char	*str, char	**envp, t_data	*data);
-int		check_cmd(char	*str, t_data	*data);
-void	init_data(t_data	*data, char	**envp);
-char	*make_cmd(t_data	*data);
-void	init_arg(t_data	*data);
-
-int		check_envp(char	**envp, t_data	*data);
-int		ft_pipex(t_data	*data, int	in, char	**envp);
-char	*set_env(char *s, t_data	*data);
-char	*ft_strjoin_pipex(char const *s1, char const *s2);
-
-void	make_path(t_data	*data);
-char	*add_char(char	*s, t_data	*data);
-void	ft_free_split(char	**to_free);
+//dupnclose
+void	dupnclose(int	*fd, int infile, t_data	*data);
+void	dupnclose2(int *fd, t_data	*data);
+void	run2(t_data	*data, char	**envp);
 void	run(t_data	*data, char	**envp);
-void	dupnclose(int	*fd, int in, t_data	*data);
-void	dupnclose2(int	*fd, t_data	*data);
 
+//utils.c
+void	init_len(t_data	*data);
+char	*ft_strjoin_pipex(char const *s1, char const *s2);
+void	ft_free_split(char	**to_free);
+
+//parsing.c
+void	init_data(t_data	*data, char **envp);
+void	init_arg(t_data	*data);
+int		check_file(char	*str, char	**envp, t_data	*data);
+int		check_file2(char	*str, char	**envp, t_data	*data);
+
+//parsing2.c
+int		check_envp(char	**envp, t_data	*data);
+char	*make_cmd_path(char	*cmd, t_data	*data);
 char	*get_good_path(char	*cmd, t_data	*data);
+void	get_cmd_path(t_data	*data);
+int		ft_pipex(t_data	*data, int	in, char	**envp);
+
+
+
 #endif

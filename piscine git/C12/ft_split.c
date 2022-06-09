@@ -61,7 +61,7 @@ char	**ft_split(char const	*s, char c)
 	int		w;
 	int		i;
 
-	if (!s)
+	if (!s || s[0] == '\0')
 		return (NULL);
 	w = cnt_wd(s, c);
 	ptr = malloc(sizeof(char *) * (w + 1));

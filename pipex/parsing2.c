@@ -6,21 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/08 20:11:14 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:48:33 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
-
-void	ft_free_split(char	**to_free)
-{
-	size_t	i;
-
-	i = 0;
-	while(to_free[i])
-		free(to_free[i++]);
-	free(to_free);
-}
 
 int	check_envp(char	**envp, t_data	*data)
 {
@@ -36,42 +26,6 @@ int	check_envp(char	**envp, t_data	*data)
 			data->env = NULL;
 	}
 	return (0);
-}
-
-void	dupnclose(int	*fd, int infile, t_data	*data)
-{
-	dup2(infile, 0);
-	dup2(fd[1], 1);
-	close (infile);
-	close (fd[1]);
-	close(fd[0]);
-	close (data->file2);
-}
-
-void	dupnclose2(int *fd, t_data	*data)
-{
-	dup2(fd[0], 0);
-	dup2(data->file2, 1);
-	close (fd[0]);
-	close (data->file2);
-}
-
-void	run2(t_data	*data, char	**envp)
-{
-	if (execve(data->cmd_path1, data->split_arg2, envp) == -1)
-	{
-		ft_putstr_fd("zsh : command not found\n", 2);
-		exit(EXIT_FAILURE);
-	}
-}
-
-void	run(t_data	*data, char	**envp)
-{
-	if (execve(data->cmd_path2, data->split_arg1, envp) == -1)
-	{
-		ft_putstr_fd("zsh : command not found\n", 2);
-		exit(EXIT_FAILURE);
-	}
 }
 
 char	*make_cmd_path(char	*cmd, t_data	*data)
@@ -146,15 +100,16 @@ int	ft_pipex(t_data	*data, int	in, char	**envp)
 		dupnclose(fd, in, data);
 		run(data, envp);
 	}
+	waitpid(-1, NULL, 0);
 	close(in);
 	close(fd[1]);
-	waitpid(-1, NULL, 0);
 	pid1 = fork();
 	if (pid1 == 0)
 	{
 		dupnclose2(fd, data);
 		run2(data, envp);
 	}
+	//waitpid(-1, NULL, 0);
 	waitpid(-1, NULL, 0);
 	close(fd[0]);
 	close(data->file2);

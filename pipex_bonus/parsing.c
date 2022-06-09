@@ -88,7 +88,7 @@ int	main(int ac, char	**av, char	**envp)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
-	if (ac > 4)
+	if (ac > 3)
 	{
 		data->arg = &av[2];
 		init_data(data, envp);
@@ -97,7 +97,7 @@ int	main(int ac, char	**av, char	**envp)
 	}
 	else
 		printf("use more than 4 parameter pls\n");
-	system("leaks pipex");
+	//system("leaks pipex");
 	//system("lsof -c pipex");
 	free(data);
 	return (0);

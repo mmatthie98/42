@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/08 18:08:12 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/09 18:14:43 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,19 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 	char	*path_cmd;
 
 	cmd = ft_split(last_cmd, ' ');
+	if (!cmd)
+	{
+		printf("TAMERELAPUTEPIPEX");
+		exit(EXIT_FAILURE);
+	}
 	path_cmd = make_cmd_path(cmd[0], data);
+	if (!path_cmd)
+	{
+		printf("TAMERELAPUTEPIPEX");
+		exit(EXIT_FAILURE);
+	}
 	if (access(path_cmd, X_OK | F_OK) == -1)
 	{
-		printf("path_cmd == -1");
 		printf("zsh : command not found.\n");
 		exit(EXIT_FAILURE);
 	}
@@ -84,7 +93,8 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 	close(in);
 	close(data->file2);
 	free(path_cmd);
-	ft_free_split(cmd);
+	if (cmd)
+		ft_free_split(cmd);
 	return (0);
 }
 
@@ -110,11 +120,15 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	if (cmd[2])
 	{
 		data->cmd_splited =	ft_split(cmd[0], ' ');
-		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
-		if (access(data->cmd_path, X_OK | F_OK) == -1)
+		if (!data->cmd_splited)
 		{
-			printf("path_cmd == -1\n");
-			printf("zsh : command not found.\n");
+			printf("TAMERELAPUTEPIPEX");
+			exit(EXIT_FAILURE);
+		}
+		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
+		if (!data->cmd_path)
+		{
+			printf("TAMERELAPUTEPIPEX");
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -132,7 +146,8 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	close(in);
 	waitpid(-1, NULL, 0);
 	free(data->cmd_path);
-	ft_free_split(data->cmd_splited);
+	if (data->cmd_splited)
+		ft_free_split(data->cmd_splited);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));
 }
 

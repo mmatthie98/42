@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:11:09 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/03/31 18:01:15 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:53:42 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	**ft_split(char const	*s, char c)
 	int		w;
 	int		i;
 
-	if (!s)
+	if (!s || s[0] == '\0')
 		return (NULL);
 	w = cnt_wd(s, c);
 	ptr = malloc(sizeof(char *) * (w + 1));

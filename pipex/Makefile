@@ -11,6 +11,7 @@ L_DIR = ../libft
 SRC = 	parsing.c \
 		parsing2.c \
 		utils.c	\
+		dupnclose.c \
 
 OBJ = ${SRC:%.c=%.o}
 

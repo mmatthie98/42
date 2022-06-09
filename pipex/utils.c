@@ -35,3 +35,13 @@ char	*ft_strjoin_pipex(char const *s1, char const *s2)
 	str[i] = '\0';
 	return (str);
 }
+
+void	ft_free_split(char	**to_free)
+{
+	size_t	i;
+
+	i = 0;
+	while(to_free[i])
+		free(to_free[i++]);
+	free(to_free);
+}

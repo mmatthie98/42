@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/08 18:49:48 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/09 16:37:18 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ int		check_file(char	*str, char	**envp, t_data	*data)
 	if (str && str[data->i])
 	{
 		data->file1 = open(str, O_RDONLY);
-		if (!data->file1)
-			perror ("error :");
+		if (data->file1 == -1)
+		{
+			perror ("error ");
+			exit(EXIT_FAILURE);
+		}
 		return(data->file1);
 	}
-	else
-		printf("please use a valide infile\n");
 	return (1);
 }
 
@@ -84,6 +85,7 @@ int	main(int ac, char	**av, char	**envp)
 				}
 			}
 		}
+		//system("leaks pipex");
 	}
 	else
 		printf("use 4 parameter pls\n");
