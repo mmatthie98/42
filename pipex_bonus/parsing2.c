@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/10 14:54:47 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:44:38 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,9 @@ int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
 	int		pid;
 
 	if (cmd[2])
-	{
-		if (cmd[0])
-			data->cmd_splited = ft_split(cmd[0], ' ');
-		if (data->cmd_splited && data->cmd_splited[0])
-			data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
-		else
-			data->cmd_path = ft_strdup(" /");
-	}
+		make_cmd()
 	else
-		return (exec_last_cmd(cmd[0], in, data));
+		return (exec_last_cmd(cmd[0], in, data));*/
 	if (pipe(fd) == -1)
 	{
 		perror("error : ");

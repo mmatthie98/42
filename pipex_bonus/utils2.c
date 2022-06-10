@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:46:09 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/10 14:57:28 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:44:11 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,13 @@ void	ft_free_split(char	**to_free)
 	free(to_free);
 }
 
-void	make
+void	make_cmd(char	**cmd, t_data	*data)
+{
+	if (cmd[0])
+		data->cmd_splited = ft_split(cmd[0], ' ');
+	if (data->cmd_splited && data->cmd_splited[0])
+		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
+	else
+		data->cmd_path = ft_strdup(" /");
+
+}
