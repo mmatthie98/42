@@ -6,34 +6,11 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/10 13:57:54 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:54:47 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/pipex.h"
-
-void	*ft_manag(void	*ptr)
-{
-	static t_list	*lst;
-
-	ft_lstadd_back(&lst, ft_lstnew(ptr));
-	return (ptr);
-}
-
-void	ft_free_split(char	**to_free)
-{
-	size_t	i;
-
-	i = 0;
-	if (!to_free)
-		return ;
-	while(to_free[i])
-	{
-		free(to_free[i]);
-		i++;
-	}
-	free(to_free);
-}
+#include "include/pipex_bonus.h"
 
 void	get_empty_env(t_data	*data)
 {
@@ -110,7 +87,7 @@ void	child_process(t_data	*data, int in, int	*fd, char	**cmd)
 	}
 }
 
-int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
+int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
 {
 	int		fd[2];
 	int		pid;
@@ -118,7 +95,7 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	if (cmd[2])
 	{
 		if (cmd[0])
-			data->cmd_splited =	ft_split(cmd[0], ' ');
+			data->cmd_splited = ft_split(cmd[0], ' ');
 		if (data->cmd_splited && data->cmd_splited[0])
 			data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
 		else
@@ -133,7 +110,7 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	}
 	pid = fork();
 	if (pid == 0)
-		child_process(data , in, fd, data->cmd_splited);
+		child_process(data, in, fd, data->cmd_splited);
 	close(fd[1]);
 	close(in);
 	waitpid(-1, NULL, 0);
@@ -141,10 +118,5 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 		free(data->cmd_path);
 	if (data->cmd_splited)
 		ft_free_split(data->cmd_splited);
-	return(ft_pipex(data, fd[0], &cmd[1], envp));
-}
-
-int	check_access(char	*path)
-{
-	return (access(path, F_OK | X_OK));
+	return (ft_pipex(data, fd[0], &cmd[1], envp));
 }

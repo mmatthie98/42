@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "include/pipex_bonus.h"
 
 void	make_path(t_data	*data, char	**envp)
 {
@@ -101,4 +101,15 @@ char	*get_it(char	**env, char	*cmd, t_data	*data)
 	return (s);
 }
 
-//void	bad_command(s)
+void	last_cmd_child(t_data	*data, char	*path_cmd, int in,char	**cmd)
+{
+	dup2(in, 0);
+	dup2(data->file2, 1);
+	close(data->file2);
+	close(in);
+	if (execve(path_cmd, cmd, data->envp) == -1)
+	{
+		ft_putstr_fd("zsh : command not found\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}

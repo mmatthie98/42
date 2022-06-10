@@ -11,10 +11,11 @@ L_DIR = ../libft
 SRC = 	parsing.c \
 		parsing2.c \
 		utils.c	\
+		utils2.c \
 
 OBJ = ${SRC:%.c=%.o}
 
-all : include/pipex.h ${NAME}
+all : include/pipex_bonus.h ${NAME}
 
 RM = rm -rf
 
