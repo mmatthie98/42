@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:32:51 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/09 16:43:01 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:03:32 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	dupnclose(int	*fd, int infile, t_data	*data)
 	close (infile);
 	close (fd[1]);
 	close (fd[0]);
-	//close (data->file2);
+	close (data->file2);
 }
 
 void	dupnclose2(int *fd, t_data	*data)
 {
 	dup2(fd[0], 0);
-	//dup2(data->file2, 1);
+	dup2(data->file2, 1);
 	close (fd[0]);
 	close (data->file2);
 }

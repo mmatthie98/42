@@ -62,14 +62,12 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 	i = 0;
 	j = 1;
 	s = NULL;
-	if (cmd == NULL)
-		return(NULL);
 	if (cmd[0] == '/')
 	{
 		if (!access(cmd, F_OK | X_OK))
 			return (ft_strdup(cmd));
 		else
-			return (NULL);
+			return (ft_strdup("/"));
 	}
 	else if (data->env && data->env[i])
 	{
@@ -92,12 +90,15 @@ char	*get_it(char	**env, char	*cmd, t_data	*data)
 		s = ft_strjoin(data->env[i], cmd);
 		if (!s)
 			return (NULL);
-		if (!access(s, F_OK | X_OK))
+		if (access(s, F_OK | X_OK) != 0)
+		{
+			free (s);
+			i++;
+		}
+		else
 			return (s);
-		free(s);
-		i++;
 	}
-	return (NULL);
+	return (s);
 }
 
 //void	bad_command(s)

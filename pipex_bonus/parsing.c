@@ -78,8 +78,13 @@ char	**get_cmd_split(char	*str, int c, int i,t_data *data)
 void	post_pipex(char	**av, t_data	*data)
 {
 	if (check_file2(av[data->lentab + 1], data))
+	{
 		if (check_envp(data->envp, data) == 0)
+		{
+			data->cmd_pos = 0;
 			ft_pipex(data, data->file1, data->arg, data->envp);
+		}
+	}
 }
 
 
@@ -97,7 +102,7 @@ int	main(int ac, char	**av, char	**envp)
 	}
 	else
 		printf("use more than 4 parameter pls\n");
-	//system("leaks pipex");
+	system("leaks pipex");
 	//system("lsof -c pipex");
 	free(data);
 	return (0);

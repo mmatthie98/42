@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/09 18:14:43 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/10 13:57:54 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,27 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 	int		pid;
 	char	*path_cmd;
 
-	cmd = ft_split(last_cmd, ' ');
-	if (!cmd)
+	path_cmd = NULL;
+	cmd = NULL;
+	if (last_cmd && last_cmd[0])
+		cmd = ft_split(last_cmd, ' ');
+	else
 	{
-		printf("TAMERELAPUTEPIPEX");
-		exit(EXIT_FAILURE);
+		last_cmd = ft_strdup(" /");
+		cmd = ft_split(last_cmd, ' ');
+		free(last_cmd);
 	}
-	path_cmd = make_cmd_path(cmd[0], data);
-	if (!path_cmd)
-	{
-		printf("TAMERELAPUTEPIPEX");
-		exit(EXIT_FAILURE);
-	}
-	if (access(path_cmd, X_OK | F_OK) == -1)
-	{
-		printf("zsh : command not found.\n");
-		exit(EXIT_FAILURE);
-	}
+	if (cmd && cmd[0])
+		path_cmd = make_cmd_path(cmd[0], data);
+	else
+		data->cmd_path = ft_strdup(" /");
 	pid = fork();
 	if (pid == 0)
 		last_cmd_child(data, path_cmd, in, cmd);
 	close(in);
 	close(data->file2);
-	free(path_cmd);
+	if (path_cmd)
+		free(path_cmd);
 	if (cmd)
 		ft_free_split(cmd);
 	return (0);
@@ -119,18 +117,12 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 
 	if (cmd[2])
 	{
-		data->cmd_splited =	ft_split(cmd[0], ' ');
-		if (!data->cmd_splited)
-		{
-			printf("TAMERELAPUTEPIPEX");
-			exit(EXIT_FAILURE);
-		}
-		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
-		if (!data->cmd_path)
-		{
-			printf("TAMERELAPUTEPIPEX");
-			exit(EXIT_FAILURE);
-		}
+		if (cmd[0])
+			data->cmd_splited =	ft_split(cmd[0], ' ');
+		if (data->cmd_splited && data->cmd_splited[0])
+			data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
+		else
+			data->cmd_path = ft_strdup(" /");
 	}
 	else
 		return (exec_last_cmd(cmd[0], in, data));
@@ -145,7 +137,8 @@ int	ft_pipex(t_data	*data, int	in, char **cmd, char	**envp)
 	close(fd[1]);
 	close(in);
 	waitpid(-1, NULL, 0);
-	free(data->cmd_path);
+	if (data->cmd_path)
+		free(data->cmd_path);
 	if (data->cmd_splited)
 		ft_free_split(data->cmd_splited);
 	return(ft_pipex(data, fd[0], &cmd[1], envp));

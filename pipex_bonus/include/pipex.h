@@ -32,6 +32,7 @@ typedef struct s_data
 	int		env_len;
 	char	*cmd_path;
 	char	**cmd_splited;
+	int		cmd_pos;
 }	t_data;
 
 //parsing2.c

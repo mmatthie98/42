@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/09 16:37:18 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:05:47 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,16 @@ void	init_arg(t_data	*data)
 	i = 0;
 	data->split_arg1 = ft_split(data->arg[2], ' ');
 	if (!data->split_arg1)
+	{
 		perror("split");
+		data->split_arg1 = NULL;
+	}
 	data->split_arg2 = ft_split(data->arg[3], ' ');
 	if (!data->split_arg2)
+	{
 		perror("split");
+		data->split_arg2 = NULL;
+	}
 }
 
 int		check_file(char	*str, char	**envp, t_data	*data)
