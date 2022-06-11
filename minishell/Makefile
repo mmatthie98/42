@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+         #
+#    By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 14:04:53 by tbrandt           #+#    #+#              #
-#    Updated: 2022/06/11 14:09:09 by tbrandt          ###   ########.fr        #
+#    Updated: 2022/06/11 18:23:07 by mmatthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ SRC		=	main.c			\
 
 OBJ		=	$(SRC:%.c=%.o)
 
-LIBS    =   -L/Users/tbrandt/.brew/opt/readline/lib -lreadline
-HEADERS =   -I$(HEADER) -I/Users/tbrandt/.brew/opt/readline/include
+LIBS    =   -L/Users/mmatthie/.brew/opt/readline/lib -lreadline
+HEADERS =   -I$(HEADER) -I/Users/mmatthie/.brew/opt/readline/include
 
 all: $(NAME)
 
