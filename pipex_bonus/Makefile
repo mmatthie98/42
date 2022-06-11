@@ -12,7 +12,8 @@ SRC = 	parsing.c \
 		parsing2.c \
 		utils.c	\
 		utils2.c \
-
+		utils3.c \
+		
 OBJ = ${SRC:%.c=%.o}
 
 all : include/pipex_bonus.h ${NAME}

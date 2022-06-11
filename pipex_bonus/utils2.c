@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:46:09 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/10 16:44:11 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/11 08:50:10 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,29 @@ void	make_cmd(char	**cmd, t_data	*data)
 		data->cmd_path = make_cmd_path(data->cmd_splited[0], data);
 	else
 		data->cmd_path = ft_strdup(" /");
+}
 
+char	*add_it(char	*s, char	*str, t_data *data, char	**envp)
+{
+	int	k;
+
+	k = 0;
+	init_data(data, envp);
+	while (s[data->j])
+	{
+		if (s[data->j + 1] == '\0')
+		{
+			str[k] = s[data->j];
+			str[k + 1] = '/';
+			str[k + 2] = '\0';
+			data->j++;
+		}
+		else
+		{
+			str[k] = s[data->j];
+			data->j++;
+			k++;
+		}
+	}
+	return (str);
 }

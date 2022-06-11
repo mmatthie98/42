@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/10 16:44:38 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:02:08 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,7 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 	char	*path_cmd;
 
 	path_cmd = NULL;
-	cmd = NULL;
-	if (last_cmd && last_cmd[0])
-		cmd = ft_split(last_cmd, ' ');
-	else
-	{
-		last_cmd = ft_strdup(" /");
-		cmd = ft_split(last_cmd, ' ');
-		free(last_cmd);
-	}
+	cmd = make_last_cmd(last_cmd);
 	if (cmd && cmd[0])
 		path_cmd = make_cmd_path(cmd[0], data);
 	else
@@ -66,6 +58,7 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 		last_cmd_child(data, path_cmd, in, cmd);
 	close(in);
 	close(data->file2);
+	waitpid(-1, NULL, 0);
 	if (path_cmd)
 		free(path_cmd);
 	if (cmd)
@@ -81,10 +74,8 @@ void	child_process(t_data	*data, int in, int	*fd, char	**cmd)
 	close(fd[1]);
 	close(fd[0]);
 	if (execve(data->cmd_path, cmd, data->envp) == -1)
-	{
 		ft_putstr_fd("zsh : command not found\n", 2);
-		exit(EXIT_FAILURE);
-	}
+	exit(EXIT_FAILURE);
 }
 
 int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
@@ -93,9 +84,9 @@ int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
 	int		pid;
 
 	if (cmd[2])
-		make_cmd()
+		make_cmd(cmd, data);
 	else
-		return (exec_last_cmd(cmd[0], in, data));*/
+		return (exec_last_cmd(cmd[0], in, data));
 	if (pipe(fd) == -1)
 	{
 		perror("error : ");
@@ -106,7 +97,6 @@ int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
 		child_process(data, in, fd, data->cmd_splited);
 	close(fd[1]);
 	close(in);
-	waitpid(-1, NULL, 0);
 	if (data->cmd_path)
 		free(data->cmd_path);
 	if (data->cmd_splited)

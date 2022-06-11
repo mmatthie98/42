@@ -6,12 +6,12 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:28:03 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/10 14:51:48 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:00:16 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include	<stdio.h>
 # include	<stdlib.h>
@@ -26,7 +26,6 @@ typedef struct s_data
 {
 	int		pipe_fd[2];
 	char	**arg;
-	char	**all_av;
 	int		i;
 	int		j;
 	int		in;
@@ -72,4 +71,9 @@ void		last_cmd_child(t_data *data, char *path_cmd, int in, char **cmd);
 void		post_pipex(char	**av, t_data	*data);
 int			check_access(char	*path);
 void		ft_free_split(char	**to_free);
+void		make_cmd(char	**cmd, t_data	*data);
+
+// utils3.c
+char		**make_last_cmd(char	*last_cmd);
+char		*add_it(char	*s, char	*str, t_data *data, char	**envp);
 #endif

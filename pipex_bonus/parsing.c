@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:39:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/10 14:49:10 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:01:48 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	main(int ac, char	**av, char	**envp)
 	}
 	else
 		printf("use more than 4 parameter pls\n");
-	system("leaks pipex");
 	free(data);
 	return (0);
 }
