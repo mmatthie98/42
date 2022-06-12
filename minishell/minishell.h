@@ -9,6 +9,15 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+typedef struct s_data
+{
+	char	*first;
+	char	*second;
+	char	*join;
+}				t_data;
+
+
+
 int	    check_space(char *buffer);
 t_list  *create_list(char **buffer_splited);
 void	ft_print_list(t_list	*lst);
