@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 14:40:13 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/10 17:51:30 by tbrandt          ###   ########.fr       */
+/*   Updated: 2022/06/13 00:07:32 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 typedef struct s_list
 {
-	struct s_list	*prev;
 	struct s_list	*next;
 	void			*content;
 }					t_list;

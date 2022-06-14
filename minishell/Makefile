@@ -6,7 +6,7 @@
 #    By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 14:04:53 by tbrandt           #+#    #+#              #
-#    Updated: 2022/06/11 18:23:07 by mmatthie         ###   ########.fr        #
+#    Updated: 2022/06/12 22:44:34 by mmatthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME	=	minishell
 SRC		=	main.c			\
 			create_list.c	\
 			utils.c			\
+			check.c			\
 
 OBJ		=	$(SRC:%.c=%.o)
 
