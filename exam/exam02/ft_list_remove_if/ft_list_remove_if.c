@@ -11,49 +11,52 @@ void	putlst(t_list	*lst, char *msg)
 		lst = lst->next;
 	}
 }
+/*
+void	ft_list_remove_if(t_list	**begin_list, void	*data_ref, int (*cmp)())
+{
+	t_list	*curr;
+
+	curr = *begin_list;
+
+	while (curr->next)
+	{
+		curr = curr->next;
+	}
+
+	int *x = malloc(4);
+	*x = 2;
+	curr->next->content = x;
+}
+*/
+
 void	ft_list_remove_if(t_list	**begin_list, void	*data_ref, int (*cmp)())
 {
 	t_list	*current;
 	t_list	*before;
 
+	while (cmp((*begin_list)->content, data_ref) == 0)
+	{
+		current = *begin_list;
+		*begin_list = (*begin_list)->next;
+		free(current->content);
+		free(current);
+		if (!(*begin_list))
+			break;
+	}
 	current = *begin_list;
 	before = current;
 	while (current)
 	{
 		if (cmp(current->content, data_ref) == 0)
 		{
+			before->next = before->next->next;
 			free(current->content);
 			free (current);
-			before->next = before->next->next;
 		}
 		before = current;
 		current = current->next;
 	}
-
 }
-
-// void	ft_list_remove_if(t_list	**begin_list, void	*data_ref, int (*cmp)())
-// {
-// 	t_list	*current;
-// 	t_list	*queue;
-// 	t_list	*before;
-
-// 	current = *begin_list;
-// 	while (current)
-// 	{
-// 		if (cmp(current->content, data_ref) == 0)
-// 		{
-// 			before = current;
-// 			queue = current->next;
-// 			current->next = queue;
-// 			free(before->content);
-// 			free (before);
-// 		}
-// 		else
-// 			current = current->next;
-// 	}
-// 	putlst(*begin_list, "curent");
-// }
 
 t_list	*lstnew(int x)
 {
@@ -81,7 +84,6 @@ int main(void)
 	t_list 	*begin;
 	t_list	*el;
 	int		data;
-
 	begin = lstnew(5);
 	data = 69;
 
