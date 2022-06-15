@@ -6,7 +6,7 @@
 #    By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 14:04:53 by tbrandt           #+#    #+#              #
-#    Updated: 2022/06/12 22:44:34 by mmatthie         ###   ########.fr        #
+#    Updated: 2022/06/15 16:47:58 by mmatthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC		=	main.c			\
 OBJ		=	$(SRC:%.c=%.o)
 
 LIBS    =   -L/Users/mmatthie/.brew/opt/readline/lib -lreadline
-HEADERS =   -I$(HEADER) -I/Users/mmatthie/.brew/opt/readline/include
+HEADERS =   -I/Users/mmatthie/.brew/opt/readline/include
 
 all: $(NAME)
 
