@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:07:48 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/15 18:27:09 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/16 18:10:40 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_list	*get_word_in_list(char	*buffer, t_data	*data)
 	i = -1;
 	data->count = 0;
 	lst = NULL;
-	//printf("data->count : %d\n", data->count);
 	while (data->count < (int)ft_strlen(buffer))
 	{
 		while (ft_isspace(buffer[data->count]))
@@ -49,10 +48,6 @@ t_list	*get_word_in_list(char	*buffer, t_data	*data)
 			data->count = get_word(buffer, data);
 			lst = ft_list(lst, data->first);
 		}
-		/*else if (buffer[data->count] != '"' || buffer[data->count] != '\'')
-		{
-
-		}*/
 	}
 	return (lst);
 }
@@ -70,7 +65,7 @@ int main()
 		buffer = readline(">$ ");
 		lst = get_word_in_list(buffer, data);
 		ft_print_list(lst);
-		add_history(buffer);
+		add_history(buffer);\
 	}
 	free(buffer);
 	return (0);

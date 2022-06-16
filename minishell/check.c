@@ -44,7 +44,7 @@ int	pre_join(char	*str,t_data	*data, int count)
 			data->second[++j] = str[count];
 		make_join(data);
 	}
-	return(count + 2);
+	return(count + 1);
 }
 
 int	get_word(char	*str, t_data *data)
@@ -64,5 +64,5 @@ int	get_word(char	*str, t_data *data)
 	if (str[j] == '"' || str[j] == '\'')
 		j = pre_join(str, data, j);
 	data->count = j;
-	return (data->count + 1);
+	return (data->count);
 }
