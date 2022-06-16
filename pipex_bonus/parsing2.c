@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/11 13:02:08 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/16 13:21:18 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,18 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 	if (cmd && cmd[0])
 		path_cmd = make_cmd_path(cmd[0], data);
 	else
+	{
 		data->cmd_path = ft_strdup(" /");
+		data->cmd_splited = ft_split(data->cmd_path, ' ');
+	}
 	pid = fork();
 	if (pid == 0)
 		last_cmd_child(data, path_cmd, in, cmd);
 	close(in);
 	close(data->file2);
 	waitpid(-1, NULL, 0);
-	if (path_cmd)
-		free(path_cmd);
-	if (cmd)
-		ft_free_split(cmd);
+	free(path_cmd);
+	ft_free_split(cmd);
 	return (0);
 }
 
@@ -97,9 +98,7 @@ int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
 		child_process(data, in, fd, data->cmd_splited);
 	close(fd[1]);
 	close(in);
-	if (data->cmd_path)
-		free(data->cmd_path);
-	if (data->cmd_splited)
-		ft_free_split(data->cmd_splited);
+	free(data->cmd_path);
+	ft_free_split(data->cmd_splited);
 	return (ft_pipex(data, fd[0], &cmd[1], envp));
 }

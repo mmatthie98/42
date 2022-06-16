@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 22:39:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/11 13:01:36 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/16 13:21:28 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,15 @@ char	*get_it(char	**env, char	*cmd, t_data	*data)
 		s = ft_strjoin(data->env[i], cmd);
 		if (!s)
 			return (NULL);
-		if (access(s, F_OK | X_OK) != 0)
+		if (access(s, F_OK | X_OK) == -1)
 		{
-			free (s);
+			free(s);
 			i++;
 		}
 		else
 			return (s);
 	}
-	return (s);
+	return (NULL);
 }
 
 void	last_cmd_child(t_data	*data, char	*path_cmd, int in, char	**cmd)

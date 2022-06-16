@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:46:09 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/11 08:50:10 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/16 13:09:02 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_free_split(char	**to_free)
 
 void	make_cmd(char	**cmd, t_data	*data)
 {
+	data->cmd_path = NULL;
 	if (cmd[0])
 		data->cmd_splited = ft_split(cmd[0], ' ');
 	if (data->cmd_splited && data->cmd_splited[0])
