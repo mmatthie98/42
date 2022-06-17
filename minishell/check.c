@@ -59,7 +59,7 @@ int	get_word(char	*str, t_data *data , int count)
 		j++;
 		i++;
 	}
-	data->first = ft_calloc(1, i);
+	data->first = ft_calloc(1, i + 1);
 	data->first = ft_strncpy(data->first, &str[count], i);
 	data->first[i + 1] = '\0';
 	if (str[j] == '"' || str[j] == '\'')

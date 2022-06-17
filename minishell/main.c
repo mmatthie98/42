@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:07:48 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/17 17:59:54 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/17 20:05:47 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ int	get_quotes(char	*str, t_data *data, int count)
 	count++;
 	while (str[++j] != data->token && str[j] != '\0')
 		i++;
-	data->first = ft_calloc(1, i);
+	data->first = ft_calloc(1, i + 1);
 	data->first = ft_strncpy(data->first, &str[count], i);
+	data->first[i] = '\0';
 	j += 1;
 	if (str[j] != ' ' && str[j] != '\0')
 	{
@@ -51,7 +52,7 @@ int	get_quotes(char	*str, t_data *data, int count)
 		count = j;
 		return (count);
 	}
-	count = j + 1;
+	count = j;
 	return (count);
 }
 

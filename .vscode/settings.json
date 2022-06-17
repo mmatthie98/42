@@ -9,6 +9,7 @@
 		"chrono": "c",
 		"algorithm": "c",
 		"pipex.h": "c",
-		"pipex_bonus.h": "c"
+		"pipex_bonus.h": "c",
+		"memory": "c"
 	}
 }
