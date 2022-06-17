@@ -41,6 +41,7 @@ int	pre_join(char	*str,t_data	*data, int count)
 		j = -1;
 		while (str[++count] != tmp && str[count] != '\0')
 			data->second[++j] = str[count];
+		data->second[count] = '\0';
 		make_join(data);
 	}
 	return(count + 1);
@@ -60,8 +61,13 @@ int	get_word(char	*str, t_data *data , int count)
 	}
 	data->first = ft_calloc(1, i);
 	data->first = ft_strncpy(data->first, &str[count], i);
+	data->first[i + 1] = '\0';
 	if (str[j] == '"' || str[j] == '\'')
 		j = pre_join(str, data, j);
 	count = j;
+	data->get_word = ft_calloc(1, i);
+	data->get_word = ft_strncpy(data->get_word, data->first, ft_strlen(data->first));
+	data->get_word[ft_strlen(data->first)] = '\0';
+	free(data->first);
 	return (count);
 }

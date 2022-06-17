@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:07:48 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/17 16:31:42 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:59:54 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ int	get_quotes(char	*str, t_data *data, int count)
 	data->first = ft_strncpy(data->first, &str[count], i);
 	j += 1;
 	if (str[j] != ' ' && str[j] != '\0')
+	{
 		j = pre_join(str, data, j);
-	count = j;
+		count = j;
+		return (count);
+	}
+	count = j + 1;
 	return (count);
 }
 
@@ -67,15 +71,16 @@ t_list	*get_word_in_list(char	*buffer, t_data	*data)
 		if (buffer[data->count] != '"' && buffer[data->count] != '\'' && buffer[data->count] != '\0')
 		{
 			data->count = get_word(buffer, data, data->count);
-			lst = ft_list(lst, data->first);
+			lst = ft_list(lst, data->get_word);
 		}
 		/*if (ft_strcmp(data->first, "export"))
 			lst = get_export_list()*/
 		else if (buffer[data->count] == '"' || buffer[data->count] == '\'')
 		{
 			data->count = get_quotes(buffer, data, data->count);
-			lst = ft_list(lst, data->first);
+			lst = ft_list(lst, data->get_word);
 		}
+		printf("data->count : %d\n", data->count);
 	}
 	return (lst);
 }
