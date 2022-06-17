@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:39:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/16 12:04:09 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/17 14:58:53 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ int	check_file(char	*str, t_data	*data)
 	{
 		data->file1 = open(str, O_RDONLY);
 		if (data->file1 < 0)
-		{
 			perror ("error");
-			return (0);
-		}
+	}
+	else
+	{
+		data->file1 = open(str, O_RDONLY);
+		if (data->file1 < 0)
+			perror ("error");
 	}
 	return (data->file1);
 }
@@ -56,23 +59,17 @@ int	check_file2(char	*str, t_data	*data)
 			return (0);
 		}
 	}
-	return (data->file2);
-}
-
-char	**get_cmd_split(char *str, int c, int i, t_data *data)
-{
-	char	**cmd_split;
-
-	(void) data;
-	cmd_split = NULL;
-	if (str && str[i])
-		cmd_split = ft_split(str, c);
-	if (!cmd_split)
+	else
 	{
-		printf("cmd_split error.\n");
-		return (NULL);
+		data->file2 = open(str, O_RDWR | O_CREAT | O_NOCTTY | \
+		O_TRUNC, 0677);
+		if (data->file2 < 0)
+		{
+			perror("error");
+			return (0);
+		}
 	}
-	return (cmd_split);
+	return (data->file2);
 }
 
 int	main(int ac, char	**av, char	**envp)
@@ -89,7 +86,7 @@ int	main(int ac, char	**av, char	**envp)
 	}
 	else
 		printf("use more than 4 parameter pls\n");
-	system("leaks pipex_bonus");
 	free(data);
+	system("leaks pipex_bonus");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 22:39:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/16 13:21:28 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:04:32 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	make_path(t_data	*data, char	**envp)
 				perror("add_char");
 			free (data->env[i]);
 			data->env[i] = str;
+			free(str);
 			i++;
 		}
 	}

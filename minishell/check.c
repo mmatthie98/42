@@ -16,7 +16,6 @@ void	make_join(t_data	*data)
 		ft_putstr_fd("error in make_join\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	free(data->first);
 	data->first = ft_calloc(1, ft_strlen(data->join));
 	data->first = ft_strncpy(data->first, data->join, ft_strlen(data->join));
 }
@@ -47,22 +46,22 @@ int	pre_join(char	*str,t_data	*data, int count)
 	return(count + 1);
 }
 
-int	get_word(char	*str, t_data *data)
+int	get_word(char	*str, t_data *data , int count)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = data->count;
+	j = count;
 	while (str[j] != '"' && str[j] != '\'' && str[j] != '\0' && str[j] != ' ')
 	{
 		j++;
 		i++;
 	}
 	data->first = ft_calloc(1, i);
-	data->first = ft_strncpy(data->first, &str[data->count], i);
+	data->first = ft_strncpy(data->first, &str[count], i);
 	if (str[j] == '"' || str[j] == '\'')
 		j = pre_join(str, data, j);
-	data->count = j;
-	return (data->count);
+	count = j;
+	return (count);
 }

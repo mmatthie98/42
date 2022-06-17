@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/16 13:21:18 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:02:03 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	exec_last_cmd(char *last_cmd, int in, t_data	*data)
 		path_cmd = make_cmd_path(cmd[0], data);
 	else
 	{
-		data->cmd_path = ft_strdup(" /");
-		data->cmd_splited = ft_split(data->cmd_path, ' ');
+		path_cmd = ft_strdup(" /");
+		cmd = ft_split(data->cmd_path, ' ');
 	}
 	pid = fork();
 	if (pid == 0)
