@@ -1,4 +1,5 @@
 Args bug : 
-- multi args example : aloura"la"famille"comment"cava"?"
+- Multi args example : aloura"la"famille"comment"cava"?".
+- Args begin by " o ' : need to do the "get_quotes".
 
 Parsing incoming : 
