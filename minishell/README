@@ -1,6 +1,0 @@
-Args bug : 
-- Multi args example : aloura"la"famille"comment"cava"?".
-- Args begin by " o ' : need to do the "get_quotes".
-- Need to do a function for this kind of I/O -> aloura"la""famille" (the get_join function take a letter for token)
-
-Parsing incoming : 
