@@ -6,7 +6,7 @@
 #    By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 14:04:53 by tbrandt           #+#    #+#              #
-#    Updated: 2022/06/19 22:34:48 by mmatthie         ###   ########.fr        #
+#    Updated: 2022/06/19 23:28:49 by mmatthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC		=	main.c			\
 			utils.c			\
 			check.c			\
 			built_in/export.c		\
+			signal.c		\
 
 OBJ		=	$(SRC:%.c=%.o)
 

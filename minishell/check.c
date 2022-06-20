@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:34:37 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/19 22:48:27 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:22:14 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	get_word(char	*str, t_data *data, int count)
 		data->get_word = ft_strncpy \
 		(data->get_word, data->first, ft_strlen(data->first));
 		count = j;
+		//free (data->first);
 	}
 	return (count);
 }
@@ -62,8 +63,8 @@ char	*ft_join_free_ss(char *s1, char *s2)
 	while (s2[j])
 		join[i++] = s2[j++];
 	join[i] = 0;
-	free(s1);
-	free(s2);
+	//free(s1);
+	//free(s2);
 	return (join);
 }
 

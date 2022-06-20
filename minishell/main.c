@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:07:48 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/19 23:00:06 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:22:24 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 t_list	*ft_list(t_list	*lst, char	*str)
 {
-	t_list	*li;
-
-	li = NULL;
 	if (lst == NULL)
 	{
 		lst = ft_lstnew(str);
@@ -24,8 +21,7 @@ t_list	*ft_list(t_list	*lst, char	*str)
 	}
 	else
 	{
-		li = ft_lstnew(str);
-		ft_lstadd_back(&lst, li);
+		ft_lstadd_back(&lst, ft_lstnew(str));
 		return (lst);
 	}
 	return (lst);
@@ -66,17 +62,20 @@ t_list	*get_word_in_list(char	*buffer, t_data	*data)
 	data->count = 0;
 	lst = NULL;
 	data->indicate = 0;
-	while (data->count < (int)ft_strlen(buffer))
+	if (buffer && buffer[0])
 	{
-		while (ft_isspace(buffer[data->count]))
-			data->count++;
-		if (buffer[data->count] != '"' && buffer[data->count] \
-		!= '\'' && buffer[data->count] != '\0')
-			data->count = get_word(buffer, data, data->count);
-		else if (buffer[data->count] == '"' || buffer[data->count] == '\'')
-			data->count = get_quotes(buffer, data, data->count);
-		if (buffer[data->count] == ' ' || buffer[data->count] == '\0')
-			lst = ft_list(lst, data->get_word);
+		while (data->count < (int)ft_strlen(buffer))
+		{
+			while (ft_isspace(buffer[data->count]))
+				data->count++;
+			if (buffer[data->count] != '"' && buffer[data->count] \
+			!= '\'' && buffer[data->count] != '\0')
+				data->count = get_word(buffer, data, data->count);
+			else if (buffer[data->count] == '"' || buffer[data->count] == '\'')
+				data->count = get_quotes(buffer, data, data->count);
+			if (buffer[data->count] == ' ' || buffer[data->count] == '\0')
+				lst = ft_list(lst, data->get_word);
+		}
 	}
 	return (lst);
 }
@@ -87,9 +86,10 @@ int	main(int ac, char	**av, char	**env)
 
 	(void) ac;
 	(void) av;
+	(void) env;
 	data = malloc(sizeof(t_data));
-	data->env = env_to_list(env);
-	data->export = env_to_list(env);
+	//data->env = env_to_list(env);
+	//data->export = env_to_list(env);
 	while (1)
 	{
 		data->buffer = readline(">$ ");
@@ -99,10 +99,11 @@ int	main(int ac, char	**av, char	**env)
 			exit(EXIT_FAILURE);
 		}
 		data->cmd = get_word_in_list(data->buffer, data);
-		ft_export(data, data->cmd);
+		//ft_export(data, data->cmd);
 		ft_print_list(data->cmd);
+		system("leaks minishell");
 		add_history(data->buffer);
+		//free(data->buffer);
 	}
-	free(data->buffer);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:39:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/17 19:24:40 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/20 10:25:47 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,19 @@ int	check_file(char	*str, t_data	*data)
 	{
 		data->file1 = open(str, O_RDONLY);
 		if (data->file1 < 0)
-			perror ("error");
+		{
+			perror("error");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
 		data->file1 = open(str, O_RDONLY);
 		if (data->file1 < 0)
-			perror ("error");
+		{
+			perror("error");
+			exit(EXIT_FAILURE);
+		}
 	}
 	return (data->file1);
 }
@@ -54,7 +60,10 @@ int	check_file2(char	*str, t_data	*data)
 		data->file2 = open(str, O_RDWR | O_CREAT | O_NOCTTY | \
 		O_TRUNC, 0677);
 		if (data->file2 < 0)
-			perror("error");
+		{
+			perror("zsh");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
@@ -62,8 +71,8 @@ int	check_file2(char	*str, t_data	*data)
 		O_TRUNC, 0677);
 		if (data->file2 < 0)
 		{
-			perror("error");
-			return (0);
+			perror("zsh");
+			exit(EXIT_FAILURE);
 		}
 	}
 	return (data->file2);
