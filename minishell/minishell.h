@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:34:14 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/20 10:13:50 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:35:09 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int		ft_isspace(int c);
 int		get_quotes(char	*buffer, t_data	*data, int count);
 
 //main.c
-t_list	*ft_list(t_list	*lst, char	*str);
+t_list	*ft_list(t_list	*lst, t_data	*data);
 t_list	*get_word_in_list(char	*buffer, t_data	*data);
 int		make_second(char	*buffer, t_data	*data, int count);
 
-//check.c 
+//check.c
 int		get_second_word(char	*buffer, int count, t_data	*data);
 char	*ft_join_free_ss(char *s1, char *s2);
 int		get_word(char	*buffer, t_data	*data, int count);

@@ -10,6 +10,7 @@
 		"algorithm": "c",
 		"pipex.h": "c",
 		"pipex_bonus.h": "c",
-		"memory": "c"
+		"memory": "c",
+		"sstream": "c"
 	}
 }
