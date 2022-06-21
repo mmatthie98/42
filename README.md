@@ -16,6 +16,10 @@ Born_to_be_root (100%);
 
 Push_swap (86%);
 
-Pipex (in progress..)
+Pipex (in progress..);
+
+Exam 02 (100%);
+
+Minishell (in progress..);
 
 cya !
