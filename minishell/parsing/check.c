@@ -104,7 +104,6 @@ int	get_join(char	*str, int count, int j, t_data	*data)
 		data->first = ft_strncpy \
 		(data->first, data->join, ft_strlen(data->join));
 		ft_manage(data->get_word);
-		free(data->join);
 	}
 	free(data->first);
 	return (count);
