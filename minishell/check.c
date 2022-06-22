@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:34:37 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/21 15:46:06 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/22 14:29:44 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	get_word(char	*str, t_data *data, int count)
 	}
 	return (count);
 }
-
 
 int	get_second_word(char	*buffer, int count, t_data	*data)
 {
