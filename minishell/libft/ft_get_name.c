@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_get_name.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrandt <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 14:59:19 by tbrandt           #+#    #+#             */
-/*   Updated: 2021/10/27 13:15:04 by tbrandt          ###   ########.fr       */
+/*   Created: 2022/06/15 14:34:56 by tbrandt           #+#    #+#             */
+/*   Updated: 2022/06/22 13:28:56 by tbrandt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_get_name(char *str)
 {
-	char	*ptr;
+	int		i;
+	char	*result;	
 
-	ptr = malloc(count * size);
-	if (!ptr)
+	if (!str)
 		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	i = 0;
+	while (str[i] != '=')
+		i++;
+	result = malloc(sizeof(char *) * i);
+	i = 0;
+	while (str[i] && str[i] != '=')
+	{
+		result[i] = str[i];
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }
-/*
-#include <stdio.h>
-int main()
-{
-	char *ptr= calloc(5, 3);
-	printf("%p", ptr);
-}*/

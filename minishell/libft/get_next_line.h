@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrandt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 14:59:19 by tbrandt           #+#    #+#             */
-/*   Updated: 2021/10/27 13:15:04 by tbrandt          ###   ########.fr       */
+/*   Created: 2021/11/03 17:20:19 by tbrandt           #+#    #+#             */
+/*   Updated: 2022/02/13 19:31:02 by tbrandt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*ptr;
+# include	<stdlib.h> // malloc
+# include	<unistd.h>	// read
+# include	<sys/types.h> // open
+# include	<sys/stat.h> // open
+# include	<fcntl.h> // open
 
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
-}
-/*
-#include <stdio.h>
-int main()
-{
-	char *ptr= calloc(5, 3);
-	printf("%p", ptr);
-}*/
+char	*get_next_line(int fd);
+int		ft_strchr(char *s, int c);
+char	*ft_strdup(char *s);
+char	*ft_strndup(char *s, int n);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_strlen(char *str);
+
+#endif

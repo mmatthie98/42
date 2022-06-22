@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 21:39:34 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/21 22:43:46 by mmatthie         ###   ########.fr       */
+/*   Created: 2022/06/22 15:12:20 by tbrandt           #+#    #+#             */
+/*   Updated: 2022/06/22 15:30:08 by tbrandt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 void	ft_manage(void	*to_add)
 {

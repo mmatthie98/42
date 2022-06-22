@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:12:32 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/21 15:45:00 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/22 18:52:22 by tbrandt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 void	ft_print_list(t_list	*lst)
 {
 	if (!lst)
 		printf("Empty List\n");
-	while (lst)
+	while (lst != NULL)
 	{
 		printf("List:%s\n", (char *)(lst->content));
 		lst = lst->next;
@@ -49,12 +49,15 @@ int	check_quote(char	*buffer)
 
 	i = 0;
 	tmp = 0;
-	while (buffer[i])
+	if (!buffer)
+		return (1);
+	while (buffer && buffer[i])
 	{
 		if (buffer[i] == 34 || buffer[i] == 39)
 		{
 			tmp++;
 			check = buffer[i];
+			i++;
 			while (buffer[i] != check && buffer[i] != '\0')
 				i++;
 			if (buffer[i] == check)
@@ -62,7 +65,7 @@ int	check_quote(char	*buffer)
 		}
 		i++;
 	}
-	if (tmp > 0)
+	if (tmp != 0)
 		return (0);
 	return (1);
 }
