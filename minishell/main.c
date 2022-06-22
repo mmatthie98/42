@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:07:48 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/22 14:17:59 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:22:59 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int	main(int ac, char	**av, char	**env)
 	(void) av;
 	(void) env;
 	data = malloc(sizeof(t_data));
+	data->env = env_to_list(env);
+	data->export = env_to_list(env);
 	while (1)
 	{
 		data->buffer = readline(">$ ");
@@ -113,6 +115,8 @@ int	main(int ac, char	**av, char	**env)
 		}
 		data->get_word = NULL;
 		data->cmd = get_word_in_list(data->buffer, data);
+		//ft_print_list(data->cmd);
+		//ft_export(data, data->cmd);
 		add_history(data->buffer);
 		free(data->buffer);
 		free(data->get_word);
