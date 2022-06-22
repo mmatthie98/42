@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:46:09 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/20 09:51:38 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:27:23 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	post_pipex(char	**av, t_data	*data)
 {
-	if (check_file2(av[data->lentab + 1], data))
+	if (check_file(av[1], data))
 	{
 		if (check_envp(data->envp, data) == 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:07:48 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/06/21 16:22:59 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/22 14:12:39 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	make_second(char	*buffer, t_data *data, int count)
 	}
 	data->first = ft_calloc(1, ft_strlen(data->join) + 1);
 	data->first = ft_strncpy(data->first, data->join, ft_strlen(data->join));
+	ft_manage(data->first);
+	ft_manage(data->join);
 	count = i;
 	return (count);
 }
@@ -50,12 +52,9 @@ int	make_second(char	*buffer, t_data *data, int count)
 t_list	*get_word_in_list(char	*buffer, t_data	*data)
 {
 	t_list	*lst;
-	int		i;
 
-	i = -1;
-	data->count = 0;
 	lst = NULL;
-	data->indicate = 0;
+	data->count = 0;
 	if (buffer && buffer[0])
 	{
 		while (data->count < (int)ft_strlen(buffer))
@@ -68,15 +67,8 @@ t_list	*get_word_in_list(char	*buffer, t_data	*data)
 			else if (buffer[data->count] == '"' || buffer[data->count] == '\'')
 				data->count = get_quotes(buffer, data, data->count);
 			if (buffer[data->count] == ' ' || buffer[data->count] == '\0')
-			{
-				while (ft_isspace(buffer[data->count]))
-					data->count++;
-				if (buffer[data->count] != ' ' || buffer[data->count] == '\0')
-					lst = ft_list(lst, data);
-				//free (data->get_word);
-			}
+				lst = get_in_list(buffer, data, lst);
 		}
-		ft_print_list(lst);
 	}
 	return (lst);
 }
@@ -102,6 +94,10 @@ int	main(int ac, char	**av, char	**env)
 	(void) ac;
 	(void) av;
 	(void) env;
+	struct sigaction sa;
+	//sa.sa_handler = &sighandler;
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &sa, NULL);
 	data = malloc(sizeof(t_data));
 	data->env = env_to_list(env);
 	data->export = env_to_list(env);
@@ -115,14 +111,11 @@ int	main(int ac, char	**av, char	**env)
 		}
 		data->get_word = NULL;
 		data->cmd = get_word_in_list(data->buffer, data);
-		//ft_print_list(data->cmd);
-		//ft_export(data, data->cmd);
+		ft_export(data, data->cmd);
 		add_history(data->buffer);
 		free(data->buffer);
-		free(data->get_word);
 		ft_free_list(&data->cmd);
 		//system("leaks minishell");
 	}
-	//free (data);
 	return (0);
 }

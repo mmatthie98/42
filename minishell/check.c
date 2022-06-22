@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:34:37 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/21 15:46:06 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/21 22:19:14 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	get_word(char	*str, t_data *data, int count)
 		data->get_word = ft_calloc(1, ft_strlen(data->first) + 1);
 		data->get_word = ft_strncpy \
 		(data->get_word, data->first, ft_strlen(data->first));
+		ft_manage(data->get_word);
 		count = j;
 		free (data->first);
 	}
 	return (count);
 }
-
 
 int	get_second_word(char	*buffer, int count, t_data	*data)
 {
@@ -81,6 +81,8 @@ int	get_without_quotes(char	*buffer, t_data	*data, int count)
 	}
 	data->first = ft_calloc(1, ft_strlen(data->join) + 1);
 	data->first = ft_strncpy(data->first, data->join, ft_strlen(data->join));
+	ft_manage(data->first);
+	ft_manage(data->join);
 	count = tmp;
 	return (count);
 }
@@ -91,6 +93,7 @@ int	get_join(char	*str, int count, int j, t_data	*data)
 	data->get_word = ft_calloc(1, ft_strlen(data->join) + 1);
 	data->get_word = ft_strncpy \
 	(data->get_word, data->join, ft_strlen(data->join));
+	ft_manage(data->get_word);
 	while (str[count] != ' ' && str[count])
 	{
 		count = get_second_word(str, count, data);
@@ -100,7 +103,10 @@ int	get_join(char	*str, int count, int j, t_data	*data)
 		data->first = ft_calloc(1, ft_strlen(data->join) + 1);
 		data->first = ft_strncpy \
 		(data->first, data->join, ft_strlen(data->join));
+		ft_manage(data->get_word);
+		free(data->join);
 	}
+	free(data->first);
 	return (count);
 }
 
