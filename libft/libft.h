@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:27:20 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/22 00:23:28 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/05/28 11:54:53 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-void		ft_manage(void	*to_add);
 int			ft_isvalid(char *str);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strjoin(char const *s1, char const *s2);

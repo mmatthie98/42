@@ -5,71 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 14:39:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/22 00:25:50 by mmatthie         ###   ########.fr       */
+/*   Created: 2022/05/24 19:11:24 by mmatthie          #+#    #+#             */
+/*   Updated: 2022/06/09 23:05:47 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
 
-void	init_data(t_data	*data, char	**envp)
+void	init_data(t_data	*data, char **envp)
 {
 	if (envp)
 		data->envp = envp;
 	data->i = 0;
 	data->j = 0;
-	data->indicate = 0;
-	data->lentab = ft_strlentab(data->arg);
+	data->in = 0;
 }
 
-int	check_file(char	*str, t_data	*data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	if (str && str[i])
-	{
-		data->file1 = open(str, O_RDONLY);
-		if (data->file1 < 0)
-		{
-			perror("zsh");
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		data->file1 = open(str, O_RDONLY);
-		if (data->file1 < 0)
-		{
-			perror("zsh");
-			exit(EXIT_FAILURE);
-		}
-	}
-	return (data->file1);
-}
-
-int	check_file2(char	*str, t_data	*data)
+void	init_arg(t_data	*data)
 {
 	int	i;
 
 	i = 0;
+	data->split_arg1 = ft_split(data->arg[2], ' ');
+	if (!data->split_arg1)
+	{
+		perror("split");
+		data->split_arg1 = NULL;
+	}
+	data->split_arg2 = ft_split(data->arg[3], ' ');
+	if (!data->split_arg2)
+	{
+		perror("split");
+		data->split_arg2 = NULL;
+	}
+}
+
+int		check_file(char	*str, char	**envp, t_data	*data)
+{
+	init_data(data, envp);
+	if (str && str[data->i])
+	{
+		data->file1 = open(str, O_RDONLY);
+		if (data->file1 == -1)
+		{
+			perror ("error ");
+			exit(EXIT_FAILURE);
+		}
+		return(data->file1);
+	}
+	return (1);
+}
+
+int		check_file2(char	*str, char	**envp, t_data	*data)
+{
+	int		i;
+
+	i = 0;
+	init_data(data, envp);
 	if (str && str[i])
 	{
 		data->file2 = open(str, O_RDWR | O_CREAT | O_NOCTTY | \
 		O_TRUNC, 0677);
-		if (data->file2 < 0)
-			perror("zsh");
+		return (data->file2);
 	}
-	else
-	{
-		data->file2 = open(str, O_RDWR | O_CREAT | O_NOCTTY | \
-		O_TRUNC, 0677);
-		if (data->file2 < 0)
-			perror("zsh");
-	}
-	return (data->file2);
+	return (1);
 }
 
 int	main(int ac, char	**av, char	**envp)
@@ -77,14 +76,24 @@ int	main(int ac, char	**av, char	**envp)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
-	if (ac > 3)
+	init_data(data, envp);
+	data->arg = av;
+	if (ac == 5)
 	{
-		data->arg = &av[2];
-		init_data(data, envp);
-		if (check_file2(av[data->lentab + 1], data))
-			post_pipex(av, data);
+		if (check_envp(envp, data) == 0)
+		{
+			if (check_file(av[1], envp, data))
+			{
+				if (check_file2(av[4], envp, data))
+				{
+					init_arg(data);
+					ft_pipex(data, data->file1, envp);
+				}
+			}
+		}
+		//system("leaks pipex");
 	}
 	else
-		printf("use more than 4 parameter pls\n");
+		printf("use 4 parameter pls\n");
 	return (0);
 }

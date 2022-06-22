@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:34:14 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/21 23:03:49 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:35:09 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,5 @@ void	ft_print_env(t_list	*lst);
 
 //signal.c
 void	sighandler(int signum);
-
-//utils2.c
-void	ft_manage(void	*to_add);
-t_list	*get_in_list(char	*buffer, t_data	*data, t_list	*lst);
 
 #endif

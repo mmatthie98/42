@@ -8,11 +8,11 @@ I_DIR = include
 
 L_DIR = ../libft
 
-SRC = 	parsing_bonus.c \
-		parsing2_bonus.c \
-		utils_bonus.c	\
-		utils2_bonus.c \
-		utils3_bonus.c \
+SRC = 	parsing.c \
+		parsing2.c \
+		utils.c	\
+		utils2.c \
+		utils3.c \
 		
 OBJ = ${SRC:%.c=%.o}
 
