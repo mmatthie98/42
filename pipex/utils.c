@@ -1,47 +1,108 @@
-#include "pipex.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/10 22:39:46 by mmatthie          #+#    #+#             */
+/*   Updated: 2022/06/22 00:10:33 by mmatthie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	init_len(t_data	*data)
-{
-	data->lentab = ft_strlentab(data->arg);
-	data->env_len = ft_strlentab(data->env);
-}
+#include "include/pipex.h"
 
-char	*ft_strjoin_pipex(char const *s1, char const *s2)
+void	make_path(t_data	*data, char	**envp)
 {
 	int		i;
-	int		j;
 	char	*str;
 
-	j = 0;
 	i = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 2);
+	str = NULL;
+	if (data->env && data->env[i])
+	{
+		while (data->env && data->env[i])
+		{
+			str = add_char(data->env[i], data, envp);
+			if (!str)
+				str = NULL;
+			free (data->env[i]);
+			data->env[i] = str;
+			i++;
+		}
+	}
+}
+
+char	*add_char(char	*s, t_data	*data, char	**envp)
+{
+	char	*str;
+
+	init_data(data, envp);
+	while (s[data->j])
+		data->j++;
+	data->j += 1;
+	str = malloc(sizeof(char) * data->j + 1);
 	if (!str)
-		return (NULL);
-	while (s1 && s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	str[i] = '/';
-	i++;
-	while (s2[j])
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
-	str[i] = '\0';
+		str = NULL;
+	str = add_it(s, str, data, envp);
 	return (str);
 }
 
-void	ft_free_split(char	**to_free)
+char	*make_cmd_path(char	*cmd, t_data	*data)
 {
-	size_t	i;
+	char	*s;
+	int		i;
+	int		j;
 
 	i = 0;
-	while(to_free[i])
-		free(to_free[i++]);
-	free(to_free);
+	j = 1;
+	s = NULL;
+	if (cmd[0] == '/')
+	{
+		if (!access(cmd, F_OK | X_OK))
+			return (ft_strdup(cmd));
+		else
+			return (ft_strdup("/"));
+	}
+	else if (data->env && data->env[i])
+	{
+		s = get_it(data->env, cmd, data);
+		return (s);
+	}
+	else
+		return (s);
+}
+
+char	*get_it(char	**env, char	*cmd, t_data	*data)
+{
+	char	*s;
+	int		i;
+
+	i = 0;
+	s = NULL;
+	while (env && env[i])
+	{
+		s = ft_strjoin(data->env[i], cmd);
+		if (!s)
+			return (NULL);
+		if (access(s, F_OK | X_OK) == -1)
+		{
+			free(s);
+			i++;
+		}
+		else
+			return (s);
+	}
+	return (NULL);
+}
+
+void	last_cmd_child(t_data	*data, char	*path_cmd, int in, char	**cmd)
+{
+	dup2(in, 0);
+	dup2(data->file2, 1);
+	close(data->file2);
+	close(in);
+	if (execve(path_cmd, cmd, data->envp) == -1)
+		ft_putstr_fd("zsh : command not found\n", 2);
+	exit(EXIT_FAILURE);
 }

@@ -11,8 +11,9 @@ L_DIR = ../libft
 SRC = 	parsing.c \
 		parsing2.c \
 		utils.c	\
-		dupnclose.c \
-
+		utils2.c \
+		utils3.c \
+		
 OBJ = ${SRC:%.c=%.o}
 
 all : include/pipex.h ${NAME}

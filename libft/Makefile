@@ -6,7 +6,7 @@
 #    By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/25 17:52:59 by mmatthie          #+#    #+#              #
-#    Updated: 2022/04/13 14:43:20 by mmatthie         ###   ########.fr        #
+#    Updated: 2022/06/21 22:27:52 by mmatthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRC			=	ft_memset.c		\
 				ft_put_bin.c		\
 				ft_strcpy.c			\
 				ft_print_int_tab.c	\
+				ft_manage.c			\
 
 all: $(NAME)
 

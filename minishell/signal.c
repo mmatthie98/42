@@ -2,6 +2,7 @@
 
 void	sighandler(int	signum)
 {
-	printf("caught signal : %d\n", signum);
+	if (signum == SIGINT)
+		
 	exit(EXIT_FAILURE);
 }
