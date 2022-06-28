@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 22:39:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/17 18:58:15 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/24 23:34:33 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	make_path(t_data	*data, char	**envp)
 		while (data->env && data->env[i])
 		{
 			str = add_char(data->env[i], data, envp);
+			ft_manage(str);
 			if (!str)
 				perror("add_char");
 			free (data->env[i]);

@@ -6,7 +6,7 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/22 00:03:47 by mmatthie         ###   ########.fr       */
+/*   Updated: 2022/06/26 23:21:14 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	get_empty_env(t_data	*data)
 {
 	data->envp = calloc(1, 1);
-	data->envp[0] = "\0";
+	data->envp[0] = " ";
 	data->env = calloc(1, 1);
-	data->env[0] = "\0";
+	data->env[0] = " ";
 }
 
 int	check_envp(char	**envp, t_data	*data)
@@ -100,5 +100,6 @@ int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
 	close(in);
 	free(data->cmd_path);
 	ft_free_split(data->cmd_splited);
+	system("leaks pipex");
 	return (ft_pipex(data, fd[0], &cmd[1], envp));
 }

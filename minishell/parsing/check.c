@@ -6,11 +6,25 @@
 /*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:34:37 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/22 15:14:36 by tbrandt          ###   ########.fr       */
+/*   Updated: 2022/06/23 10:19:43 by mmatthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	get_expend(char	*str, int j, int count, t_data	*data)
+{
+	int	tmp;
+
+	tmp = j;
+	count = j;
+	if (str[j] == '$')
+	{
+		if (str[j + 1] == '$')
+			data->first
+		while (str[j] != '\'' && str[j] )
+	}
+}
 
 int	get_word(char	*str, t_data *data, int count)
 {
@@ -19,7 +33,7 @@ int	get_word(char	*str, t_data *data, int count)
 
 	i = 0;
 	j = count;
-	while (str[j] != '"' && str[j] != '\'' && str[j] != '\0' && str[j] != ' ')
+	while (str[j] != '"' && str[j] != '\'' && str[j] != '\0' && str[j] != ' ' && str[j] != '$')
 	{
 		j++;
 		i++;
@@ -28,6 +42,8 @@ int	get_word(char	*str, t_data *data, int count)
 	data->first = ft_strncpy(data->first, &str[count], i);
 	if (str[j] == '"' || str[j] == '\'')
 		count = get_join(str, count, j, data);
+	if (str[j] == '$')
+		count = get_expend(str, j , count, data);
 	else
 	{
 		data->get_word = ft_calloc(1, ft_strlen(data->first) + 1);
