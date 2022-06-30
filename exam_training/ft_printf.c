@@ -1,6 +1,8 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
 
 int	ft_strlen(char	*str)
 {
@@ -28,8 +30,13 @@ void	ft_putnb(int nb)
 {
 	if (nb == -2147483648)
 	{
-		write(1, "-", 1);
-		ft_putstr("2147483648");
+		write (1 , "-2147483648", 11);
+		return ;
+	}
+	if (nb < 0)
+	{
+		ft_putchar ('-');
+		nb *= -1;
 	}
 	if (nb > 9)
 	{
@@ -84,16 +91,31 @@ int	ft_printf(const char	*str, ...)
 
 int main()
 {
+	unsigned int v = 0;
+	ft_printf("%x\n", v);
+	printf("%x\n", v);
 	ft_printf("aloura %s", "mon reuf\n");
+	ft_printf("aloura %s\n", NULL);
 	ft_printf("ecole %d\n", 42);
 	ft_printf("le d fonctionne bien : %d\n", 0);
 	ft_printf("for x : %x\n", 42);
 	ft_printf("for x : %x\n", 142);
+	ft_printf("int min : %d\n", -2147483648);
+	ft_printf("int max : %d\n", 2147483647);
+	ft_printf("zero in : %d\n", 0);
+	ft_printf("neg in : %d\n", -42);
 	printf("___real printf___\n");
 	printf("aloura %s", "mon reuf\n");
+	printf("aloura %s\n", NULL);
 	printf("ecole %d\n", 42);
 	printf("le d fonctionne bien : %d\n", 0);
 	printf("for x : %x\n", 42);
 	printf("for x : %x\n", 142);
+	int x = -2147483648;
+	int y =	2147483647;
+	printf("int min : %d\n", x);
+	printf("int max : %d\n", y);
+	printf("zero in : %d\n", 0);
+	printf("neg in : %d\n", -42);
 	return (0);
 }
