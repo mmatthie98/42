@@ -1,5 +1,7 @@
-<img width="1277" alt="Capture d’écran 2023-10-05 à 21 00 01" src="https://github.com/mmatthie98/42/assets/92974943/8febdfd4-6b23-476b-9d91-c04a209384e6">
-<img width="1276" alt="Capture d’écran 2023-10-05 à 21 01 30" src="https://github.com/mmatthie98/42/assets/92974943/6db7c546-61a6-438c-a1a3-da890533369b">
+
+<img width="758" alt="Capture d’écran 2023-10-06 à 01 34 43" src="https://github.com/mmatthie98/42/assets/92974943/f15aa168-f8f9-473c-82f5-a374210e404f">
+<img width="758" alt="Capture d’écran 2023-10-06 à 01 35 07" src="https://github.com/mmatthie98/42/assets/92974943/70fef4d1-be82-4de6-8058-667b6d59053b">
+<img width="758" alt="Capture d’écran 2023-10-06 à 01 35 25" src="https://github.com/mmatthie98/42/assets/92974943/9fbd2abe-3136-4d4f-9c51-86db63af8cdd">
 
 - To launch the project you will need to go to the minilibx folder, run the "make" command, return to the source , make and run the commands: ./solong your_map || ./solong maps/map_..
 
