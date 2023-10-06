@@ -23,3 +23,5 @@ During that time, they will need to hold two forks.
 philosophers have eaten at least number_of_times_each_philosopher_must_eat
 times, the simulation stops. If not specified, the simulation stops when a
 philosopher dies.
+
+To launch the project you need to make in the folder and to : ./philo <nb of philo> <time_to_die> <time_to_eat> <time_to_sleep> <number_of_time_each_must_eat> (optional) 
