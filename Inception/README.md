@@ -1,10 +1,10 @@
-This project was there to familiarised me with Docker engine, in fact Docker and Docker-compose is a usefull tools for developers, you ain't need to install something instead of Docker. 
+The aim of this project was to familiarize myself with the Docker engine, as Docker and Docker-compose are useful tools for developers, you don't need to install anything in place of Docker. 
 
-To do so, the aim of this project was to create a website with wordpress, mariadb and nginx. We do this project on a virtual machine.
+The aim of this project was to create a website using wordpress, mariadb and nginx. We're running this project on a virtual machine.
 
-Docker will automatically at start launch all pre-requesite installation for your application or website.
+Docker will automatically launch all pre-requisite installations for your application or website at startup.
 
-We had to used wordpress, mariadb and nginx. Every service needed to had it's own container, for that we used docker-compose.
+Each service needed its own container, so we used docker-compose. Docker-compose lets you launch all the containers in the network you've set up, manage dependencies and also handle launch errors or crashes. In this case, Docker will try to restart the container that crashed, depending on the option added.
 
 <img width="800" alt="Capture d’écran 2023-10-06 à 15 21 59" src="https://github.com/mmatthie98/42/assets/92974943/e7e1456c-2b95-463e-87fc-70b852cfaedf">
 
