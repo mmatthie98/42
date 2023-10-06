@@ -118,11 +118,9 @@ char	*remove_plus(char *str)
 	char	*res;
 	int		i;
 	int		j;
-	int		k;
 
 	i = 0;
 	j = 0;
-	k = 0;
 	res = malloc(sizeof(char) * ft_strlen(str));
 	while (str[i])
 	{

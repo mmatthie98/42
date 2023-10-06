@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:31:00 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/11/16 14:31:38 by tbrandt          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:34:57 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ctrl_c(int sig)
 	if (g_glo.g_prompt == 0)
 	{
 		rl_on_new_line();
-		rl_replace_line("", 0);
+		//rl_replace_line("", 0);
 		rl_redisplay();
 		g_glo.g_signum = 1;
 	}

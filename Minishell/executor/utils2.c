@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 13:01:36 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/11/14 14:31:54 by tbrandt          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:12:49 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,7 @@ int	redir_in_manager(int	*k, char **cmd, t_data *data)
 {	
 	static int	j = 0;
 	char		**tab;
-	int			i;
 
-	i = *k;
 	data->check_fd_in = 1;
 	tab = stock_delimitors(data->list, data);
 	while (cmd[*k] && !ft_strcmp(cmd[*k], "<"))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:12:18 by tbrandt           #+#    #+#             */
-/*   Updated: 2022/11/14 14:00:12 by tbrandt          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:13:09 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ int	export_name(t_list **cmd, t_data *data)
 
 int	str_error(char *str)
 {
-	int		i;
 	char	*parse;
 
-	i = 0;
 	parse = ft_get_key(str);
 	if (!ft_isnum_key(parse))
 	{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbrandt <tbrandt@student.42.fr>            +#+  +:+       +#+         #
+#    By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 14:04:53 by tbrandt           #+#    #+#              #
-#    Updated: 2022/11/16 16:05:47 by mmatthie         ###   ########.fr        #
+#    Updated: 2023/10/06 14:36:59 by cocobongo        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,12 +58,12 @@ SRC		=	main.c						\
 
 OBJ		=	$(SRC:%.c=%.o)
 
-LIBS    =   -L/Users/mmatthie/.brew/opt/readline/lib -lreadline
-HEADERS =   -I/Users/mmatthie/.brew/opt/readline/include
+LIBS    =   -L/usr/local/opt/readline/lib -lreadline
+HEADERS =   -I/usr/local/opt/readline/include
 
 all: $(NAME)
 
-$(NAME): libft/libft.a $(OBJ)
+$(NAME): libft/libft.a libreadline $(OBJ)
 	$(CC) ${CFLAGS} -o $(NAME) $(OBJ) ${LIBS} -I include -L libft -lft
 
 libft/libft.a:
@@ -71,6 +71,15 @@ libft/libft.a:
 
 %.o: %.c
 	$(CC) ${CFLAGS} -o $@ -c $< ${HEADERS}
+
+libreadline:
+	@echo "Vérification de l'installation de Readline..."
+	@if ! brew list readline &>/dev/null; then \
+	    echo "Readline n'est pas installé. Installation en cours..."; \
+	    brew install readline; \
+	    echo "Readline a été installé avec succès."; \
+	fi
+
 
 clean:
 	make clean -C libft
