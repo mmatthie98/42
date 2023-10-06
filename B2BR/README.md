@@ -1,4 +1,4 @@
-Bornto Be Root is the first project in which we'll be using a virtual machine.
+Born to Be Root is the first project in which we'll be using a virtual machine.
 
 The aim of this project is to learn how to configure a server, which must have a defined firewall, ssh and high-security password. Debian was used as the operating system.
 
