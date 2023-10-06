@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:28:03 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/21 23:57:25 by mmatthie         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:45:05 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include	<stdio.h>
 # include	<stdlib.h>
-# include	"../../libft/libft.h"
+# include	"../../Libft/libft.h"
 # include	<unistd.h>
 # include	<unistd.h>
 # include	<sys/types.h>
@@ -57,6 +57,7 @@ void		init_data(t_data	*data, char	**envp);
 int			check_file(char	*str, t_data *data);
 char		**get_cmd_split(char	*str, int c, int i, t_data	*data);
 int			check_file2(char	*str, t_data	*data);
+void		ft_manage(void *toadd);
 
 // utils.c
 

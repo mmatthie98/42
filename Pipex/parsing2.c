@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:15:01 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/26 23:21:14 by mmatthie         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:47:21 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ int	ft_pipex(t_data	*data, int in, char **cmd, char	**envp)
 	close(in);
 	free(data->cmd_path);
 	ft_free_split(data->cmd_splited);
-	system("leaks pipex");
+	//system("leaks pipex");
 	return (ft_pipex(data, fd[0], &cmd[1], envp));
 }

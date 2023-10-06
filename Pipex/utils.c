@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 22:39:46 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/24 23:34:10 by mmatthie         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:41:47 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ char	*make_cmd_path(char	*cmd, t_data	*data)
 {
 	char	*s;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 1;
 	s = NULL;
 	if (cmd[0] == '/')
 	{

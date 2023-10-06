@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:39:52 by mmatthie          #+#    #+#             */
-/*   Updated: 2022/06/25 11:45:01 by mmatthie         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:45:01 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ void	init_data(t_data	*data, char	**envp)
 int	check_file(char	*str, t_data	*data)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	if (str && str[i])
 	{
 		data->file1 = open(str, O_RDONLY);
@@ -70,6 +68,13 @@ int	check_file2(char	*str, t_data	*data)
 			perror("zsh");
 	}
 	return (data->file2);
+}
+
+void	ft_manage(void	*to_add)
+{
+	static t_list	*manage;
+
+	ft_lstadd_back(&manage, ft_lstnew(to_add));
 }
 
 int	main(int ac, char	**av, char	**envp)

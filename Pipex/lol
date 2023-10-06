@@ -1,0 +1,13 @@
+CFLAGS = -Wall -Werror -Wextra -g  
+SRC = 	parsing.c \
+		parsing2.c \
+all : include/pipex.h ${NAME}
+${NAME}: ${L_DIR}/libft.a ${OBJ}
+$(L_DIR)/libft.a:
+	make -j -C $(L_DIR)
+clean:
+		make clean -C $(L_DIR)
+fclean: clean
+		make fclean -C $(L_DIR)
+re: fclean all
+.PHONY: all re clean fclean
