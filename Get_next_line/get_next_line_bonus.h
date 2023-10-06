@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmatthie <mmatthie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cocobongo <cocobongo@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:11:15 by mmatthie          #+#    #+#             */
-/*   Updated: 2021/12/02 16:42:55 by mmatthie         ###   ########.fr       */
+/*   Updated: 2023/10/06 10:16:07 by cocobongo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 # define FD_MAX 257
+# define BUFFER_SIZE 42
 
 # include <string.h>
 # include <sys/types.h>
