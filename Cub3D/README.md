@@ -4,7 +4,7 @@ A very instructive collaborative project, I had the opportunity to perfect my sk
 
 Cooperation, rigor and organization were the strong points of this project, and my partner and I managed to come to an agreement so that the project could be carried out quickly and efficiently.
 
-To lauch the project u had to go in the minilibx folder, use make and come back and make to the src.
+To lauch the project you had to go in the minilibx folder, use make and come back and make to the src.
 
 You can after that use : ./cub3D maps/map.cub;
 
