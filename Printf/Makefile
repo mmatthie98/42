@@ -1,10 +1,11 @@
-NAME		=	test.exe
+NAME		=	test
 
 SRC			=	ft_printf.c \
-				 ft_putc_s.c \
+				ft_putc_s.c \
 				ft_putd_i.c \
 				ft_check_var.c \
 				ft_putx_X.c \
+				testprintf.c \
 
 OBJ		=	${SRC:.c=.o}
 
@@ -16,7 +17,7 @@ CFLAGS		=	-Werror -Wall -Wextra
 		${CC} ${CFLAGS} -c $< -o $@
 
 $(NAME):	$(OBJ)
-		 $(NAME) $(OBJ)
+		${CC} ${CFLAGS} -o $@ $(OBJ)
 
 all: $(NAME)
 
