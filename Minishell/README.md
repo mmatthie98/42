@@ -7,6 +7,7 @@ The amount of information was enormous, it was one of the first group jobs. I le
 To start this project, you need to install readline with : "brew install readline". After that, it will give you the path to readline and you'll have to change the Makefile on lines 61-62.
 
 LIBS    =   -L/usr/local/opt/readline/lib -lreadline
+
 HEADERS =   -I/usr/local/opt/readline/include
 
 just change the path </usr/local/opt/readline/lib> and <usr/local/opt/readline/include>
