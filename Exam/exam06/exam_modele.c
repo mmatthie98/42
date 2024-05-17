@@ -73,7 +73,7 @@ int main(int ac, char **av) {
                 break;
             }
             if (FD_ISSET(fdI, &readfds) && fdI != sockfd) {
-                int res = recv(fdI, bufferRead, 65536, 0);
+                int res = recv(fdI, &bufferRead, 65536, 0);
                 if (res <= 0) {
                     sprintf(bufferWrite, "server: client %d just left\n", clients[fdI].id);
                     sendAll(fdI);
