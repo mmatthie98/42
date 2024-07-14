@@ -1,0 +1,6 @@
+[package]
+name = "jeu_du_plus_et_du_moins"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

