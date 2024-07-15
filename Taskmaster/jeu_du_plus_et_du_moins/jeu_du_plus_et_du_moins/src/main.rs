@@ -1,15 +1,16 @@
-use std::io;
-
 fn main() {
-    println!("Devinez le nombre !");
+    let mut s = String::from("hello");
+    
+    let r1 = &s;  // Référence immuable à s
 
-    println!("Veuillez entrer un nombre.");
+    // Utilisation de r1 pour accéder à s (valide)
+    println!("{}", r1);  // Lecture via r1
 
-    let mut supposition = String::new();
+    let r2 = &mut s;  // Référence mutable à s
 
-    io::stdin()
-        .read_line(&mut supposition)
-        .expect("Échec de la lecture de l'entrée utilisateur");
+    // Utilisation de r2 pour modifier s
+    r2.push_str(", world");
 
-    println!("Votre nombre : {}", supposition);
+    // Utilisation de r2 après utilisation de r1
+    println!("{}", r2);  // Lecture via r2
 }
