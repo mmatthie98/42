@@ -1,4 +1,4 @@
-This project was a big part of 42, we took 5 months to complete because there's a huge amount to do.
+This project was a big part of 42, we took 5 months to complete because there's a huge amount of things to do.
 
 We had to implement a shell like bash in C, we did pipes, redirects, environment variables and some built-in functions like export, unset, exit, etc. It was a lot of stuff to do.
 
