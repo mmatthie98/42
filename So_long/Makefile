@@ -33,7 +33,7 @@ all: include/so_long.h ${NAME}
 RM = rm -rf
 
 $(NAME):	$(OBJ)
-		$(CC) $(CFLAGS) -L/Users/${USER}/Desktop/42/So_long/minilibx -lmlx -framework OpenGL -framework Appkit -o $(NAME) $(OBJ) -I$(I_DIR)
+		$(CC) $(CFLAGS) -Lminilibx -lmlx -framework OpenGL -framework Appkit -o $(NAME) $(OBJ) -I$(I_DIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -g -o $@ -c $< -I$(I_DIR)
